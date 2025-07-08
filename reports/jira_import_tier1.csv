@@ -1,0 +1,253 @@
+Summary,Issue Type,Priority,Status,Epic Name,Epic Link,Story Points,Description,Assignee,Reporter,Components,Labels,Fix Version/s,Sprint,Original Estimate,Remaining Estimate,Due Date,Environment,Custom Field - Dependencies,Custom Field - DoD Items,Custom Field - Test Count,Custom Field - Epic ID,Custom Field - Story ID
+"[1.1] Collect remaining 110 breed exemplar images (≥50 imgs/breed, >400×400px, CC-BY)",Story,Low,To Do,Universal Breed Coverage (finish 450-breed dataset),E-1,3,"h2. Story Description
+Collect remaining 110 breed exemplar images (≥50 imgs/breed, >400×400px, CC-BY)
+
+h2. Epic Context
+Universal Breed Coverage (finish 450-breed dataset)
+
+h3. Definition of Done:\n* Images stored in s3://petplantr-datasets/breeds/raw/\n* Each file named <breed>_<uid>.jpg\n* Dataset manifest (manifest.csv) updated\n\nh3. Acceptance Tests:\n* pytest -q tests/dataset/test_manifest.py passes
+
+h2. Integration Notes
+This story integrates with our test infrastructure from conftest.py:
+* Performance thresholds defined for AI inference and API response times
+* Quality gates enforce 95% test coverage and 80% mutation score
+* Security scanning prevents critical vulnerabilities
+
+
+
+Generated from: tier1_priority_backlog.ipynb
+Created: 2025-07-02 22:13:47",,Product Manager,AI/ML Pipeline,"tier-1-priority,e-1,sp-3",Tier-1 Release,Tier-1 Sprint 1,3d,3d,,Production Pipeline,,3,1,E-1,1.1
+[1.2] Human label QA pass (95% precision),Story,Medium,To Do,Universal Breed Coverage (finish 450-breed dataset),E-1,5,"h2. Story Description
+Human label QA pass (95% precision)
+
+h2. Epic Context
+Universal Breed Coverage (finish 450-breed dataset)
+
+h3. Definition of Done:\n* QA tool shows ≤5% mislabeled\n* Confusion report exported\n\nh3. Acceptance Tests:\n* make qa-report shows precision ≥0.95
+
+h2. Integration Notes
+This story integrates with our test infrastructure from conftest.py:
+* Performance thresholds defined for AI inference and API response times
+* Quality gates enforce 95% test coverage and 80% mutation score
+* Security scanning prevents critical vulnerabilities
+
+Depends on: 1.1
+
+Generated from: tier1_priority_backlog.ipynb
+Created: 2025-07-02 22:13:47",,Product Manager,AI/ML Pipeline,"tier-1-priority,e-1,sp-5",Tier-1 Release,Tier-1 Sprint 1,5d,5d,,Production Pipeline,Depends on: 1.1,2,1,E-1,1.2
+"[1.3] Data augmentation scripts (flip, crop, color-jitter) containerised",Story,Low,To Do,Universal Breed Coverage (finish 450-breed dataset),E-1,2,"h2. Story Description
+Data augmentation scripts (flip, crop, color-jitter) containerised
+
+h2. Epic Context
+Universal Breed Coverage (finish 450-breed dataset)
+
+h3. Definition of Done:\n* docker run augment outputs valid augmented/ tree\n* README explains params\n\nh3. Acceptance Tests:\n* 100 random outputs inspected; all readable & label folder correct
+
+h2. Integration Notes
+This story integrates with our test infrastructure from conftest.py:
+* Performance thresholds defined for AI inference and API response times
+* Quality gates enforce 95% test coverage and 80% mutation score
+* Security scanning prevents critical vulnerabilities
+
+Depends on: 1.2
+
+Generated from: tier1_priority_backlog.ipynb
+Created: 2025-07-02 22:13:47",,Product Manager,AI/ML Pipeline,"tier-1-priority,e-1,sp-2",Tier-1 Release,Tier-1 Sprint 1,2d,2d,,Production Pipeline,Depends on: 1.2,2,1,E-1,1.3
+[1.4] Retrain CLIP+DPT pipeline with full set,Story,High,To Do,Universal Breed Coverage (finish 450-breed dataset),E-1,8,"h2. Story Description
+Retrain CLIP+DPT pipeline with full set
+
+h2. Epic Context
+Universal Breed Coverage (finish 450-breed dataset)
+
+h3. Definition of Done:\n* New model v1.3 pushed to Model Registry\n* Training notebook committed & reproducible\n\nh3. Acceptance Tests:\n* pytest -q tests/model/test_accuracy.py ≥ 90% top-1\n* Breed F1 on hold-out set ≥ 0.85
+
+h2. Integration Notes
+This story integrates with our test infrastructure from conftest.py:
+* Performance thresholds defined for AI inference and API response times
+* Quality gates enforce 95% test coverage and 80% mutation score
+* Security scanning prevents critical vulnerabilities
+
+Depends on: 1.3
+
+Generated from: tier1_priority_backlog.ipynb
+Created: 2025-07-02 22:13:47",,Product Manager,AI/ML Pipeline,"tier-1-priority,e-1,sp-8",Tier-1 Release,Tier-1 Sprint 1,8d,8d,,Production Pipeline,Depends on: 1.3,2,2,E-1,1.4
+[1.5] Update inference API to v1.3,Story,Low,To Do,Universal Breed Coverage (finish 450-breed dataset),E-1,3,"h2. Story Description
+Update inference API to v1.3
+
+h2. Epic Context
+Universal Breed Coverage (finish 450-breed dataset)
+
+h3. Definition of Done:\n* POST /infer returns JSON with breed field\n* Canary deploy serving > 500 req/min\n\nh3. Acceptance Tests:\n* Smoke test script returns HTTP 200 & ≤ 2 s latency (p50)
+
+h2. Integration Notes
+This story integrates with our test infrastructure from conftest.py:
+* Performance thresholds defined for AI inference and API response times
+* Quality gates enforce 95% test coverage and 80% mutation score
+* Security scanning prevents critical vulnerabilities
+
+Depends on: 1.4
+
+Generated from: tier1_priority_backlog.ipynb
+Created: 2025-07-02 22:13:47",,Product Manager,AI/ML Pipeline,"tier-1-priority,e-1,sp-3",Tier-1 Release,Tier-1 Sprint 1,3d,3d,,Production Pipeline,Depends on: 1.4,2,1,E-1,1.5
+[2.1] Profiling run: identify top 3 bottlenecks,Story,Low,To Do,Performance Optimisation (sub-5 s end-to-end),E-2,2,"h2. Story Description
+Profiling run: identify top 3 bottlenecks
+
+h2. Epic Context
+Performance Optimisation (sub-5 s end-to-end)
+
+h3. Definition of Done:\n* Flamegraphs & report in /perf/\n\nh3. Acceptance Tests:\n* Bottleneck list reviewed in Arch sync
+
+h2. Integration Notes
+This story integrates with our test infrastructure from conftest.py:
+* Performance thresholds defined for AI inference and API response times
+* Quality gates enforce 95% test coverage and 80% mutation score
+* Security scanning prevents critical vulnerabilities
+
+
+
+Generated from: tier1_priority_backlog.ipynb
+Created: 2025-07-02 22:13:47",,Product Manager,Performance & Infrastructure,"tier-1-priority,e-2,sp-2",Tier-1 Release,Tier-1 Sprint 2,2d,2d,,Production Pipeline,,1,1,E-2,2.1
+[2.2] Model quantisation (INT8),Story,Medium,To Do,Performance Optimisation (sub-5 s end-to-end),E-2,5,"h2. Story Description
+Model quantisation (INT8)
+
+h2. Epic Context
+Performance Optimisation (sub-5 s end-to-end)
+
+h3. Definition of Done:\n* Quantised model v1.4-int8 stored\n* Accuracy drop < 1 pp\n\nh3. Acceptance Tests:\n* pytest tests/model/test_accuracy.py drop ≤ 1 pp
+
+h2. Integration Notes
+This story integrates with our test infrastructure from conftest.py:
+* Performance thresholds defined for AI inference and API response times
+* Quality gates enforce 95% test coverage and 80% mutation score
+* Security scanning prevents critical vulnerabilities
+
+Depends on: 2.1, 1.4
+
+Generated from: tier1_priority_backlog.ipynb
+Created: 2025-07-02 22:13:47",,Product Manager,Performance & Infrastructure,"tier-1-priority,e-2,sp-5",Tier-1 Release,Tier-1 Sprint 2,5d,5d,,Production Pipeline,"Depends on: 2.1, 1.4",2,1,E-2,2.2
+[2.3] Batch inference path (10 imgs req),Story,Low,To Do,Performance Optimisation (sub-5 s end-to-end),E-2,3,"h2. Story Description
+Batch inference path (10 imgs req)
+
+h2. Epic Context
+Performance Optimisation (sub-5 s end-to-end)
+
+h3. Definition of Done:\n* /infer/batch returns array\n* Worker util ≥ 70% GPU\n\nh3. Acceptance Tests:\n* Load test TPS ≥ 150 on A10G
+
+h2. Integration Notes
+This story integrates with our test infrastructure from conftest.py:
+* Performance thresholds defined for AI inference and API response times
+* Quality gates enforce 95% test coverage and 80% mutation score
+* Security scanning prevents critical vulnerabilities
+
+Depends on: 2.1
+
+Generated from: tier1_priority_backlog.ipynb
+Created: 2025-07-02 22:13:47",,Product Manager,Performance & Infrastructure,"tier-1-priority,e-2,sp-3",Tier-1 Release,Tier-1 Sprint 2,3d,3d,,Production Pipeline,Depends on: 2.1,2,1,E-2,2.3
+[2.4] Asynchronous image pre-resize lambda,Story,Medium,To Do,Performance Optimisation (sub-5 s end-to-end),E-2,5,"h2. Story Description
+Asynchronous image pre-resize lambda
+
+h2. Epic Context
+Performance Optimisation (sub-5 s end-to-end)
+
+h3. Definition of Done:\n* Lambda img-thumb-512 live\n* Avg resize latency < 150 ms\n\nh3. Acceptance Tests:\n* make e2e-perf p95 end-to-end < 5 s
+
+h2. Integration Notes
+This story integrates with our test infrastructure from conftest.py:
+* Performance thresholds defined for AI inference and API response times
+* Quality gates enforce 95% test coverage and 80% mutation score
+* Security scanning prevents critical vulnerabilities
+
+Depends on: 2.3
+
+Generated from: tier1_priority_backlog.ipynb
+Created: 2025-07-02 22:13:47",,Product Manager,Performance & Infrastructure,"tier-1-priority,e-2,sp-5",Tier-1 Release,Tier-1 Sprint 2,5d,5d,,Production Pipeline,Depends on: 2.3,2,1,E-2,2.4
+[3.1] External pen-test remediation,Task,Medium,To Do,Production Launch Hardening,E-3,5,"h2. Story Description
+External pen-test remediation
+
+h2. Epic Context
+Production Launch Hardening
+
+h3. Definition of Done:\n* All High/Critical findings fixed\n* Report uploaded to security/\n\nh3. Acceptance Tests:\n* Retest shows 0 High/Critical
+
+h2. Integration Notes
+This story integrates with our test infrastructure from conftest.py:
+* Performance thresholds defined for AI inference and API response times
+* Quality gates enforce 95% test coverage and 80% mutation score
+* Security scanning prevents critical vulnerabilities
+
+
+
+Generated from: tier1_priority_backlog.ipynb
+Created: 2025-07-02 22:13:47",,Product Manager,Production & Security,"tier-1-priority,e-3,sp-5",Tier-1 Release,Tier-1 Sprint 3,5d,5d,,Production Pipeline,,2,1,E-3,3.1
+[3.2] Disaster-recovery runbook (RTO < 2 h / RPO < 15 min),Task,Low,To Do,Production Launch Hardening,E-3,3,"h2. Story Description
+Disaster-recovery runbook (RTO < 2 h / RPO < 15 min)
+
+h2. Epic Context
+Production Launch Hardening
+
+h3. Definition of Done:\n* Runbook doc in Confluence\n* terraform apply -var test_dr=true succeeds\n\nh3. Acceptance Tests:\n* Table-top exercise signed off by DevOps lead
+
+h2. Integration Notes
+This story integrates with our test infrastructure from conftest.py:
+* Performance thresholds defined for AI inference and API response times
+* Quality gates enforce 95% test coverage and 80% mutation score
+* Security scanning prevents critical vulnerabilities
+
+Depends on: 3.1
+
+Generated from: tier1_priority_backlog.ipynb
+Created: 2025-07-02 22:13:47",,Product Manager,Production & Security,"tier-1-priority,e-3,sp-3",Tier-1 Release,Tier-1 Sprint 3,3d,3d,,Production Pipeline,Depends on: 3.1,2,1,E-3,3.2
+[3.3] Multi-AZ K8s cluster IaC,Task,High,To Do,Production Launch Hardening,E-3,8,"h2. Story Description
+Multi-AZ K8s cluster IaC
+
+h2. Epic Context
+Production Launch Hardening
+
+h3. Definition of Done:\n* EKS 3-AZ cluster via Terraform\n* Argo CD bootstraps app\n* 99.9% uptime SLO dashboards\n\nh3. Acceptance Tests:\n* Chaos-Monkey node kill ⇒ no 5xx > 1 min
+
+h2. Integration Notes
+This story integrates with our test infrastructure from conftest.py:
+* Performance thresholds defined for AI inference and API response times
+* Quality gates enforce 95% test coverage and 80% mutation score
+* Security scanning prevents critical vulnerabilities
+
+Depends on: 3.2
+
+Generated from: tier1_priority_backlog.ipynb
+Created: 2025-07-02 22:13:47",,Product Manager,Production & Security,"tier-1-priority,e-3,sp-8",Tier-1 Release,Tier-1 Sprint 3,8d,8d,,Production Pipeline,Depends on: 3.2,3,1,E-3,3.3
+[3.4] Stripe + EventBridge prod toggle,Task,Low,To Do,Production Launch Hardening,E-3,2,"h2. Story Description
+Stripe + EventBridge prod toggle
+
+h2. Epic Context
+Production Launch Hardening
+
+h3. Definition of Done:\n* Prod keys in AWS Secrets Mgr\n* All webhook events verified in prod log\n\nh3. Acceptance Tests:\n* $ make payments-smoke passes; funds captured
+
+h2. Integration Notes
+This story integrates with our test infrastructure from conftest.py:
+* Performance thresholds defined for AI inference and API response times
+* Quality gates enforce 95% test coverage and 80% mutation score
+* Security scanning prevents critical vulnerabilities
+
+Depends on: 3.3
+
+Generated from: tier1_priority_backlog.ipynb
+Created: 2025-07-02 22:13:47",,Product Manager,Production & Security,"tier-1-priority,e-3,sp-2",Tier-1 Release,Tier-1 Sprint 3,2d,2d,,Production Pipeline,Depends on: 3.3,2,1,E-3,3.4
+[3.5] Launch checklist sign-off,Task,Low,To Do,Production Launch Hardening,E-3,1,"h2. Story Description
+Launch checklist sign-off
+
+h2. Epic Context
+Production Launch Hardening
+
+h3. Definition of Done:\n* All P0s closed\n* Stakeholder sign-off sheet posted\n\nh3. Acceptance Tests:\n* Ship-party 🎉
+
+h2. Integration Notes
+This story integrates with our test infrastructure from conftest.py:
+* Performance thresholds defined for AI inference and API response times
+* Quality gates enforce 95% test coverage and 80% mutation score
+* Security scanning prevents critical vulnerabilities
+
+Depends on: 3.4
+
+Generated from: tier1_priority_backlog.ipynb
+Created: 2025-07-02 22:13:47",,Product Manager,Production & Security,"tier-1-priority,e-3,sp-1",Tier-1 Release,Tier-1 Sprint 3,1d,1d,,Production Pipeline,Depends on: 3.4,2,1,E-3,3.5
