@@ -1,6 +1,7 @@
 /**
  * API Route: /api/replicate/generate
  * Handles AI image generation and 3D model creation with verified working models
+ * Updated: July 11, 2025 - Real models only, no demo fallback
  */
 
 import { NextRequest, NextResponse } from 'next/server';
