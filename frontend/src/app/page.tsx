@@ -1,88 +1,55 @@
-import { 
-  SignInButton, 
-  SignUpButton, 
-  UserButton, 
-  SignedIn, 
-  SignedOut 
-} from '@clerk/nextjs'
-import Link from 'next/link'
-
 export default function HomePage() {
-  const isDevMode = process.env.NEXT_PUBLIC_DEV_MODE === 'true'
-
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100">
-      <div className="max-w-md w-full mx-auto p-8 bg-white rounded-xl shadow-lg">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            🌱 PetPlantr
+    <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
+      <div className="container mx-auto px-4 py-16">
+        <div className="text-center">
+          <h1 className="text-6xl font-bold text-gray-900 mb-6">
+            🐕 PetPlantr
           </h1>
-          <p className="text-gray-600">
-            Transform your pet photos into custom 3D printed planters
+          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+            Transform your pet photos into beautiful 3D planters using AI. 
+            Upload a photo, get a custom planter design, and 3D print your creation!
           </p>
-        </div>
 
-        {isDevMode ? (
-          <div className="space-y-4">
-            <div className="text-center text-sm text-yellow-700 bg-yellow-50 p-3 rounded-lg">
-              Development Mode - Authentication Disabled
+          <div className="grid md:grid-cols-3 gap-8 mt-12 max-w-4xl mx-auto">
+            <div className="bg-white p-6 rounded-lg shadow-lg">
+              <div className="text-4xl mb-4">📱</div>
+              <h3 className="text-lg font-semibold mb-3">Upload Photo</h3>
+              <p className="text-gray-600">Upload a clear photo of your pet</p>
             </div>
-            
-            <Link href="/upload">
-              <button className="w-full bg-primary-600 hover:bg-primary-700 text-white font-medium py-3 px-4 rounded-lg transition-colors">
-                Go to Upload (Demo)
-              </button>
-            </Link>
-            
-            <Link href="/test-chat">
-              <button className="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-3 px-4 rounded-lg transition-colors">
-                Test Chat Assistant
-              </button>
-            </Link>
+            <div className="bg-white p-6 rounded-lg shadow-lg">
+              <div className="text-4xl mb-4">🤖</div>
+              <h3 className="text-lg font-semibold mb-3">AI Processing</h3>
+              <p className="text-gray-600">Our AI creates a custom 3D model</p>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-lg">
+              <div className="text-4xl mb-4">🌱</div>
+              <h3 className="text-lg font-semibold mb-3">Get Your Planter</h3>
+              <p className="text-gray-600">Download and 3D print your planter</p>
+            </div>
           </div>
-        ) : (
-          <>
-            <SignedOut>
-              <div className="space-y-4">
-                <div className="w-full">
-                  <SignInButton mode="modal">
-                    <button className="w-full bg-primary-600 hover:bg-primary-700 text-white font-medium py-3 px-4 rounded-lg transition-colors">
-                      Sign In
-                    </button>
-                  </SignInButton>
-                </div>
-                
-                <div className="w-full">
-                  <SignUpButton mode="modal">
-                    <button className="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-3 px-4 rounded-lg transition-colors">
-                      Create Account
-                    </button>
-                  </SignUpButton>
-                </div>
-              </div>
-            </SignedOut>
 
-            <SignedIn>
-              <div className="space-y-4">
-                <div className="flex items-center justify-center space-x-4">
-                  <UserButton />
-                  <span className="text-gray-600">Welcome back!</span>
-                </div>
-                
-                <Link href="/upload">
-                  <button className="w-full bg-primary-600 hover:bg-primary-700 text-white font-medium py-3 px-4 rounded-lg transition-colors">
-                    Upload Pet Photos
-                  </button>
-                </Link>
-              </div>
-            </SignedIn>
-          </>
-        )}
+          <div className="mt-12">
+            <button className="bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-8 rounded-lg text-lg transition-colors shadow-lg">
+              Get Started - Upload Your Pet Photo
+            </button>
+          </div>
 
-        <div className="mt-8 text-center text-sm text-gray-500">
-          <p>Upload photos → Get custom planters → Delivered to your door</p>
+          <div className="mt-16 text-center">
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">How It Works</h2>
+            <div className="max-w-3xl mx-auto text-gray-600">
+              <p className="mb-4">
+                PetPlantr uses advanced AI to analyze your pet photo and generate a custom 3D planter design 
+                that captures your pet\'s unique features and personality.
+              </p>
+              <p>
+                Simply upload a photo, wait for our AI to work its magic, and download your STL file 
+                ready for 3D printing. Create a beautiful planter that celebrates your beloved pet!
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
