@@ -12,5 +12,13 @@ jobs:
         with:
           python-version: '3.10'
           cache: 'pip'
-      - run: pip install -r requirements-test-sprint-c.txt
-      - run: PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 pytest -q -m sprint_c -c pytest.ini
+      - name: Install test requirements
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-test-sprint-c.txt
+          # Ensure optional deps present for marked tests
+          pip install fakeredis respx pytest-asyncio pytest-cov
+      - name: Run sprint-c tests (isolated plugins)
+        env:
+          PYTEST_DISABLE_PLUGIN_AUTOLOAD: "1"
+        run: pytest -q -m sprint_c -c pytest.ini
