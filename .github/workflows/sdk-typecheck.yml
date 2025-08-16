@@ -35,31 +35,3 @@ jobs:
           npx --yes typescript@5.5.4 --listFilesOnly -p tsconfig.json | tee /tmp/ts-files.txt
           grep -q 'react/useMeshGeneration\.ts' /tmp/ts-files.txt
           grep -q 'types/react-shim\.d\.ts'     /tmp/ts-files.txt
-name: sdk-typecheck
-
-on:
-  pull_request:
-  branches: [ main ]
-    paths:
-      - 'sdk/**'
-      - '.github/workflows/sdk-typecheck.yml'
-  push:
-    branches: [ main ]
-    paths:
-      - 'sdk/**'
-      - '.github/workflows/sdk-typecheck.yml'
-
-jobs:
-  typecheck:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-  - name: Type-check SDK (Option B)
-        working-directory: sdk
-        run: npx --yes typescript@5.5.4 --noEmit -p tsconfig.json
