@@ -1,0 +1,17 @@
+{
+  "name": "@petplantr/sdk",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "sideEffects": false,
+  "scripts": {
+  "typecheck": "npx -y --package typescript@5.5.4 tsc --noEmit -p tsconfig.json",
+  "ts:list": "npx -y --package typescript@5.5.4 tsc --listFilesOnly -p tsconfig.json",
+  "ts:show": "npx -y --package typescript@5.5.4 tsc --showConfig -p tsconfig.json"
+  },
+  "exports": {
+    ".": { "types": "./index.ts", "import": "./index.ts" }
+  },
+  "files": ["*.ts", "react/*.ts", "types/*.d.ts", "README.md"],
+  "engines": { "node": ">=18" }
+}
