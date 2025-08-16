@@ -28,10 +28,10 @@ jobs:
           node-version: '20'
 
       - name: Type-check SDK (Option B)
-        run: npx --yes typescript@5.5.4 --noEmit -p tsconfig.json
+        run: npx --yes -p typescript@5.5.4 tsc --noEmit -p tsconfig.json
 
       - name: Assert SDK glob coverage
         run: |
-          npx --yes typescript@5.5.4 --listFilesOnly -p tsconfig.json | tee /tmp/ts-files.txt
+          npx --yes -p typescript@5.5.4 tsc --listFilesOnly -p tsconfig.json | tee /tmp/ts-files.txt
           grep -q 'react/useMeshGeneration\.ts' /tmp/ts-files.txt
           grep -q 'types/react-shim\.d\.ts'     /tmp/ts-files.txt
