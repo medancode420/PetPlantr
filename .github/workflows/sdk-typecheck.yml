@@ -37,7 +37,7 @@ jobs:
         run: |
           node --version
           npm --version || true
-          npx --yes typescript@5.5.4 --version
+          npx --yes -p typescript@5.5.4 tsc -v
 
       - name: SDK doctor
         run: make sdk-doctor
