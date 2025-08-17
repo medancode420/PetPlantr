@@ -1,0 +1,56 @@
+name: SDK Type Check
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'sdk/**'
+      - '.github/workflows/sdk-typecheck.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'sdk/**'
+      - '.github/workflows/sdk-typecheck.yml'
+
+jobs:
+  typecheck:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    timeout-minutes: 5
+    concurrency:
+      group: sdk-typecheck-${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true
+    defaults:
+      run:
+        working-directory: sdk
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Print Node/TS versions
+        run: |
+          node --version
+          npm --version || true
+          npx --yes -p typescript@5.5.4 tsc -v
+
+      - name: SDK doctor
+        run: make sdk-doctor
+        working-directory: .
+
+      - name: Type-check SDK (Option B)
+        run: npx --yes -p typescript@5.5.4 tsc --noEmit -p tsconfig.json
+
+      - name: Assert SDK glob coverage
+        run: |
+          npx --yes -p typescript@5.5.4 tsc --listFilesOnly -p tsconfig.json | tee /tmp/ts-files.txt
+          grep -q 'react/useMeshGeneration\.ts' /tmp/ts-files.txt
+          grep -q 'types/react-shim\.d\.ts'     /tmp/ts-files.txt
+
+      # - name: List included TS files (debug)
+      #   run: npx --yes -p typescript@5.5.4 tsc --listFilesOnly -p tsconfig.json

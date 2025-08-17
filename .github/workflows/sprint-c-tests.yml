@@ -1,0 +1,75 @@
+name: Sprint C Tests
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - '**/*.py'
+      - 'requirements*.txt'
+      - 'pyproject.toml'
+      - '.github/workflows/sprint-c-tests.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - '**/*.py'
+      - 'requirements*.txt'
+      - 'pyproject.toml'
+      - '.github/workflows/sprint-c-tests.yml'
+  workflow_dispatch:
+
+jobs:
+  sprint-c:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+          cache-dependency-path: |
+            requirements.txt
+            requirements-*.txt
+            pyproject.toml
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements-test-sprint-c.txt ]; then \
+            pip install -r requirements-test-sprint-c.txt; \
+          elif [ -f requirements.txt ]; then \
+            pip install -r requirements.txt; \
+          elif [ -f pyproject.toml ]; then \
+            pip install -e .; \
+          else \
+            echo "No requirements or pyproject found in workspace"; exit 1; \
+          fi
+          # Ensure ops-sync tests can run (will skip if already present)
+          pip install fakeredis
+
+      - name: Run Sprint C tests with controlled plugins + coverage
+        env:
+          PYTEST_DISABLE_PLUGIN_AUTOLOAD: "1"
+        run: |
+          pytest -q \
+            -p pytest_cov -p pytest_asyncio -p respx \
+            -m sprint_c \
+            --cov=src --cov-report=term-missing --cov-report=xml:coverage.xml
+
+      - name: Run targeted ops-sync fanout and SSE replay tests (append coverage)
+        env:
+          PYTEST_DISABLE_PLUGIN_AUTOLOAD: "1"
+        run: |
+          pytest -q \
+            -p pytest_cov -p pytest_asyncio -p respx \
+            tests/test_ops_sync_fanout.py tests/test_sse_replay_buffer.py \
+            --cov=src --cov-append --cov-report=term-missing --cov-report=xml:coverage.xml
+
+      - name: Upload coverage artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-xml
+          path: coverage.xml
