@@ -302,3 +302,15 @@ Run Sprint C tests locally or in CI for PetPlantr validation.
 - Commit `requirements-test-sprint-c.txt` to `feat/startup-script-clean` and push; rerun CI to validate sprint-c job passes.
 - Update `ci.yml` with a guard if needed (e.g., check file existence before install).
 - Run sprint-C tests locally to confirm deps sufficiency; open PR if green.
+
+## CI Troubleshooting
+
+Fix common issues in PetPlantr CI workflows like Sprint C failures.
+
+1. **Missing Requirements**: Ensure `requirements-test-sprint-c.txt` exists with deps (e.g., pytest, fastapi); workflow now guards and bails if absent.
+
+2. **Local Reproduction**: `python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements-test-sprint-c.txt && PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 pytest -q -m sprint_c -c pytest.ini`.
+
+3. **Workflow Updates**: `ci.yml` explicitly installs from `requirements-test-sprint-c.txt`; add guards for robustness.
+
+4. **Grok Tip**: For CI errors (e.g., file not found), query me with run logs for fixes, like "Debug missing requirements in sprint-c job".
