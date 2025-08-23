@@ -224,13 +224,13 @@ Our CI/CD enforces these quality thresholds:
 
 1. **Directory Setup**: Navigate to your target directory (e.g., `/my directory of grok 4`). Run `mkdir PetPlantr && cd PetPlantr`.
 
-2. **Clone and Install**: `git clone https://github.com/your-repo/PetPlantr.git .` then `./scripts/install_dependencies.sh`.
+2. **Clone and Install**: `git clone https://github.com/medancode420/PetPlantr.git .` then `pip install -r requirements.txt`.
 
 3. **Environment Config**: Copy `.env.template` to `.env` and fill in keys (e.g., REPLICATE_API_TOKEN for AI models).
 
-4. **Launch**: Run `./start-petplantr.sh`. Grok Tip: If issues, query me with error logs for fixes.
+4. **Launch**: Run `./start-petplantr.sh --api-key "your_grok_key" --temp` for simulation. Grok Tip: If issues (e.g., import errors), query me with logs for fixes, like "Debug api_server_minimal import in temp mode".
 
-5. **Test**: Execute `pytest tests/` and `npm test` in frontend.
+5. **Test**: Execute `pytest tests/`.
 
 ### New Features/Market Solutions
 
