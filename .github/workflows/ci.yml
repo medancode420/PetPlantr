@@ -22,10 +22,13 @@ jobs:
             echo "found=false" >> $GITHUB_OUTPUT
             echo "Missing requirements-test-sprint-c.txt; skipping tests" >> $GITHUB_STEP_SUMMARY
           fi
+      - name: Bootstrap pytest install
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pytest==7.4.1
       - name: Install dependencies
         if: steps.check-reqs.outputs.found == 'true'
         run: |
-          python -m pip install --upgrade pip
           python -m pip install --no-cache-dir -r requirements-test-sprint-c.txt
           echo "=== Installed packages (sample) ==="
           python -m pip list --format=columns

@@ -314,3 +314,15 @@ Fix common issues in PetPlantr CI workflows like Sprint C failures.
 3. **Workflow Updates**: `ci.yml` explicitly installs from `requirements-test-sprint-c.txt`; add guards for robustness.
 
 4. **Grok Tip**: For CI errors (e.g., file not found), query me with run logs for fixes, like "Debug missing requirements in sprint-c job".
+
+## CI Bootstrap Instructions
+
+Ensure reliable CI runs for Sprint C tests in PetPlantr by bootstrapping key deps.
+
+1. **Bootstrap Step**: `ci.yml` now installs pytest explicitly before main deps to avoid "not found" errors.
+
+2. **Local Reproduction**: `python3 -m venv .venv && source .venv/bin/activate && pip install pytest==7.4.1 && pip install -r requirements-test-sprint-c.txt && PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 pytest -q -m sprint_c -c pytest.ini`.
+
+3. **Grok Tip**: If CI still warns on packages, query me with logs for pins, like "Pin compatible pytest version for Sprint C".
+
+4. **Workflow Updates**: Add similar bootstraps for other critical deps as needed.
