@@ -3,21 +3,30 @@
 
 # Parse args
 while [[ $# -gt 0 ]]; do
-  case $1 in
-    --dir) PROJECT_DIR="$2"; shift 2 ;;
-    --production) PRODUCTION=1; shift ;;
-    *) shift ;;
-  esac
+    case $1 in
+        --dir) PROJECT_DIR="$2"; shift; shift ;;
+        --api-key) GROK_API_KEY="$2"; shift; shift ;;
+        --production) PRODUCTION=1; shift ;;
+        *) shift ;;
+    esac
 done
 
-# Set directory (user-provided or default)
-PROJECT_DIR="${PROJECT_DIR:-/my directory of grok 4/PetPlantr}"
+# Fallback to writable path under $HOME if specified dir not writable
+SPECIFIED_DIR="${PROJECT_DIR:-/my directory of grok 4/PetPlantr}"
+if ! mkdir -p "$SPECIFIED_DIR" 2>/dev/null || ! touch "$SPECIFIED_DIR/.test_writable" 2>/dev/null; then
+    echo "[petplantr] Path not writable: $SPECIFIED_DIR"
+    PROJECT_DIR="$HOME$(echo "$SPECIFIED_DIR" | sed 's|^/||')"
+    echo "[petplantr] Falling back to: $PROJECT_DIR"
+else
+    PROJECT_DIR="$SPECIFIED_DIR"
+fi
 mkdir -p "$PROJECT_DIR"
+rm -f "$PROJECT_DIR/.test_writable" 2>/dev/null
 cd "$PROJECT_DIR" || exit 1
 
 # Clone repo if not present (assuming public repo; adjust for private)
 if [ ! -d ".git" ]; then
-  git clone https://github.com/medancode420/PetPlantr.git . || true
+    git clone https://github.com/medancode420/PetPlantr.git . || true
 fi
 
 # Detect python executable (prefer python3)
@@ -53,7 +62,16 @@ if [ -n "${PRODUCTION:-}" ]; then
   grep -q "^ENV=" .env 2>/dev/null && sed -i.bak "s/^ENV=.*/ENV=production/" .env || echo "ENV=production" >> .env
 fi
 
-# Launch infra if present
+# Require api key for production
+if [ -n "${PRODUCTION:-}" ]; then
+  if [ -z "$GROK_API_KEY" ]; then
+    echo "[petplantr] GROK_API_KEY required in production; use --api-key"
+    exit 1
+  fi
+  grep -q "^GROK_API_KEY=" .env 2>/dev/null || echo "GROK_API_KEY=$GROK_API_KEY" >> .env
+fi
+
+# Launch services
 if [ -f "docker-compose.yml" ]; then
   docker-compose up -d || true
 fi
