@@ -117,6 +117,17 @@ npm run dev
 npm run deploy:dev
 ```
 
+### Production mode
+
+To run PetPlantr in production mode use `./start-petplantr.sh --production`. This will:
+
+- Install production deps (gunicorn, uvicorn)
+- Set `ENV=production` in `.env`
+- Start backend with `gunicorn` using `uvicorn.workers.UvicornWorker` (4 workers)
+- Build and start the frontend (via `npm run build` and `npm run start`)
+
+Example: `./start-petplantr.sh --dir "/srv/petplantr" --production`
+
 ## 🛠️ Local Dev Setup
 
 ### Environment Configuration
