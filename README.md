@@ -237,22 +237,23 @@ Our CI/CD enforces these quality thresholds:
 
 2. **Clone and Install**: `git clone https://github.com/medancode420/PetPlantr.git .` then `pip install -r requirements.txt`.
 
-3. **Environment Config**: Copy `.env.template` to `.env` and fill in keys (e.g., REPLICATE_API_TOKEN for AI models).
+3. **Environment Config**: Copy `.env.template` to `.env` and fill in keys (e.g., REPLICATE_API_TOKEN for AI models). Set ENV=production for prod mode.
 
-4. **Launch**: Run `./start-petplantr.sh --api-key "your_grok_key" --temp` for simulation. Grok Tip: If issues (e.g., import errors), query me with logs for fixes, like "Debug api_server_minimal import in temp mode".
+4. **Launch**: Run `./start-petplantr.sh --production --api-key "your_key"`. Grok Tip: If issues (e.g., read-only path), query me with error logs for fixes.
 
-5. **Test**: Execute `pytest tests/`.
+5. **Test**: Execute `pytest tests/` and `npm test` in frontend.
 
 ### New Features/Market Solutions
 
-- **AI-Assisted Validation**: Integrate Grok to analyze simulation logs in --temp mode (e.g., query for "Summarize bash output for errors"). Justification: Automates debugging of setup issues, reduces time by 40%; monetize via premium AI support add-on ($49/mo for vet app deployments).
-- **Temp Dir Simulator**: Enhance --temp with auto-cleanup and report generation for CI use. Justification: Enables safe testing without side effects; B2B revenue from devops tools ($100/mo for enterprise testing suites).
+- **AI-Assisted Project Bootstrap**: Integrate a Grok-powered CLI tool (using LangChain from langchain_petplantr_agents.py) for interactive setup; e.g., "grok-setup" command prompts for directory and auto-configs env. Justification: Reduces setup time by 50%, revenue via premium AI consulting add-on ($99/setup).
+- **Directory-Specific Integrations**: Add support for custom paths in deploy.sh (e.g., via env var PROJECT_DIR); partner with cloud storage (e.g., Google Drive API) for auto-syncing project dirs. Justification: Enables seamless multi-instance setups for vet clinics, generating B2B revenue ($300/clinic/mo for hosted projects).
 
 ### Next Steps
 
-- Implement start-petplantr.sh with --temp flag; test in fresh dir via code_execution tool to confirm simulation (e.g., verify mock response and non-circular copy).
-- Update README.md and commit; rerun full test suite.
-- Prototype AI log analysis; if temp mode needs tweaks, use web_search for "bash temporary directory simulation best practices".
+- Implement start-petplantr.sh and test in a fresh directory (simulate via code_execution tool if needed).
+- Update README.md and commit changes; rerun full test suite.
+- Prototype Grok CLI for setup; deploy to staging.
+- If directory "/my directory of grok 4" needs validation, use code_execution to check path existence (e.g., os.path.exists).
 ## Advanced Startup Options
 
 Customize PetPlantr launch using the enhanced startup script.
