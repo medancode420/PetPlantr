@@ -1,7 +1,0 @@
-{
-  "orderId": "test-lambda-12345",
-  "userId": "test-user-123",
-  "readyStlKey": "test/sample.stl",
-  "sizeTier": "tier-a",
-  "stlBucket": "petplantr-stl-ready-dev-dev"
-}
