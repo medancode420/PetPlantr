@@ -1,0 +1,38 @@
+{
+  "collection_date": "2025-06-29 22:00:08",
+  "total_images": 150,
+  "breeds_collected": [
+    "Golden Retriever",
+    "German Shepherd",
+    "Labrador",
+    "French Bulldog",
+    "Border Collie"
+  ],
+  "breed_distribution": {
+    "Golden Retriever": 30,
+    "German Shepherd": 30,
+    "Labrador": 30,
+    "French Bulldog": 30,
+    "Border Collie": 30
+  },
+  "quality_criteria": {
+    "min_resolution": [
+      512,
+      512
+    ],
+    "max_file_size": 10485760,
+    "required_poses": [
+      "front",
+      "side",
+      "three-quarter"
+    ],
+    "lighting_quality": "good"
+  },
+  "ready_for_training": true,
+  "recommendations": [
+    "Begin LoRA fine-tuning with current dataset",
+    "Collect additional action shots for dynamic poses",
+    "Add lighting variation for robustness",
+    "Consider breed sub-categories (coat colors, sizes)"
+  ]
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "original_path": "/Users/medan/Downloads/PetPlantr/data/test_images/affenpinscher/test_001.jpg",
+    "output_path": "data/augmented/affenpinscher/test_001_flip_horizontal.jpg",
+    "breed": "affenpinscher",
+    "augmentation": "flip_horizontal",
+    "size": [
+      400,
+      400
+    ]
+  },
+  {
+    "original_path": "/Users/medan/Downloads/PetPlantr/data/test_images/affenpinscher/test_001.jpg",
+    "output_path": "data/augmented/affenpinscher/test_001_crop_center.jpg",
+    "breed": "affenpinscher",
+    "augmentation": "crop_center",
+    "size": [
+      320,
+      320
+    ]
+  },
+  {
+    "original_path": "/Users/medan/Downloads/PetPlantr/data/test_images/affenpinscher/test_001.jpg",
+    "output_path": "data/augmented/affenpinscher/test_001_color_jitter.jpg",
+    "breed": "affenpinscher",
+    "augmentation": "color_jitter",
+    "size": [
+      400,
+      400
+    ]
+  }
+]

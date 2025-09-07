@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetPlantr - Direct 3D Model View</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #2a2a2a;
+            color: white;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        
+        #viewer {
+            width: 100vw;
+            height: 100vh;
+        }
+        
+        #info {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.8);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 300px;
+        }
+        
+        #controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .model-btn {
+            display: block;
+            margin: 10px 0;
+            padding: 10px 15px;
+            background: #4a90e2;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        .model-btn:hover {
+            background: #357abd;
+        }
+        
+        #status {
+            color: #4a90e2;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="viewer"></div>
+    
+    <div id="info">
+        <h2>🎨 PetPlantr 3D Viewer</h2>
+        <div id="status">🔄 Loading 3D Model...</div>
+        <p><strong>Instructions:</strong></p>
+        <ul>
+            <li>🖱️ <strong>Rotate:</strong> Left click + drag</li>
+            <li>🔍 <strong>Zoom:</strong> Mouse wheel</li>
+            <li>📱 <strong>Pan:</strong> Right click + drag</li>
+        </ul>
+        <div id="model-info">
+            <p><strong>Model:</strong> Enhanced Pet Planter</p>
+            <p><strong>Vertices:</strong> 995+</p>
+            <p><strong>Size:</strong> 145×145×80mm</p>
+            <p><strong>Print Ready:</strong> ✅ Yes</p>
+        </div>
+    </div>
+    
+    <div id="controls">
+        <h3>📁 Load Models</h3>
+        <button class="model-btn" onclick="loadModel('sample-stl/simple_pug_planter.stl')">
+            🐕 Simple Pug Planter
+        </button>
+        <button class="model-btn" onclick="loadModel('enhanced-production-models/ENH_1750972310979_enhanced_planter.stl')">
+            🚀 Enhanced Model #1
+        </button>
+        <button class="model-btn" onclick="loadModel('enhanced-production-models/ENH_1750972364919_enhanced_planter.stl')">
+            🐱 Enhanced Model #2
+        </button>
+        <input type="file" id="file-input" accept=".stl" style="display: none;" onchange="loadLocalFile(this)">
+        <button class="model-btn" onclick="document.getElementById('file-input').click()">
+            📁 Upload STL File
+        </button>
+    </div>
+
+    <script>
+        let scene, camera, renderer, controls, currentModel;
+        
+        function init() {
+            // Create scene
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x2a2a2a);
+            
+            // Create camera
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.set(0, 0, 100);
+            
+            // Create renderer
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+            document.getElementById('viewer').appendChild(renderer.domElement);
+            
+            // Add controls
+            controls = new THREE.OrbitControls(camera, renderer.domElement);
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.05;
+            
+            // Add lights
+            const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
+            scene.add(ambientLight);
+            
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            directionalLight.position.set(100, 100, 50);
+            directionalLight.castShadow = true;
+            scene.add(directionalLight);
+            
+            const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.4);
+            directionalLight2.position.set(-100, -100, -50);
+            scene.add(directionalLight2);
+            
+            // Load default model
+            loadModel('sample-stl/simple_pug_planter.stl');
+            
+            // Handle window resize
+            window.addEventListener('resize', onWindowResize, false);
+            
+            // Start render loop
+            animate();
+        }
+        
+        function loadModel(modelPath) {
+            updateStatus('🔄 Loading ' + modelPath + '...');
+            
+            // Remove existing model
+            if (currentModel) {
+                scene.remove(currentModel);
+            }
+            
+            const loader = new THREE.STLLoader();
+            loader.load(
+                modelPath,
+                function (geometry) {
+                    // Create material
+                    const material = new THREE.MeshPhongMaterial({
+                        color: 0x4a90e2,
+                        shininess: 100,
+                        transparent: true,
+                        opacity: 0.9
+                    });
+                    
+                    // Create mesh
+                    currentModel = new THREE.Mesh(geometry, material);
+                    currentModel.castShadow = true;
+                    currentModel.receiveShadow = true;
+                    
+                    // Center the model
+                    geometry.computeBoundingBox();
+                    const box = geometry.boundingBox;
+                    const center = box.getCenter(new THREE.Vector3());
+                    currentModel.position.sub(center);
+                    
+                    // Scale model to fit view
+                    const size = box.getSize(new THREE.Vector3());
+                    const maxDim = Math.max(size.x, size.y, size.z);
+                    const scale = 50 / maxDim;
+                    currentModel.scale.setScalar(scale);
+                    
+                    scene.add(currentModel);
+                    
+                    updateStatus('✅ Model loaded successfully!');
+                    updateModelInfo(geometry, modelPath);
+                },
+                function (progress) {
+                    const percent = Math.round((progress.loaded / progress.total) * 100);
+                    updateStatus(`🔄 Loading... ${percent}%`);
+                },
+                function (error) {
+                    console.error('Error loading STL:', error);
+                    updateStatus('❌ Error loading model. Trying backup...');
+                    
+                    // Try loading a different model as backup
+                    if (modelPath !== 'sample-stl/simple_pug_planter.stl') {
+                        setTimeout(() => loadModel('sample-stl/simple_pug_planter.stl'), 1000);
+                    }
+                }
+            );
+        }
+        
+        function loadLocalFile(input) {
+            const file = input.files[0];
+            if (file && file.name.toLowerCase().endsWith('.stl')) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const loader = new THREE.STLLoader();
+                    const geometry = loader.parse(e.target.result);
+                    
+                    // Remove existing model
+                    if (currentModel) {
+                        scene.remove(currentModel);
+                    }
+                    
+                    const material = new THREE.MeshPhongMaterial({
+                        color: 0x4a90e2,
+                        shininess: 100
+                    });
+                    
+                    currentModel = new THREE.Mesh(geometry, material);
+                    
+                    // Center and scale
+                    geometry.computeBoundingBox();
+                    const box = geometry.boundingBox;
+                    const center = box.getCenter(new THREE.Vector3());
+                    currentModel.position.sub(center);
+                    
+                    const size = box.getSize(new THREE.Vector3());
+                    const maxDim = Math.max(size.x, size.y, size.z);
+                    const scale = 50 / maxDim;
+                    currentModel.scale.setScalar(scale);
+                    
+                    scene.add(currentModel);
+                    updateStatus('✅ Local file loaded!');
+                    updateModelInfo(geometry, file.name);
+                };
+                reader.readAsArrayBuffer(file);
+            }
+        }
+        
+        function updateStatus(message) {
+            document.getElementById('status').innerHTML = message;
+        }
+        
+        function updateModelInfo(geometry, filename) {
+            const vertices = geometry.attributes.position.count;
+            const faces = vertices / 3;
+            
+            document.getElementById('model-info').innerHTML = `
+                <p><strong>File:</strong> ${filename.split('/').pop()}</p>
+                <p><strong>Vertices:</strong> ${vertices.toLocaleString()}</p>
+                <p><strong>Faces:</strong> ${Math.round(faces).toLocaleString()}</p>
+                <p><strong>Status:</strong> ✅ Ready to Print</p>
+            `;
+        }
+        
+        function animate() {
+            requestAnimationFrame(animate);
+            controls.update();
+            renderer.render(scene, camera);
+        }
+        
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+        
+        // Initialize when page loads
+        window.addEventListener('load', init);
+    </script>
+</body>
+</html>

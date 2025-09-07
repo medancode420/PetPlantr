@@ -1,0 +1,11 @@
+{
+  "success": true,
+  "pet_photo": "test_golden_dog.jpg",
+  "design_image": "DebugGolden/custom_planter_design_1751059069.png",
+  "pet_analysis": {
+    "description": "It seems there is an emoji or simple graphic image rather than a photo of a pet. To create a custom 3D-printable planter design from a pet photo, it's best to provide an actual photo of the pet you want to model. If you have a different image of the pet, please share it, and I'll gladly help with the analysis and design suggestions!",
+    "timestamp": 1751059047.6320372
+  },
+  "timestamp": 1751059069,
+  "ready_for_3d_conversion": true
+}

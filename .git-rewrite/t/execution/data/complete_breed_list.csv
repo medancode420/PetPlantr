@@ -1,0 +1,197 @@
+breed_name,group,collection_priority,estimated_images_needed,collection_status
+Brittany,AKC_Sporting,high,500,pending
+Pointer,AKC_Sporting,high,500,pending
+German Shorthaired Pointer,AKC_Sporting,high,500,pending
+German Wirehaired Pointer,AKC_Sporting,high,500,pending
+Chesapeake Bay Retriever,AKC_Sporting,high,500,pending
+Curly-Coated Retriever,AKC_Sporting,high,500,pending
+Flat-Coated Retriever,AKC_Sporting,high,500,pending
+Golden Retriever,AKC_Sporting,high,500,pending
+Labrador Retriever,AKC_Sporting,high,500,pending
+Nova Scotia Duck Tolling Retriever,AKC_Sporting,high,500,pending
+English Setter,AKC_Sporting,high,500,pending
+Gordon Setter,AKC_Sporting,high,500,pending
+Irish Red and White Setter,AKC_Sporting,high,500,pending
+Irish Setter,AKC_Sporting,high,500,pending
+American Water Spaniel,AKC_Sporting,high,500,pending
+Boykin Spaniel,AKC_Sporting,high,500,pending
+Clumber Spaniel,AKC_Sporting,high,500,pending
+Cocker Spaniel,AKC_Sporting,high,500,pending
+English Cocker Spaniel,AKC_Sporting,high,500,pending
+English Springer Spaniel,AKC_Sporting,high,500,pending
+Field Spaniel,AKC_Sporting,high,500,pending
+Irish Water Spaniel,AKC_Sporting,high,500,pending
+Sussex Spaniel,AKC_Sporting,high,500,pending
+Welsh Springer Spaniel,AKC_Sporting,high,500,pending
+Lagotto Romagnolo,AKC_Sporting,high,500,pending
+Spinone Italiano,AKC_Sporting,high,500,pending
+Vizsla,AKC_Sporting,high,500,pending
+Weimaraner,AKC_Sporting,high,500,pending
+Wirehaired Pointing Griffon,AKC_Sporting,high,500,pending
+Afghan Hound,AKC_Hound,high,500,pending
+American English Coonhound,AKC_Hound,high,500,pending
+American Foxhound,AKC_Hound,high,500,pending
+Basenji,AKC_Hound,high,500,pending
+Basset Hound,AKC_Hound,high,500,pending
+Beagle,AKC_Hound,high,500,pending
+Black and Tan Coonhound,AKC_Hound,high,500,pending
+Bloodhound,AKC_Hound,high,500,pending
+Bluetick Coonhound,AKC_Hound,high,500,pending
+Borzoi,AKC_Hound,high,500,pending
+Cirneco dell'Etna,AKC_Hound,high,500,pending
+Dachshund,AKC_Hound,high,500,pending
+English Foxhound,AKC_Hound,high,500,pending
+Greyhound,AKC_Hound,high,500,pending
+Harrier,AKC_Hound,high,500,pending
+Ibizan Hound,AKC_Hound,high,500,pending
+Irish Wolfhound,AKC_Hound,high,500,pending
+Norwegian Elkhound,AKC_Hound,high,500,pending
+Otterhound,AKC_Hound,high,500,pending
+Petit Basset Griffon Vendéen,AKC_Hound,high,500,pending
+Pharaoh Hound,AKC_Hound,high,500,pending
+Plott,AKC_Hound,high,500,pending
+Portuguese Podengo Pequeno,AKC_Hound,high,500,pending
+Redbone Coonhound,AKC_Hound,high,500,pending
+Rhodesian Ridgeback,AKC_Hound,high,500,pending
+Saluki,AKC_Hound,high,500,pending
+Scottish Deerhound,AKC_Hound,high,500,pending
+Treeing Walker Coonhound,AKC_Hound,high,500,pending
+Whippet,AKC_Hound,high,500,pending
+Akbash Dog,AKC_Working,high,500,pending
+Alaskan Malamute,AKC_Working,high,500,pending
+Anatolian Shepherd Dog,AKC_Working,high,500,pending
+Bernese Mountain Dog,AKC_Working,high,500,pending
+Black Russian Terrier,AKC_Working,high,500,pending
+Boerboel,AKC_Working,high,500,pending
+Boxer,AKC_Working,high,500,pending
+Bullmastiff,AKC_Working,high,500,pending
+Cane Corso,AKC_Working,high,500,pending
+Doberman Pinscher,AKC_Working,high,500,pending
+Dogue de Bordeaux,AKC_Working,high,500,pending
+German Pinscher,AKC_Working,high,500,pending
+Giant Schnauzer,AKC_Working,high,500,pending
+Great Dane,AKC_Working,high,500,pending
+Great Pyrenees,AKC_Working,high,500,pending
+Greater Swiss Mountain Dog,AKC_Working,high,500,pending
+Komondor,AKC_Working,high,500,pending
+Kuvasz,AKC_Working,high,500,pending
+Leonberger,AKC_Working,high,500,pending
+Mastiff,AKC_Working,high,500,pending
+Neapolitan Mastiff,AKC_Working,high,500,pending
+Newfoundland,AKC_Working,high,500,pending
+Portuguese Water Dog,AKC_Working,high,500,pending
+Rottweiler,AKC_Working,high,500,pending
+Saint Bernard,AKC_Working,high,500,pending
+Samoyed,AKC_Working,high,500,pending
+Siberian Husky,AKC_Working,high,500,pending
+Standard Schnauzer,AKC_Working,high,500,pending
+Tibetan Mastiff,AKC_Working,high,500,pending
+Airedale Terrier,AKC_Terrier,high,500,pending
+American Staffordshire Terrier,AKC_Terrier,high,500,pending
+Australian Terrier,AKC_Terrier,high,500,pending
+Bedlington Terrier,AKC_Terrier,high,500,pending
+Border Terrier,AKC_Terrier,high,500,pending
+Bull Terrier,AKC_Terrier,high,500,pending
+Cairn Terrier,AKC_Terrier,high,500,pending
+Cesky Terrier,AKC_Terrier,high,500,pending
+Dandie Dinmont Terrier,AKC_Terrier,high,500,pending
+Glen of Imaal Terrier,AKC_Terrier,high,500,pending
+Irish Terrier,AKC_Terrier,high,500,pending
+Kerry Blue Terrier,AKC_Terrier,high,500,pending
+Lakeland Terrier,AKC_Terrier,high,500,pending
+Manchester Terrier,AKC_Terrier,high,500,pending
+Miniature Bull Terrier,AKC_Terrier,high,500,pending
+Miniature Schnauzer,AKC_Terrier,high,500,pending
+Norfolk Terrier,AKC_Terrier,high,500,pending
+Norwich Terrier,AKC_Terrier,high,500,pending
+Parson Russell Terrier,AKC_Terrier,high,500,pending
+Russell Terrier,AKC_Terrier,high,500,pending
+Scottish Terrier,AKC_Terrier,high,500,pending
+Sealyham Terrier,AKC_Terrier,high,500,pending
+Skye Terrier,AKC_Terrier,high,500,pending
+Smooth Fox Terrier,AKC_Terrier,high,500,pending
+Soft Coated Wheaten Terrier,AKC_Terrier,high,500,pending
+Staffordshire Bull Terrier,AKC_Terrier,high,500,pending
+Welsh Terrier,AKC_Terrier,high,500,pending
+West Highland White Terrier,AKC_Terrier,high,500,pending
+Wire Fox Terrier,AKC_Terrier,high,500,pending
+Affenpinscher,AKC_Toy,high,500,pending
+Brussels Griffon,AKC_Toy,high,500,pending
+Cavalier King Charles Spaniel,AKC_Toy,high,500,pending
+Chihuahua,AKC_Toy,high,500,pending
+Chinese Crested,AKC_Toy,high,500,pending
+English Toy Spaniel,AKC_Toy,high,500,pending
+Havanese,AKC_Toy,high,500,pending
+Italian Greyhound,AKC_Toy,high,500,pending
+Japanese Chin,AKC_Toy,high,500,pending
+Maltese,AKC_Toy,high,500,pending
+Manchester Terrier (Toy),AKC_Toy,high,500,pending
+Miniature Pinscher,AKC_Toy,high,500,pending
+Papillon,AKC_Toy,high,500,pending
+Pekingese,AKC_Toy,high,500,pending
+Pomeranian,AKC_Toy,high,500,pending
+Poodle (Toy),AKC_Toy,high,500,pending
+Pug,AKC_Toy,high,500,pending
+Shih Tzu,AKC_Toy,high,500,pending
+Silky Terrier,AKC_Toy,high,500,pending
+Yorkshire Terrier,AKC_Toy,high,500,pending
+American Eskimo Dog,AKC_Non_Sporting,high,500,pending
+Bichon Frise,AKC_Non_Sporting,high,500,pending
+Boston Terrier,AKC_Non_Sporting,high,500,pending
+Bulldog,AKC_Non_Sporting,high,500,pending
+Chinese Shar-Pei,AKC_Non_Sporting,high,500,pending
+Chow Chow,AKC_Non_Sporting,high,500,pending
+Dalmatian,AKC_Non_Sporting,high,500,pending
+Finnish Spitz,AKC_Non_Sporting,high,500,pending
+French Bulldog,AKC_Non_Sporting,high,500,pending
+Keeshond,AKC_Non_Sporting,high,500,pending
+Lhasa Apso,AKC_Non_Sporting,high,500,pending
+Lowchen,AKC_Non_Sporting,high,500,pending
+Norwegian Lundehund,AKC_Non_Sporting,high,500,pending
+Poodle (Miniature),AKC_Non_Sporting,high,500,pending
+Poodle (Standard),AKC_Non_Sporting,high,500,pending
+Schipperke,AKC_Non_Sporting,high,500,pending
+Shiba Inu,AKC_Non_Sporting,high,500,pending
+Tibetan Spaniel,AKC_Non_Sporting,high,500,pending
+Tibetan Terrier,AKC_Non_Sporting,high,500,pending
+Xoloitzcuintli,AKC_Non_Sporting,high,500,pending
+Australian Cattle Dog,AKC_Herding,high,500,pending
+Australian Shepherd,AKC_Herding,high,500,pending
+Bearded Collie,AKC_Herding,high,500,pending
+Belgian Malinois,AKC_Herding,high,500,pending
+Belgian Sheepdog,AKC_Herding,high,500,pending
+Belgian Tervuren,AKC_Herding,high,500,pending
+Border Collie,AKC_Herding,high,500,pending
+Bouvier des Flandres,AKC_Herding,high,500,pending
+Briard,AKC_Herding,high,500,pending
+Canaan Dog,AKC_Herding,high,500,pending
+Cardigan Welsh Corgi,AKC_Herding,high,500,pending
+Collie,AKC_Herding,high,500,pending
+German Shepherd Dog,AKC_Herding,high,500,pending
+Icelandic Sheepdog,AKC_Herding,high,500,pending
+Miniature American Shepherd,AKC_Herding,high,500,pending
+Norwegian Buhund,AKC_Herding,high,500,pending
+Old English Sheepdog,AKC_Herding,high,500,pending
+Pembroke Welsh Corgi,AKC_Herding,high,500,pending
+Polish Lowland Sheepdog,AKC_Herding,high,500,pending
+Puli,AKC_Herding,high,500,pending
+Pyrenean Shepherd,AKC_Herding,high,500,pending
+Shetland Sheepdog,AKC_Herding,high,500,pending
+Spanish Water Dog,AKC_Herding,high,500,pending
+Swedish Vallhund,AKC_Herding,high,500,pending
+Azawakh,Rare_International,high,500,pending
+Barbet,Rare_International,high,500,pending
+Catalburun,Rare_International,high,500,pending
+Telomian,Rare_International,high,500,pending
+New Guinea Singing Dog,Rare_International,high,500,pending
+Carolina Dog,Rare_International,high,500,pending
+Kai Ken,Rare_International,high,500,pending
+Kishu Ken,Rare_International,high,500,pending
+Shikoku,Rare_International,high,500,pending
+Hokkaido,Rare_International,high,500,pending
+Thai Ridgeback,Rare_International,high,500,pending
+Peruvian Inca Orchid,Rare_International,high,500,pending
+Mudi,Rare_International,high,500,pending
+Pumi,Rare_International,high,500,pending
+Lagotto Romagnolo,Rare_International,high,500,pending
+Bracco Italiano,Rare_International,high,500,pending

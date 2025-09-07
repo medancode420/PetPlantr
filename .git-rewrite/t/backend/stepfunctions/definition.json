@@ -1,0 +1,292 @@
+{
+  "Comment": "PetPlantr Enhanced AI Pipeline - Museum Quality Pet Planters",
+  "StartAt": "ValidateOrder",
+  "States": {
+    "ValidateOrder": {
+      "Type": "Pass",
+      "Comment": "Validate incoming order data",
+      "Next": "ChooseProcessingPath"
+    },
+    "ChooseProcessingPath": {
+      "Type": "Choice",
+      "Comment": "Choose between AI pipeline or simple pipeline based on feature flag",
+      "Choices": [
+        {
+          "Variable": "$.useAIPipeline",
+          "BooleanEquals": true,
+          "Next": "DownloadPhotosAI"
+        }
+      ],
+      "Default": "DownloadPhotos"
+    },
+    "DownloadPhotosAI": {
+      "Type": "Task",
+      "Comment": "Download photos for AI processing",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${DownloadPhotosLambdaFunction}",
+        "Payload": {
+          "orderId.$": "$.orderId",
+          "userId.$": "$.userId",
+          "photoUrls.$": "$.photoUrls"
+        }
+      },
+      "TimeoutSeconds": 60,
+      "Next": "FeatureExtraction"
+    },
+    "FeatureExtraction": {
+      "Type": "Task",
+      "Comment": "AI Stage 1: Extract facial features using Vision Transformer",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${ModelingPipelineLambdaFunction}",
+        "Payload": {
+          "stage": "featureExtraction",
+          "orderId.$": "$.orderId",
+          "userId.$": "$.userId",
+          "photoUrls.$": "$.photoUrls"
+        }
+      },
+      "TimeoutSeconds": 300,
+      "Retry": [
+        {
+          "ErrorEquals": ["States.TaskFailed"],
+          "IntervalSeconds": 10,
+          "MaxAttempts": 2,
+          "BackoffRate": 2.0
+        }
+      ],
+      "Catch": [
+        {
+          "ErrorEquals": ["States.ALL"],
+          "Next": "HandleError"
+        }
+      ],
+      "Next": "DepthEstimation"
+    },
+    "DepthEstimation": {
+      "Type": "Task", 
+      "Comment": "AI Stage 2: Generate depth maps using DINOv2 + MiDaS ensemble",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${ModelingPipelineLambdaFunction}",
+        "Payload": {
+          "stage": "depthEstimation",
+          "orderId.$": "$.orderId",
+          "userId.$": "$.userId",
+          "previousStageOutput.$": "$.outputPath"
+        }
+      },
+      "TimeoutSeconds": 300,
+      "Retry": [
+        {
+          "ErrorEquals": ["States.TaskFailed"],
+          "IntervalSeconds": 10,
+          "MaxAttempts": 2,
+          "BackoffRate": 2.0
+        }
+      ],
+      "Catch": [
+        {
+          "ErrorEquals": ["States.ALL"],
+          "Next": "HandleError"
+        }
+      ],
+      "Next": "MeshReconstruction"
+    },
+    "MeshReconstruction": {
+      "Type": "Task",
+      "Comment": "AI Stage 3: Generate 3D mesh using Shape-MVD",
+      "Resource": "arn:aws:states:::lambda:invoke", 
+      "Parameters": {
+        "FunctionName": "${ModelingPipelineLambdaFunction}",
+        "Payload": {
+          "stage": "meshReconstruction", 
+          "orderId.$": "$.orderId",
+          "userId.$": "$.userId",
+          "previousStageOutput.$": "$.outputPath"
+        }
+      },
+      "TimeoutSeconds": 600,
+      "Retry": [
+        {
+          "ErrorEquals": ["States.TaskFailed"],
+          "IntervalSeconds": 15,
+          "MaxAttempts": 2,
+          "BackoffRate": 2.0
+        }
+      ],
+      "Catch": [
+        {
+          "ErrorEquals": ["States.ALL"],
+          "Next": "HandleError"
+        }
+      ],
+      "Next": "PlanterGeometry"
+    },
+    "PlanterGeometry": {
+      "Type": "Task",
+      "Comment": "AI Stage 4: Create planter geometry with boolean operations",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${ModelingPipelineLambdaFunction}",
+        "Payload": {
+          "stage": "planterGeometry",
+          "orderId.$": "$.orderId", 
+          "userId.$": "$.userId",
+          "previousStageOutput.$": "$.outputPath"
+        }
+      },
+      "TimeoutSeconds": 180,
+      "Retry": [
+        {
+          "ErrorEquals": ["States.TaskFailed"],
+          "IntervalSeconds": 5,
+          "MaxAttempts": 3,
+          "BackoffRate": 1.5
+        }
+      ],
+      "Catch": [
+        {
+          "ErrorEquals": ["States.ALL"],
+          "Next": "HandleError"
+        }
+      ],
+      "Next": "MeshCleanup"
+    },
+    "MeshCleanup": {
+      "Type": "Task",
+      "Comment": "AI Stage 5: Clean and optimize mesh for 3D printing",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${ModelingPipelineLambdaFunction}",
+        "Payload": {
+          "stage": "meshCleanup",
+          "orderId.$": "$.orderId",
+          "userId.$": "$.userId", 
+          "previousStageOutput.$": "$.outputPath"
+        }
+      },
+      "TimeoutSeconds": 240,
+      "Retry": [
+        {
+          "ErrorEquals": ["States.TaskFailed"],
+          "IntervalSeconds": 5,
+          "MaxAttempts": 3,
+          "BackoffRate": 1.5
+        }
+      ],
+      "Catch": [
+        {
+          "ErrorEquals": ["States.ALL"],
+          "Next": "HandleError"
+        }
+      ],
+      "Next": "QualityValidation"
+    },
+    "QualityValidation": {
+      "Type": "Choice",
+      "Comment": "Validate AI-generated mesh meets quality standards",
+      "Choices": [
+        {
+          "Variable": "$.qualityMetrics.manifoldRatio",
+          "NumericGreaterThan": 0.95,
+          "Next": "NotifyCustomer"
+        }
+      ],
+      "Default": "HandleError"
+    },
+    "DownloadPhotos": {
+      "Type": "Task",
+      "Comment": "Download photos for simple processing (Beta-0 path)",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${DownloadPhotosLambdaFunction}",
+        "Payload": {
+          "orderId.$": "$.orderId",
+          "userId.$": "$.userId", 
+          "photoUrls.$": "$.photoUrls"
+        }
+      },
+      "TimeoutSeconds": 60,
+      "Next": "GenerateSTL"
+    },
+    "GenerateSTL": {
+      "Type": "Task",
+      "Comment": "Generate STL using simple mock process (Beta-0)",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${GenerateSTLLambdaFunction}",
+        "Payload": {
+          "orderId.$": "$.orderId",
+          "userId.$": "$.userId",
+          "photoKeys.$": "$.photoKeys",
+          "sizeTier.$": "$.sizeTier"
+        }
+      },
+      "TimeoutSeconds": 300,
+      "Next": "ProcessSTL"
+    },
+    "ProcessSTL": {
+      "Type": "Task",
+      "Comment": "Process and finalize STL (Beta-0)",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${ProcessSTLLambdaFunction}",
+        "Payload": {
+          "orderId.$": "$.orderId",
+          "userId.$": "$.userId",
+          "rawStlKey.$": "$.rawStlKey",
+          "sizeTier.$": "$.sizeTier"
+        }
+      },
+      "TimeoutSeconds": 180,
+      "Next": "NotifyCustomer"
+    },
+    "NotifyCustomer": {
+      "Type": "Task",
+      "Comment": "Send completion notification with PRINT_DONE Slack alert",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${NotifyCustomerLambdaFunction}",
+        "Payload": {
+          "orderId.$": "$.orderId",
+          "userId.$": "$.userId",
+          "readyStlKey.$": "$.readyStlKey",
+          "status": "COMPLETED",
+          "qualityMetrics.$": "$.qualityMetrics"
+        }
+      },
+      "Retry": [
+        {
+          "ErrorEquals": ["States.TaskFailed"],
+          "IntervalSeconds": 5,
+          "MaxAttempts": 3,
+          "BackoffRate": 1.5
+        }
+      ],
+      "Catch": [
+        {
+          "ErrorEquals": ["States.ALL"],
+          "Next": "HandleError"
+        }
+      ],
+      "End": true
+    },
+    "HandleError": {
+      "Type": "Task",
+      "Comment": "Handle pipeline errors with enhanced logging",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${HandleErrorLambdaFunction}",
+        "Payload": {
+          "orderId.$": "$.orderId",
+          "userId.$": "$.userId",
+          "error.$": "$",
+          "stage.$": "$.stage"
+        }
+      },
+      "End": true
+    }
+  }
+}

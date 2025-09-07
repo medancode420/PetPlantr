@@ -1,0 +1,12 @@
+# PetPlantr DNS Configuration
+# Generated: Tue Aug  5 14:35:26 EDT 2025
+
+Frontend IP: 76.76.21.21
+API IP: 76.76.21.21
+
+DNS Records:
+petplantr.com       A    76.76.21.21
+www.petplantr.com   A    76.76.21.21  
+api.petplantr.com   A    76.76.21.21
+
+Provider: 1

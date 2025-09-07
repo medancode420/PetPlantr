@@ -1,0 +1,270 @@
+import { handler } from '../src/lambdas/createCheckout';
+import { APIGatewayProxyEvent } from 'aws-lambda';
+
+// Mock the Stripe module before an    it('should return 400 when SKU is invalid', async () => {
+      const event = createMockEvent({
+        userId: 'user_123',
+        items: [{ sku: 'INVALID', quantity: 1 }],
+      });
+      const result = await handler(event);
+
+      expect(result.statusCode).toBe(400);
+      const body = JSON.parse(result.body);
+      expect(body.error.message).toBe('Input validation failed');
+      expect(body.error.type).toBe('VALIDATION_ERROR');
+      expect(body.error.details.errors).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            field: 'sizeTier',
+            message: expect.stringContaining('required')
+          })
+        ])
+      );
+    });est.mock('stripe', () => {
+  const mockCreateSession = jest.fn();
+  return jest.fn().mockImplementation(() => ({
+    checkout: {
+      sessions: {
+        create: mockCreateSession,
+      },
+    },
+  }));
+});
+
+// Mock fetch for Slack alerts
+global.fetch = jest.fn().mockResolvedValue({
+  ok: true,
+  status: 200,
+} as Response);
+
+// Import Stripe after mocking
+import Stripe from 'stripe';
+
+describe('createCheckout Lambda', () => {
+  let mockCreateSession: jest.Mock;
+
+  beforeAll(() => {
+    // Set up environment variables
+    process.env = {
+      ...process.env,
+      STRIPE_SECRET_KEY: 'sk_test_123',
+      STRIPE_PRICE_SMALL: 'price_test_small',
+      STRIPE_PRICE_MEDIUM: 'price_test_medium',
+      STRIPE_PRICE_LARGE: 'price_test_large',
+      STRIPE_PRICE_BUNDLE: 'price_test_bundle',
+      FRONTEND_URL: 'http://localhost:3000',
+      SLACK_WEBHOOK_URL: 'https://hooks.slack.com/test',
+    };
+
+    // Get the mocked function
+    const MockedStripe = Stripe as jest.MockedClass<typeof Stripe>;
+    const mockInstance = new MockedStripe('test-key') as any;
+    mockCreateSession = mockInstance.checkout.sessions.create;
+  });
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+    // Reset mock to default success response
+    mockCreateSession.mockResolvedValue({
+      url: 'https://checkout.stripe.com/pay/test_session_123',
+      id: 'cs_test_123',
+    });
+  });
+
+  const createMockEvent = (body: any, method = 'POST'): APIGatewayProxyEvent => ({
+    httpMethod: method,
+    body: body ? JSON.stringify(body) : null,
+    headers: {},
+    multiValueHeaders: {},
+    isBase64Encoded: false,
+    path: '/api/checkout',
+    pathParameters: null,
+    queryStringParameters: null,
+    multiValueQueryStringParameters: null,
+    stageVariables: null,
+    requestContext: {
+      identity: {
+        sourceIp: '127.0.0.1'
+      }
+    } as any,
+    resource: '',
+  });
+
+  describe('CORS handling', () => {
+    it('should handle OPTIONS request for CORS preflight', async () => {
+      const event = createMockEvent(null, 'OPTIONS');
+      const result = await handler(event);
+
+      expect(result.statusCode).toBe(200);
+      expect(result.headers).toEqual(expect.objectContaining({
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type,Authorization',
+        'Access-Control-Allow-Methods': 'POST,OPTIONS',
+        'Content-Type': 'application/json',
+        'X-Correlation-ID': expect.any(String)
+      }));
+      expect(result.body).toBe('');
+    });
+  });
+
+  describe('Request validation', () => {
+    it('should return 400 when body is missing', async () => {
+      const event = createMockEvent(null);
+      const result = await handler(event);
+
+      expect(result.statusCode).toBe(400);
+      const body = JSON.parse(result.body);
+      expect(body.error.message).toBe('Request body is required');
+      expect(body.error.type).toBe('VALIDATION_ERROR');
+      expect(body.success).toBe(false);
+    });
+
+    it('should return 400 when userId is missing', async () => {
+      const event = createMockEvent({
+        items: [{ sku: 'SMALL', quantity: 1 }],
+      });
+      const result = await handler(event);
+
+      expect(result.statusCode).toBe(400);
+      const body = JSON.parse(result.body);
+      expect(body.error.message).toBe('Input validation failed');
+      expect(body.error.type).toBe('VALIDATION_ERROR');
+      expect(body.error.details.errors).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            field: 'userId',
+            message: expect.stringContaining('required')
+          })
+        ])
+      );
+    });
+
+    it('should return 400 when items array is empty', async () => {
+      const event = createMockEvent({
+        userId: 'user_123',
+        items: [],
+      });
+      const result = await handler(event);
+
+      expect(result.statusCode).toBe(400);
+      const body = JSON.parse(result.body);
+      expect(body.error.message).toBe('Input validation failed');
+      expect(body.error.type).toBe('VALIDATION_ERROR');
+      expect(body.error.details.errors).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            field: 'sizeTier',
+            message: expect.stringContaining('required')
+          })
+        ])
+      );
+    });
+
+    it('should return 400 when SKU is invalid', async () => {
+      const event = createMockEvent({
+        userId: 'user_123',
+        items: [{ sku: 'INVALID_SKU', quantity: 1 }],
+      });
+      const result = await handler(event);
+
+      expect(result.statusCode).toBe(400);
+      const body = JSON.parse(result.body);
+      expect(body.error).toContain('Invalid SKU or missing price configuration');
+    });
+  });
+
+  describe('Successful checkout creation', () => {
+    it('should create checkout session with single item', async () => {
+      const event = createMockEvent({
+        userId: 'user_123',
+        items: [{ sku: 'SMALL', quantity: 2 }],
+      });
+
+      const result = await handler(event);
+
+      expect(result.statusCode).toBe(200);
+      const body = JSON.parse(result.body);
+      expect(body.url).toBe('https://checkout.stripe.com/pay/test_session_123');
+      expect(body.sessionId).toBe('cs_test_123');
+
+      // Verify Stripe was called correctly
+      expect(mockCreateSession).toHaveBeenCalledWith({
+        payment_method_types: ['card'],
+        line_items: [
+          {
+            price: 'price_test_small',
+            quantity: 2,
+          },
+        ],
+        mode: 'payment',
+        success_url: 'http://localhost:3000/success?session_id={CHECKOUT_SESSION_ID}',
+        cancel_url: 'http://localhost:3000/upload',
+        metadata: {
+          userId: 'user_123',
+          itemCount: '1',
+          items: JSON.stringify([{ sku: 'SMALL', quantity: 2 }]),
+        },
+      });
+    });
+
+    it('should create checkout session with multiple items', async () => {
+      const event = createMockEvent({
+        userId: 'user_456',
+        items: [
+          { sku: 'SMALL', quantity: 1 },
+          { sku: 'MEDIUM', quantity: 2 },
+          { sku: 'BUNDLE', quantity: 1 },
+        ],
+      });
+
+      const result = await handler(event);
+
+      expect(result.statusCode).toBe(200);
+      const body = JSON.parse(result.body);
+      expect(body.url).toBe('https://checkout.stripe.com/pay/test_session_123');
+
+      // Verify Stripe was called with multiple line items
+      expect(mockCreateSession).toHaveBeenCalledWith(
+        expect.objectContaining({
+          line_items: [
+            { price: 'price_test_small', quantity: 1 },
+            { price: 'price_test_medium', quantity: 2 },
+            { price: 'price_test_bundle', quantity: 1 },
+          ],
+          metadata: expect.objectContaining({
+            userId: 'user_456',
+            itemCount: '3',
+          }),
+        })
+      );
+    });
+  });
+
+  describe('Error handling', () => {
+    it('should handle Stripe API errors', async () => {
+      // Mock Stripe to throw an error
+      mockCreateSession.mockRejectedValueOnce(new Error('Stripe API error'));
+
+      const event = createMockEvent({
+        userId: 'user_123',
+        items: [{ sku: 'SMALL', quantity: 1 }],
+      });
+
+      const result = await handler(event);
+
+      expect(result.statusCode).toBe(500);
+      const body = JSON.parse(result.body);
+      expect(body.error).toBe('Internal server error');
+      expect(body.message).toBe('Stripe API error');
+
+      // Verify Slack alert was sent
+      expect(fetch).toHaveBeenCalledWith(
+        'https://hooks.slack.com/test',
+        expect.objectContaining({
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+        })
+      );
+    });
+  });
+});

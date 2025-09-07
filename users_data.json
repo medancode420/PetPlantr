@@ -1,0 +1,87 @@
+{
+  "146dd0c8-bebf-44ff-996a-3c0660f3b4ef": {
+    "user_id": "146dd0c8-bebf-44ff-996a-3c0660f3b4ef",
+    "email": "john@example.com",
+    "username": "john_doe",
+    "role": "free",
+    "subscription_status": "inactive",
+    "created_at": "2025-09-04T18:43:42.632565",
+    "last_login": "",
+    "preferences": {
+      "theme": "dark",
+      "default_quality": "ultra"
+    },
+    "usage_stats": {
+      "total_generations": 2,
+      "successful_generations": 2,
+      "failed_generations": 0,
+      "total_processing_time": 27.8,
+      "favorite_breeds": [
+        "Golden Retriever",
+        "Labrador"
+      ],
+      "last_generation": "2025-09-04T18:43:42.633703"
+    },
+    "api_key": "pk_5550ed8c67484bfba1d887c157dc766b_dae744c0",
+    "is_active": true,
+    "profile_image": null
+  },
+  "94876032-4c43-473e-816a-8d38e88fd183": {
+    "user_id": "94876032-4c43-473e-816a-8d38e88fd183",
+    "email": "jane@example.com",
+    "username": "jane_smith",
+    "role": "free",
+    "subscription_status": "inactive",
+    "created_at": "2025-09-04T18:43:42.633040",
+    "last_login": "",
+    "preferences": {
+      "default_quality": "high",
+      "default_size": "medium",
+      "notifications_enabled": true,
+      "auto_save": true,
+      "theme": "light"
+    },
+    "usage_stats": {
+      "total_generations": 1,
+      "successful_generations": 1,
+      "failed_generations": 0,
+      "total_processing_time": 18.7,
+      "favorite_breeds": [
+        "Poodle"
+      ],
+      "last_generation": "2025-09-04T18:43:42.633856"
+    },
+    "api_key": "pk_bdba9960decb48d3b6770b91aa991394_0d69b6d4",
+    "is_active": true,
+    "profile_image": null
+  },
+  "31db3af1-3de8-423d-8eda-5e30d4cc77d3": {
+    "user_id": "31db3af1-3de8-423d-8eda-5e30d4cc77d3",
+    "email": "demo@example.com",
+    "username": "demo_user",
+    "role": "free",
+    "subscription_status": "inactive",
+    "created_at": "2025-09-04T18:43:48.644737",
+    "last_login": "",
+    "preferences": {
+      "default_quality": "high",
+      "default_size": "medium",
+      "notifications_enabled": true,
+      "auto_save": true,
+      "theme": "light"
+    },
+    "usage_stats": {
+      "total_generations": 1,
+      "successful_generations": 1,
+      "failed_generations": 0,
+      "total_processing_time": 15.5,
+      "favorite_breeds": [
+        "Golden Retriever"
+      ],
+      "last_generation": "2025-09-04T18:43:48.747929"
+    },
+    "api_key": "pk_d992225eee5f4cdf8d1a09bc252c472c_e3957490",
+    "is_active": true,
+    "profile_image": null
+  }
+}

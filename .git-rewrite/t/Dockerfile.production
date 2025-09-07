@@ -1,0 +1,47 @@
+# Production-Ready Dockerfile with FastAPI Lifespan Support
+FROM python:3.10-slim
+
+# Set build arguments for versioning
+ARG BUILD_VERSION=2.0.0
+ARG BUILD_COMMIT=unknown
+ARG BUILD_DATE
+ENV PETPLANTR_VERSION=${BUILD_VERSION}
+ENV PETPLANTR_COMMIT=${BUILD_COMMIT}
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set working directory
+WORKDIR /app
+
+# Copy requirements first for better caching
+COPY requirements.txt .
+
+# Install Python dependencies with version pinning
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy application code
+COPY api_server_minimal.py .
+COPY frontend/public/models/ ./frontend/public/models/
+
+# Create non-root user
+RUN useradd --create-home --shell /bin/bash petplantr
+RUN chown -R petplantr:petplantr /app
+USER petplantr
+
+# Health check endpoint
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD curl -f http://localhost:8000/healthz || exit 1
+
+# Expose port
+EXPOSE 8000
+
+# Environment variables for production
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PETPLANTR_MODEL_DIR=/app/frontend/public/models
+
+# Run with production settings
+CMD ["uvicorn", "api_server_minimal:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "2", "--access-log"]

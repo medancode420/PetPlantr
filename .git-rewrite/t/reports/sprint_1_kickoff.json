@@ -1,0 +1,105 @@
+{
+  "sprint_info": {
+    "number": 1,
+    "duration_days": 14,
+    "capacity": 20,
+    "story_count": 5,
+    "start_date": "2025-07-08T22:52:00.687358",
+    "end_date": "2025-07-22T22:52:00.687358"
+  },
+  "stories": [
+    {
+      "story_id": "1.1",
+      "title": "Collect remaining 110 breed exemplar images (\u226550 imgs/breed, >400\u00d7400px, CC-BY)",
+      "story_points": 3,
+      "epic": "E-1: Universal Breed Coverage (finish 450-breed dataset)",
+      "dependencies": [],
+      "definition_of_done": [
+        "Images stored in s3://petplantr-datasets/breeds/raw/",
+        "Each file named <breed>_<uid>.jpg",
+        "Dataset manifest (manifest.csv) updated"
+      ],
+      "acceptance_criteria": [
+        "pytest -q tests/dataset/test_manifest.py passes"
+      ],
+      "epic_id": "E-1"
+    },
+    {
+      "story_id": "2.1",
+      "title": "Profiling run: identify top 3 bottlenecks",
+      "story_points": 2,
+      "epic": "E-2: Performance Optimisation (sub-5 s end-to-end)",
+      "dependencies": [],
+      "definition_of_done": [
+        "Flamegraphs & report in /perf/"
+      ],
+      "acceptance_criteria": [
+        "Bottleneck list reviewed in Arch sync"
+      ],
+      "epic_id": "E-2"
+    },
+    {
+      "story_id": "3.1",
+      "title": "External pen-test remediation",
+      "story_points": 5,
+      "epic": "E-3: Production Launch Hardening",
+      "dependencies": [],
+      "definition_of_done": [
+        "All High/Critical findings fixed",
+        "Report uploaded to security/"
+      ],
+      "acceptance_criteria": [
+        "Retest shows 0 High/Critical"
+      ],
+      "epic_id": "E-3"
+    },
+    {
+      "story_id": "1.2",
+      "title": "Human label QA pass (95% precision)",
+      "story_points": 5,
+      "epic": "E-1: Universal Breed Coverage (finish 450-breed dataset)",
+      "dependencies": [
+        "1.1"
+      ],
+      "definition_of_done": [
+        "QA tool shows \u22645% mislabeled",
+        "Confusion report exported"
+      ],
+      "acceptance_criteria": [
+        "make qa-report shows precision \u22650.95"
+      ],
+      "epic_id": "E-1"
+    },
+    {
+      "story_id": "1.3",
+      "title": "Data augmentation scripts (flip, crop, color-jitter) containerised",
+      "story_points": 2,
+      "epic": "E-1: Universal Breed Coverage (finish 450-breed dataset)",
+      "dependencies": [
+        "1.2"
+      ],
+      "definition_of_done": [
+        "docker run augment outputs valid augmented/ tree",
+        "README explains params"
+      ],
+      "acceptance_criteria": [
+        "100 random outputs inspected; all readable & label folder correct"
+      ],
+      "epic_id": "E-1"
+    }
+  ],
+  "github_commands": "\n# Create Sprint 1 milestone\ngh api repos/medancode420/PetPlantr/milestones \\\n  -f title=\"Sprint 1: Universal Breed Coverage\" \\\n  -f description=\"Epic E-1: Complete breed dataset collection and validation\" \\\n  -f due_on=\"2025-07-22T23:59:59Z\"\n\n# Get milestone number (run this after creating milestone)\nMILESTONE_NUMBER=$(gh api repos/medancode420/PetPlantr/milestones | jq '.[] | select(.title==\"Sprint 1: Universal Breed Coverage\") | .number')\n\n# Assign Sprint 1 stories to milestone\ngh api repos/medancode420/PetPlantr/issues/$(gh issue list --search \"in:title 1.1\" --json number --jq \".[0].number\") \\\n  -f milestone=$MILESTONE_NUMBER\ngh api repos/medancode420/PetPlantr/issues/$(gh issue list --search \"in:title 2.1\" --json number --jq \".[0].number\") \\\n  -f milestone=$MILESTONE_NUMBER\ngh api repos/medancode420/PetPlantr/issues/$(gh issue list --search \"in:title 3.1\" --json number --jq \".[0].number\") \\\n  -f milestone=$MILESTONE_NUMBER\ngh api repos/medancode420/PetPlantr/issues/$(gh issue list --search \"in:title 1.2\" --json number --jq \".[0].number\") \\\n  -f milestone=$MILESTONE_NUMBER\ngh api repos/medancode420/PetPlantr/issues/$(gh issue list --search \"in:title 1.3\" --json number --jq \".[0].number\") \\\n  -f milestone=$MILESTONE_NUMBER\n",
+  "next_actions": [
+    "Run GitHub CLI commands to create milestone",
+    "Set up sprint board in GitHub Projects",
+    "Configure burndown chart tracking",
+    "Schedule daily standups",
+    "Set up sprint review meeting"
+  ],
+  "success_criteria": [
+    "Sprint 1 milestone created with correct due date",
+    "All 5 Sprint 1 stories assigned to milestone",
+    "Burndown tracking configured",
+    "Team notified of sprint start"
+  ]
+}

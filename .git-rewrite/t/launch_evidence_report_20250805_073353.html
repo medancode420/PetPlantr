@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetPlantr T-0 Launch Evidence Report</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui; margin: 0; padding: 20px; background: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .header { text-align: center; margin-bottom: 40px; padding-bottom: 20px; border-bottom: 2px solid #eee; }
+        .header h1 { color: #2c3e50; margin: 0; font-size: 2.5em; }
+        .header .subtitle { color: #7f8c8d; font-size: 1.2em; margin-top: 10px; }
+        .status-badge { display: inline-block; padding: 8px 16px; border-radius: 20px; font-weight: bold; margin: 5px; }
+        .status-success { background: #d4edda; color: #155724; }
+        .status-warning { background: #fff3cd; color: #856404; }
+        .status-error { background: #f8d7da; color: #721c24; }
+        .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 30px 0; }
+        .metric-card { background: #f8f9fa; padding: 20px; border-radius: 8px; border-left: 4px solid #007bff; }
+        .metric-value { font-size: 2em; font-weight: bold; color: #2c3e50; }
+        .metric-label { color: #6c757d; font-size: 0.9em; margin-top: 5px; }
+        .chart-container { margin: 30px 0; padding: 20px; background: #f8f9fa; border-radius: 8px; }
+        .slo-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        .slo-table th, .slo-table td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        .slo-table th { background: #f8f9fa; font-weight: bold; }
+        .compliance-good { color: #28a745; font-weight: bold; }
+        .compliance-bad { color: #dc3545; font-weight: bold; }
+        .timestamp { color: #6c757d; font-size: 0.9em; }
+        .evidence-section { margin: 30px 0; padding: 20px; background: #f8f9fa; border-radius: 8px; }
+        .footer { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; color: #6c757d; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 PetPlantr T-0 Launch Evidence Report</h1>
+            <div class="subtitle">Production Launch Validation & SLO Compliance</div>
+            <div class="timestamp">Generated: 2025-08-05 07:33:53 UTC</div>
+            <div style="margin-top: 15px;"><span class="status-badge status-error">❌ POOR</span></div>
+        </div>
+        
+        <div class="metrics-grid">
+            
+            <div class="metric-card">
+                <div class="metric-value compliance-bad">0.0%</div>
+                <div class="metric-label">SLO Compliance</div>
+            </div>
+            
+            <div class="metric-card">
+                <div class="metric-value compliance-good">0ms</div>
+                <div class="metric-label">Avg Latency</div>
+            </div>
+            
+            <div class="metric-card">
+                <div class="metric-value compliance-good">0ms</div>
+                <div class="metric-label">P95 Latency</div>
+            </div>
+            
+            <div class="metric-card">
+                <div class="metric-value compliance-bad">100.0%</div>
+                <div class="metric-label">Error Rate</div>
+            </div>
+            
+            <div class="metric-card">
+                <div class="metric-value compliance-good">60</div>
+                <div class="metric-label">Total Samples</div>
+            </div>
+            
+            <div class="metric-card">
+                <div class="metric-value compliance-good">60.0min</div>
+                <div class="metric-label">Duration</div>
+            </div>
+            
+        </div>
+        
+        <div class="evidence-section">
+            <h2>📊 SLO Compliance Summary</h2>
+            <table class="slo-table"><tr><th>SLO</th><th>Threshold</th><th>Actual</th><th>Status</th></tr><tr><td>Latency (P95)</td><td>2000ms</td><td>0.0ms</td><td><span class="compliance-good">✅ PASS</span></td></tr><tr><td>Error Rate</td><td>0.1%</td><td>100.00%</td><td><span class="compliance-bad">❌ FAIL</span></td></tr><tr><td>GPU Utilization</td><td>80.0%</td><td>0.0%</td><td><span class="compliance-good">✅ PASS</span></td></tr></table>
+        </div>
+        
+        <div class="chart-container">
+            <h2>📈 Performance Timeline</h2>
+            <div style="font-family: monospace; font-size: 0.9em;"><div>2025-08-05T07:23:52 | 🔴 | Latency: 3.7ms | Violations: 1</div><div>2025-08-05T07:24:52 | 🔴 | Latency: 4.4ms | Violations: 1</div><div>2025-08-05T07:25:52 | 🔴 | Latency: 4.5ms | Violations: 1</div><div>2025-08-05T07:26:52 | 🔴 | Latency: 4.2ms | Violations: 1</div><div>2025-08-05T07:27:52 | 🔴 | Latency: 4.2ms | Violations: 1</div><div>2025-08-05T07:28:52 | 🔴 | Latency: 3.9ms | Violations: 1</div><div>2025-08-05T07:29:52 | 🔴 | Latency: 3.0ms | Violations: 1</div><div>2025-08-05T07:30:52 | 🔴 | Latency: 3.8ms | Violations: 1</div><div>2025-08-05T07:31:52 | 🔴 | Latency: 5.7ms | Violations: 1</div><div>2025-08-05T07:32:53 | 🔴 | Latency: 3.8ms | Violations: 1</div></div>
+        </div>
+        
+        <div class="evidence-section">
+            <h2>🔍 Detailed Analysis</h2>
+            <ul><li><strong>⚠️ SLO Concerns:</strong> 60 violations detected during monitoring.</li><li><strong>✅ Low Latency:</strong> Average response times well below user expectations.</li><li><strong>❌ Reliability Issues:</strong> Error rate exceeds acceptable threshold.</li></ul>
+        </div>
+        
+        <div class="evidence-section">
+            <h2>📋 Audit Trail</h2>
+            
+        <ul>
+            <li><strong>Monitor Start:</strong> 2025-08-05T06:33:51.385536</li>
+            <li><strong>Monitor End:</strong> 2025-08-05T07:33:53.051929</li>
+            <li><strong>Total Samples:</strong> 60</li>
+            <li><strong>Evidence File:</strong> launch_evidence_20250805_063351.json</li>
+            <li><strong>SLO Thresholds:</strong> {
+  "latency_p95_ms": 2000,
+  "error_rate_percent": 0.1,
+  "throughput_rps": 10.0,
+  "gpu_utilization_percent": 80.0
+}</li>
+            <li><strong>Retention Policy:</strong> 7 years (S3 Glacier with compliance tag)</li>
+            <li><strong>Compliance Standard:</strong> SOC 2 Type II, ISO 27001</li>
+        </ul>
+        
+        </div>
+        
+        <div class="footer">
+            <p><strong>Evidence File:</strong> launch_evidence_20250805_063351.json</p>
+            <p><strong>Retention:</strong> 7 years (S3 Glacier, compliance tag)</p>
+            <p><strong>Report Generated:</strong> 2025-08-05T07:33:53.150791</p>
+        </div>
+    </div>
+</body>
+</html>
+        

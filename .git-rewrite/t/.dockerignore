@@ -1,0 +1,86 @@
+# Docker ignore file for PetPlantr
+# Exclude unnecessary files from Docker build context
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Output directories (will be mounted as volumes)
+web_uploads/
+web_output/
+agent_output/
+demo_output/
+simplified_agent_output/
+
+# Test files
+test_*.jpg
+test_*.png
+realistic_dog_test.jpg
+synthetic_dog.jpg
+test_pug_agent.jpg
+
+# Documentation
+*.md
+docs/
+
+# Development scripts
+show_petplantr_demo.py
+test_web_api.py
+
+# Large model files (will be mounted as volumes)
+models/*.pt
+models/*.pth
+models/*.npy
+
+# SSL certificates (if any)
+ssl/
+*.pem
+*.crt
+*.key

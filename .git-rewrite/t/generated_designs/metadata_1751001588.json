@@ -1,0 +1,11 @@
+{
+  "success": true,
+  "pet_photo": "realistic_dog_photo.jpg",
+  "design_image": "generated_designs/custom_planter_design_1751001588.png",
+  "pet_analysis": {
+    "description": "PHYSICAL CHARACTERISTICS:\n- Animal type: Dog\n- Breed identification: Simplified artistic representation, possibly a small breed\n- Size category: Toy/small (under 25lbs)\n- Body proportions: Compact/stocky\n- Head shape: Round\n- Ear type: Floppy\n- Snout: Medium\n- Tail: Curled\n\nDESIGN-RELEVANT FEATURES:\n- Most distinctive physical trait: Rounded ears and body shape\n- Coat pattern/markings: Solid brown\n- Pose in photo: Standing\n- Facial expression: Calm and friendly\n- Unique features: Simplified with basic shapes\n\nPLANTER DESIGN NOTES:\n- Best sitting/lying pose for 3D printing stability: Sitting\n- Where to place the planter cavity: On the back\n- Key features that MUST be preserved for recognition: Round ears, curly tail, simplistic body\n- Simplifications needed for 3D printing: Maintain the basic geometric shapes and avoid intricate details\n\nDESCRIPTION:\nCreate a small, decorative planter by focusing on the pet's simple, rounded shapes for an immediately recognizable likeness. Emphasize the round ears and compact body. The planter cavity should be placed on the back, maintaining stability with a sitting pose. Keep the design smooth and avoid complex details for easy 3D printing.",
+    "timestamp": 1751001553.040101
+  },
+  "timestamp": 1751001588,
+  "ready_for_3d_conversion": true
+}

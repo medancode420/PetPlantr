@@ -1,0 +1,348 @@
+{
+  "Comment": "PetPlantr Continuous Learning Pipeline with Consent-based Training",
+  "StartAt": "FetchNewPhotos",
+  "States": {
+    "FetchNewPhotos": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "petplantr-fetchNewPhotos",
+        "Payload": {
+          "startDate.$": "$.startDate",
+          "endDate.$": "$.endDate",
+          "batchSize.$": "$.batchSize"
+        }
+      },
+      "ResultPath": "$.fetchResult",
+      "Next": "CheckPhotosFound",
+      "Retry": [
+        {
+          "ErrorEquals": ["Lambda.ServiceException", "Lambda.AWSLambdaException"],
+          "IntervalSeconds": 2,
+          "MaxAttempts": 3,
+          "BackoffRate": 2.0
+        }
+      ],
+      "Catch": [
+        {
+          "ErrorEquals": ["States.ALL"],
+          "Next": "NotifyFailure",
+          "ResultPath": "$.error"
+        }
+      ]
+    },
+    
+    "CheckPhotosFound": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.fetchResult.Payload.validPhotos",
+          "NumericGreaterThan": 0,
+          "Next": "UpdateManifest"
+        }
+      ],
+      "Default": "NoPhotosFound"
+    },
+    
+    "NoPhotosFound": {
+      "Type": "Pass",
+      "Result": {
+        "message": "No new consented photos found for training",
+        "action": "completed"
+      },
+      "End": true
+    },
+    
+    "UpdateManifest": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "petplantr-updateManifest",
+        "Payload": {
+          "totalPhotos.$": "$.fetchResult.Payload.totalPhotos",
+          "validPhotos.$": "$.fetchResult.Payload.validPhotos",
+          "s3Keys.$": "$.fetchResult.Payload.s3Keys",
+          "batchId.$": "$.fetchResult.Payload.batchId",
+          "timestamp.$": "$.fetchResult.Payload.timestamp"
+        }
+      },
+      "ResultPath": "$.manifestResult",
+      "Next": "CheckSufficientData",
+      "Retry": [
+        {
+          "ErrorEquals": ["Lambda.ServiceException", "Lambda.AWSLambdaException"],
+          "IntervalSeconds": 2,
+          "MaxAttempts": 3,
+          "BackoffRate": 2.0
+        }
+      ],
+      "Catch": [
+        {
+          "ErrorEquals": ["States.ALL"],
+          "Next": "NotifyFailure",
+          "ResultPath": "$.error"
+        }
+      ]
+    },
+    
+    "CheckSufficientData": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.manifestResult.Payload.newImagesAdded",
+          "NumericGreaterThanEquals": 10,
+          "Next": "KickFineTuneJob"
+        }
+      ],
+      "Default": "InsufficientData"
+    },
+    
+    "InsufficientData": {
+      "Type": "Pass",
+      "Result": {
+        "message": "Insufficient new data for training (minimum 10 images required)",
+        "action": "completed"
+      },
+      "End": true
+    },
+    
+    "KickFineTuneJob": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "petplantr-kickFineTuneJob",
+        "Payload": {
+          "manifestVersion.$": "$.manifestResult.Payload.manifestVersion",
+          "newImagesAdded.$": "$.manifestResult.Payload.newImagesAdded",
+          "totalImages.$": "$.manifestResult.Payload.totalImages",
+          "batchId.$": "$.manifestResult.Payload.batchId",
+          "trainingStats.$": "$.manifestResult.Payload.trainingStats"
+        }
+      },
+      "ResultPath": "$.fineTuneResult",
+      "Next": "CheckFineTuneStatus",
+      "Retry": [
+        {
+          "ErrorEquals": ["Lambda.ServiceException", "Lambda.AWSLambdaException"],
+          "IntervalSeconds": 2,
+          "MaxAttempts": 2,
+          "BackoffRate": 2.0
+        }
+      ],
+      "Catch": [
+        {
+          "ErrorEquals": ["States.ALL"],
+          "Next": "NotifyFailure",
+          "ResultPath": "$.error"
+        }
+      ]
+    },
+    
+    "CheckFineTuneStatus": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.fineTuneResult.Payload.action",
+          "StringEquals": "skipped",
+          "Next": "FineTuneSkipped"
+        }
+      ],
+      "Default": "WaitForTraining"
+    },
+    
+    "FineTuneSkipped": {
+      "Type": "Pass",
+      "Result": {
+        "message": "Fine-tuning skipped due to insufficient data",
+        "action": "completed"
+      },
+      "End": true
+    },
+    
+    "WaitForTraining": {
+      "Type": "Wait",
+      "Seconds": 900,
+      "Comment": "Wait 15 minutes for training to complete",
+      "Next": "EvaluateMetrics"
+    },
+    
+    "EvaluateMetrics": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "petplantr-evaluateMetrics",
+        "Payload": {
+          "modalJobId.$": "$.fineTuneResult.Payload.modalJobId",
+          "jobConfig.$": "$.fineTuneResult.Payload.jobConfig",
+          "estimatedDuration.$": "$.fineTuneResult.Payload.estimatedDuration"
+        }
+      },
+      "ResultPath": "$.evaluationResult",
+      "Next": "CheckEvaluationStatus",
+      "Retry": [
+        {
+          "ErrorEquals": ["Lambda.ServiceException", "Lambda.AWSLambdaException"],
+          "IntervalSeconds": 30,
+          "MaxAttempts": 5,
+          "BackoffRate": 1.5
+        }
+      ],
+      "Catch": [
+        {
+          "ErrorEquals": ["States.ALL"],
+          "Next": "NotifyFailure",
+          "ResultPath": "$.error"
+        }
+      ]
+    },
+    
+    "CheckEvaluationStatus": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.evaluationResult.Payload.action",
+          "StringEquals": "wait",
+          "Next": "WaitForTrainingCompletion"
+        }
+      ],
+      "Default": "CanaryDeploy"
+    },
+    
+    "WaitForTrainingCompletion": {
+      "Type": "Wait",
+      "Seconds": 300,
+      "Comment": "Wait 5 more minutes for training completion",
+      "Next": "EvaluateMetrics"
+    },
+    
+    "CanaryDeploy": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "petplantr-canaryDeploy",
+        "Payload": {
+          "evaluation.$": "$.evaluationResult.Payload.evaluation",
+          "candidateModelKey.$": "$.evaluationResult.Payload.candidateModelKey",
+          "jobId.$": "$.evaluationResult.Payload.jobId"
+        }
+      },
+      "ResultPath": "$.canaryResult",
+      "Next": "CheckCanaryDeployment",
+      "Retry": [
+        {
+          "ErrorEquals": ["Lambda.ServiceException", "Lambda.AWSLambdaException"],
+          "IntervalSeconds": 10,
+          "MaxAttempts": 2,
+          "BackoffRate": 2.0
+        }
+      ],
+      "Catch": [
+        {
+          "ErrorEquals": ["States.ALL"],
+          "Next": "NotifyFailure",
+          "ResultPath": "$.error"
+        }
+      ]
+    },
+    
+    "CheckCanaryDeployment": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.canaryResult.Payload.action",
+          "StringEquals": "skipped",
+          "Next": "CanarySkipped"
+        },
+        {
+          "Variable": "$.canaryResult.Payload.canaryDeployed",
+          "BooleanEquals": true,
+          "Next": "WaitForCanaryMonitoring"
+        }
+      ],
+      "Default": "CanarySkipped"
+    },
+    
+    "CanarySkipped": {
+      "Type": "Pass",
+      "Result": {
+        "message": "Canary deployment skipped due to evaluation failure",
+        "action": "completed"
+      },
+      "End": true
+    },
+    
+    "WaitForCanaryMonitoring": {
+      "Type": "Wait",
+      "Seconds": 86400,
+      "Comment": "Wait 24 hours for canary monitoring (will be interrupted by scheduled evaluation)",
+      "Next": "TrafficShift"
+    },
+    
+    "TrafficShift": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "petplantr-trafficShift",
+        "Payload": {
+          "action": "evaluateCanary",
+          "jobId.$": "$.canaryResult.Payload.canaryConfig.jobId",
+          "canaryConfig.$": "$.canaryResult.Payload.canaryConfig"
+        }
+      },
+      "ResultPath": "$.trafficResult",
+      "Next": "PipelineComplete",
+      "Retry": [
+        {
+          "ErrorEquals": ["Lambda.ServiceException", "Lambda.AWSLambdaException"],
+          "IntervalSeconds": 10,
+          "MaxAttempts": 2,
+          "BackoffRate": 2.0
+        }
+      ],
+      "Catch": [
+        {
+          "ErrorEquals": ["States.ALL"],
+          "Next": "NotifyFailure",
+          "ResultPath": "$.error"
+        }
+      ]
+    },
+    
+    "PipelineComplete": {
+      "Type": "Pass",
+      "Result": {
+        "message": "Continuous learning pipeline completed successfully",
+        "action": "completed"
+      },
+      "Next": "NotifySuccess"
+    },
+    
+    "NotifySuccess": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::sns:publish",
+      "Parameters": {
+        "TopicArn": "arn:aws:sns:us-east-1:ACCOUNT:petplantr-model-updates",
+        "Subject": "🎉 Continuous Learning Pipeline Completed",
+        "Message.$": "$.trafficResult.Payload"
+      },
+      "End": true
+    },
+    
+    "NotifyFailure": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::sns:publish",
+      "Parameters": {
+        "TopicArn": "arn:aws:sns:us-east-1:ACCOUNT:petplantr-model-alerts",
+        "Subject": "🚨 Continuous Learning Pipeline Failed",
+        "Message.$": "$.error"
+      },
+      "Next": "PipelineFailure"
+    },
+    
+    "PipelineFailure": {
+      "Type": "Fail",
+      "Cause": "Continuous learning pipeline failed",
+      "Error": "PipelineExecutionError"
+    }
+  }
+}

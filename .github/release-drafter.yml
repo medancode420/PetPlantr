@@ -1,0 +1,26 @@
+name-template: 'v$NEXT_PATCH_VERSION'
+version-template: '$MAJOR.$MINOR.$PATCH'
+tag-template: 'v$NEXT_PATCH_VERSION'
+change-template: '- $TITLE (#$NUMBER) @$AUTHOR'
+categories:
+  - title: '🚀 Features'
+    labels: ['feature', 'enhancement']
+  - title: '🐛 Fixes'
+    labels: ['bug', 'fix']
+  - title: '🧪 Tests'
+    labels: ['test', 'ci']
+  - title: '🧰 Maintenance'
+    labels: ['chore', 'docs', 'refactor']
+exclude-labels: ['skip-changelog']
+replacers:
+  - search: '/\s*\(#\d+\)/g'
+    replace: ''
+name: 'PetPlantr $RESOLVED_VERSION'
+prerelease: false
+sort-direction: ascending
+template: |
+  ## Highlights
+  <!-- Write highlights manually as needed -->
+
+  ## Changes
+  $CHANGES

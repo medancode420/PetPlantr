@@ -1,0 +1,659 @@
+{
+  "timestamp": "2025-09-05T02:39:08.162508",
+  "total_breeds": 129,
+  "total_images_generated": 5138,
+  "target_per_breed": 40,
+  "breed_stats": {
+    "affenpinscher": {
+      "existing": 1,
+      "generated": 39,
+      "total": 40
+    },
+    "afghan_hound": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "african_hunting_dog": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "airedale_terrier": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "american_staffordshire_terrier": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "appenzeller_sennenhund": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "australian_terrier": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "basenji": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "basset_hound": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "beagle": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "bedlington_terrier": {
+      "existing": 0,
+      "generated": 38,
+      "total": 38
+    },
+    "bernese_mountain_dog": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "black_and_tan_coonhound": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "blenheim_spaniel": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "bloodhound": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "bluetick_coonhound": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "border_collie": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "border_terrier": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "borzoi": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "boston_terrier": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "bouvier_des_flandres": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "boxer": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "brabancon_griffon": {
+      "existing": 0,
+      "generated": 39,
+      "total": 39
+    },
+    "briard": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "brittany_spaniel": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "bull_mastiff": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "cairn_terrier": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "cardigan_welsh_corgi": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "chesapeake_bay_retriever": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "chihuahua": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "chow_chow": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "clumber_spaniel": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "cocker_spaniel": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "collie": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "curly_coated_retriever": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "dandie_dinmont_terrier": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "dhole": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "dingo": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "doberman_pinscher": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "english_cocker_spaniel": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "english_setter": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "english_springer_spaniel": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "english_toy_spaniel": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "entlebucher_mountain_dog": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "eskimo_dog": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "flat_coated_retriever": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "french_bulldog": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "german_shepherd_dog": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "german_short_haired_pointer": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "german_wire_haired_pointer": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "giant_schnauzer": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "golden_retriever": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "gordon_setter": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "great_dane": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "great_pyrenees": {
+      "existing": 0,
+      "generated": 39,
+      "total": 39
+    },
+    "greater_swiss_mountain_dog": {
+      "existing": 0,
+      "generated": 39,
+      "total": 39
+    },
+    "groenendael": {
+      "existing": 0,
+      "generated": 38,
+      "total": 38
+    },
+    "havanese": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "ibizan_hound": {
+      "existing": 0,
+      "generated": 39,
+      "total": 39
+    },
+    "irish_setter": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "irish_terrier": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "irish_water_spaniel": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "irish_wolfhound": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "italian_greyhound": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "japanese_chin": {
+      "existing": 0,
+      "generated": 39,
+      "total": 39
+    },
+    "japanese_spaniel": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "keeshond": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "kelpie": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "kerry_blue_terrier": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "komondor": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "kuvasz": {
+      "existing": 0,
+      "generated": 39,
+      "total": 39
+    },
+    "labrador_retriever": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "lakeland_terrier": {
+      "existing": 0,
+      "generated": 39,
+      "total": 39
+    },
+    "leonberger": {
+      "existing": 0,
+      "generated": 39,
+      "total": 39
+    },
+    "lhasa_apso": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "lowchen": {
+      "existing": 0,
+      "generated": 39,
+      "total": 39
+    },
+    "maltese": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "manchester_terrier": {
+      "existing": 0,
+      "generated": 39,
+      "total": 39
+    },
+    "marmaduke": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "mexican_hairless": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "miniature_pinscher": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "miniature_poodle": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "miniature_schnauzer": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "newfoundland": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "norfolk_terrier": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "norwegian_elkhound": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "norwich_terrier": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "old_english_sheepdog": {
+      "existing": 0,
+      "generated": 39,
+      "total": 39
+    },
+    "otterhound": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "papillon": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "pekinese": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "pembroke_welsh_corgi": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "petit_basset_griffon_vendeen": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "pharaoh_hound": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "plott": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "pointer": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "pomeranian": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "pug": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "redbone_coonhound": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "rhodesian_ridgeback": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "rottweiler": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "saint_bernard": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "saluki": {
+      "existing": 0,
+      "generated": 39,
+      "total": 39
+    },
+    "samoyed": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "schipperke": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "scotch_terrier": {
+      "existing": 0,
+      "generated": 39,
+      "total": 39
+    },
+    "scottish_deerhound": {
+      "existing": 0,
+      "generated": 39,
+      "total": 39
+    },
+    "sealyham_terrier": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "shetland_sheepdog": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "shih_tzu": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "siberian_husky": {
+      "existing": 0,
+      "generated": 39,
+      "total": 39
+    },
+    "silky_terrier": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "soft_coated_wheaten_terrier": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "staffordshire_bullterrier": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "standard_poodle": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "standard_schnauzer": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "sussex_spaniel": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "tibetan_mastiff": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "tibetan_terrier": {
+      "existing": 0,
+      "generated": 39,
+      "total": 39
+    },
+    "toy_poodle": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "toy_terrier": {
+      "existing": 0,
+      "generated": 39,
+      "total": 39
+    },
+    "vizsla": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "walker_hound": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "weimaraner": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "welsh_springer_spaniel": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "west_highland_white_terrier": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "whippet": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "wire_haired_fox_terrier": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    },
+    "yorkshire_terrier": {
+      "existing": 0,
+      "generated": 40,
+      "total": 40
+    }
+  },
+  "strategies_used": [
+    "synthetic",
+    "augmented",
+    "download",
+    "pattern"
+  ]
+}

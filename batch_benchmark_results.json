@@ -1,0 +1,442 @@
+{
+  "1": {
+    "results": [
+      {
+        "image_index": 0,
+        "predictions": [
+          {
+            "breed": "shih_tzu",
+            "confidence": 0.07979892939329147
+          },
+          {
+            "breed": "chihuahua",
+            "confidence": 0.06533278524875641
+          },
+          {
+            "breed": "appenzeller_sennenhund",
+            "confidence": 0.05808702111244202
+          },
+          {
+            "breed": "lhasa_apso",
+            "confidence": 0.0563390776515007
+          },
+          {
+            "breed": "collie",
+            "confidence": 0.054974187165498734
+          }
+        ],
+        "processing_time": 0.1612529754638672
+      }
+    ],
+    "batch_size": 1,
+    "total_time": 0.1612529754638672,
+    "avg_time_per_image": 0.1612529754638672,
+    "throughput": 6.20143595566753
+  },
+  "5": {
+    "results": [
+      {
+        "image_index": 0,
+        "predictions": [
+          {
+            "breed": "shih_tzu",
+            "confidence": 0.07282134145498276
+          },
+          {
+            "breed": "lhasa_apso",
+            "confidence": 0.07022649049758911
+          },
+          {
+            "breed": "pointer",
+            "confidence": 0.05426444485783577
+          },
+          {
+            "breed": "plott",
+            "confidence": 0.051825735718011856
+          },
+          {
+            "breed": "chihuahua",
+            "confidence": 0.05043638497591019
+          }
+        ],
+        "processing_time": 0.0345710277557373
+      },
+      {
+        "image_index": 1,
+        "predictions": [
+          {
+            "breed": "appenzeller_sennenhund",
+            "confidence": 0.0751330778002739
+          },
+          {
+            "breed": "collie",
+            "confidence": 0.05646549537777901
+          },
+          {
+            "breed": "shih_tzu",
+            "confidence": 0.055504366755485535
+          },
+          {
+            "breed": "affenpinscher",
+            "confidence": 0.050973616540431976
+          },
+          {
+            "breed": "lhasa_apso",
+            "confidence": 0.050833024084568024
+          }
+        ],
+        "processing_time": 0.0345710277557373
+      },
+      {
+        "image_index": 2,
+        "predictions": [
+          {
+            "breed": "appenzeller_sennenhund",
+            "confidence": 0.10360734909772873
+          },
+          {
+            "breed": "shih_tzu",
+            "confidence": 0.07448223233222961
+          },
+          {
+            "breed": "lhasa_apso",
+            "confidence": 0.06907729059457779
+          },
+          {
+            "breed": "affenpinscher",
+            "confidence": 0.05964622274041176
+          },
+          {
+            "breed": "collie",
+            "confidence": 0.055488865822553635
+          }
+        ],
+        "processing_time": 0.0345710277557373
+      },
+      {
+        "image_index": 3,
+        "predictions": [
+          {
+            "breed": "lhasa_apso",
+            "confidence": 0.07927639037370682
+          },
+          {
+            "breed": "shih_tzu",
+            "confidence": 0.07868046313524246
+          },
+          {
+            "breed": "cocker_spaniel",
+            "confidence": 0.050762731581926346
+          },
+          {
+            "breed": "pointer",
+            "confidence": 0.04806549847126007
+          },
+          {
+            "breed": "collie",
+            "confidence": 0.047344960272312164
+          }
+        ],
+        "processing_time": 0.0345710277557373
+      },
+      {
+        "image_index": 4,
+        "predictions": [
+          {
+            "breed": "appenzeller_sennenhund",
+            "confidence": 0.10157489031553268
+          },
+          {
+            "breed": "chihuahua",
+            "confidence": 0.0760820284485817
+          },
+          {
+            "breed": "lhasa_apso",
+            "confidence": 0.06562284380197525
+          },
+          {
+            "breed": "shih_tzu",
+            "confidence": 0.06206969916820526
+          },
+          {
+            "breed": "collie",
+            "confidence": 0.05023768171668053
+          }
+        ],
+        "processing_time": 0.0345710277557373
+      }
+    ],
+    "batch_size": 5,
+    "total_time": 0.17285513877868652,
+    "avg_time_per_image": 0.0345710277557373,
+    "throughput": 28.925955197673954
+  },
+  "10": {
+    "results": [
+      {
+        "image_index": 0,
+        "predictions": [
+          {
+            "breed": "shih_tzu",
+            "confidence": 0.08962233364582062
+          },
+          {
+            "breed": "appenzeller_sennenhund",
+            "confidence": 0.0853712260723114
+          },
+          {
+            "breed": "lhasa_apso",
+            "confidence": 0.07022257894277573
+          },
+          {
+            "breed": "chihuahua",
+            "confidence": 0.050420597195625305
+          },
+          {
+            "breed": "collie",
+            "confidence": 0.045535486191511154
+          }
+        ],
+        "processing_time": 0.01968660354614258
+      },
+      {
+        "image_index": 1,
+        "predictions": [
+          {
+            "breed": "appenzeller_sennenhund",
+            "confidence": 0.07370849698781967
+          },
+          {
+            "breed": "shih_tzu",
+            "confidence": 0.06107258424162865
+          },
+          {
+            "breed": "chihuahua",
+            "confidence": 0.05084938183426857
+          },
+          {
+            "breed": "affenpinscher",
+            "confidence": 0.048655565828084946
+          },
+          {
+            "breed": "cocker_spaniel",
+            "confidence": 0.04599452391266823
+          }
+        ],
+        "processing_time": 0.01968660354614258
+      },
+      {
+        "image_index": 2,
+        "predictions": [
+          {
+            "breed": "lhasa_apso",
+            "confidence": 0.06655071675777435
+          },
+          {
+            "breed": "shih_tzu",
+            "confidence": 0.05872520059347153
+          },
+          {
+            "breed": "appenzeller_sennenhund",
+            "confidence": 0.057135194540023804
+          },
+          {
+            "breed": "pointer",
+            "confidence": 0.05068747326731682
+          },
+          {
+            "breed": "affenpinscher",
+            "confidence": 0.04905017837882042
+          }
+        ],
+        "processing_time": 0.01968660354614258
+      },
+      {
+        "image_index": 3,
+        "predictions": [
+          {
+            "breed": "lhasa_apso",
+            "confidence": 0.06347594410181046
+          },
+          {
+            "breed": "shih_tzu",
+            "confidence": 0.06323631852865219
+          },
+          {
+            "breed": "appenzeller_sennenhund",
+            "confidence": 0.055779989808797836
+          },
+          {
+            "breed": "chihuahua",
+            "confidence": 0.0429302342236042
+          },
+          {
+            "breed": "collie",
+            "confidence": 0.04091878980398178
+          }
+        ],
+        "processing_time": 0.01968660354614258
+      },
+      {
+        "image_index": 4,
+        "predictions": [
+          {
+            "breed": "shih_tzu",
+            "confidence": 0.09411885589361191
+          },
+          {
+            "breed": "lhasa_apso",
+            "confidence": 0.07035167515277863
+          },
+          {
+            "breed": "appenzeller_sennenhund",
+            "confidence": 0.05725444480776787
+          },
+          {
+            "breed": "chihuahua",
+            "confidence": 0.05711309239268303
+          },
+          {
+            "breed": "affenpinscher",
+            "confidence": 0.04939691349864006
+          }
+        ],
+        "processing_time": 0.01968660354614258
+      },
+      {
+        "image_index": 5,
+        "predictions": [
+          {
+            "breed": "appenzeller_sennenhund",
+            "confidence": 0.0818701982498169
+          },
+          {
+            "breed": "collie",
+            "confidence": 0.06281290203332901
+          },
+          {
+            "breed": "shih_tzu",
+            "confidence": 0.06113623455166817
+          },
+          {
+            "breed": "lhasa_apso",
+            "confidence": 0.05245321989059448
+          },
+          {
+            "breed": "affenpinscher",
+            "confidence": 0.0516776479780674
+          }
+        ],
+        "processing_time": 0.01968660354614258
+      },
+      {
+        "image_index": 6,
+        "predictions": [
+          {
+            "breed": "shih_tzu",
+            "confidence": 0.07902055978775024
+          },
+          {
+            "breed": "lhasa_apso",
+            "confidence": 0.07342676818370819
+          },
+          {
+            "breed": "appenzeller_sennenhund",
+            "confidence": 0.0673392042517662
+          },
+          {
+            "breed": "chihuahua",
+            "confidence": 0.0626160129904747
+          },
+          {
+            "breed": "plott",
+            "confidence": 0.04636421054601669
+          }
+        ],
+        "processing_time": 0.01968660354614258
+      },
+      {
+        "image_index": 7,
+        "predictions": [
+          {
+            "breed": "appenzeller_sennenhund",
+            "confidence": 0.10490249842405319
+          },
+          {
+            "breed": "shih_tzu",
+            "confidence": 0.06167534738779068
+          },
+          {
+            "breed": "lhasa_apso",
+            "confidence": 0.05503145977854729
+          },
+          {
+            "breed": "chihuahua",
+            "confidence": 0.050724729895591736
+          },
+          {
+            "breed": "collie",
+            "confidence": 0.0492401048541069
+          }
+        ],
+        "processing_time": 0.01968660354614258
+      },
+      {
+        "image_index": 8,
+        "predictions": [
+          {
+            "breed": "appenzeller_sennenhund",
+            "confidence": 0.08934663236141205
+          },
+          {
+            "breed": "shih_tzu",
+            "confidence": 0.0590173602104187
+          },
+          {
+            "breed": "collie",
+            "confidence": 0.05744858458638191
+          },
+          {
+            "breed": "lhasa_apso",
+            "confidence": 0.05180700868368149
+          },
+          {
+            "breed": "chihuahua",
+            "confidence": 0.04802270233631134
+          }
+        ],
+        "processing_time": 0.01968660354614258
+      },
+      {
+        "image_index": 9,
+        "predictions": [
+          {
+            "breed": "shih_tzu",
+            "confidence": 0.07639693468809128
+          },
+          {
+            "breed": "lhasa_apso",
+            "confidence": 0.06575660407543182
+          },
+          {
+            "breed": "pointer",
+            "confidence": 0.06467333436012268
+          },
+          {
+            "breed": "plott",
+            "confidence": 0.06436236947774887
+          },
+          {
+            "breed": "chihuahua",
+            "confidence": 0.05401371791958809
+          }
+        ],
+        "processing_time": 0.01968660354614258
+      }
+    ],
+    "batch_size": 10,
+    "total_time": 0.19686603546142578,
+    "avg_time_per_image": 0.01968660354614258,
+    "throughput": 50.79596374540399
+  }
+}

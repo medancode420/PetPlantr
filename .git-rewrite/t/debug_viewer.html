@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug STL Viewer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/controls/OrbitControls.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/loaders/STLLoader.js"></script>
+</head>
+<body>
+    <div id="viewer" style="width: 100%; height: 100vh; background: #f0f0f0;"></div>
+    <div id="debug" style="position: absolute; top: 10px; left: 10px; background: white; padding: 10px; font-family: monospace; font-size: 12px; max-width: 400px; border: 1px solid #ccc;"></div>
+
+    <script>
+        const debugDiv = document.getElementById('debug');
+        function log(message) {
+            console.log(message);
+            debugDiv.innerHTML += message + '<br>';
+        }
+
+        log('🔧 Debug STL Viewer Started');
+        
+        // Check if Three.js is loaded
+        log('✅ Three.js version: ' + THREE.REVISION);
+        
+        // Check if STLLoader is available
+        if (typeof THREE.STLLoader !== 'undefined') {
+            log('✅ STLLoader is available');
+        } else {
+            log('❌ STLLoader is NOT available');
+            debugDiv.innerHTML += '<br><strong>ERROR: STLLoader not loaded!</strong>';
+            // Exit early
+        }
+
+        // Get model URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const modelUrl = urlParams.get('model') || 'generated_models/integrated_pug_mathematical_1750999872.stl';
+        log('📁 Model URL: ' + modelUrl);
+
+        // Set up scene
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('viewer').appendChild(renderer.domElement);
+
+        // Add lights
+        const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
+        scene.add(ambientLight);
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        directionalLight.position.set(1, 1, 1);
+        scene.add(directionalLight);
+
+        // Set up controls
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        camera.position.set(0, 0, 100);
+
+        log('🎬 Scene setup complete');
+
+        // Try to load STL
+        log('📥 Attempting to load STL...');
+        const loader = new THREE.STLLoader();
+        
+        loader.load(
+            modelUrl,
+            function(geometry) {
+                log('✅ STL loaded successfully!');
+                log('📊 Vertices: ' + geometry.attributes.position.count);
+                log('📊 Geometry type: ' + geometry.type);
+                
+                const material = new THREE.MeshPhongMaterial({ color: 0x27ae60 });
+                const mesh = new THREE.Mesh(geometry, material);
+                
+                // Center the model
+                geometry.computeBoundingBox();
+                const box = geometry.boundingBox;
+                const center = box.getCenter(new THREE.Vector3());
+                mesh.position.sub(center);
+                
+                scene.add(mesh);
+                log('✅ Model added to scene');
+                
+                // Update camera to fit model
+                const size = box.getSize(new THREE.Vector3());
+                const maxSize = Math.max(size.x, size.y, size.z);
+                camera.position.z = maxSize * 2;
+                
+                log('📏 Model size: ' + maxSize.toFixed(2));
+            },
+            function(progress) {
+                if (progress.lengthComputable) {
+                    const percent = (progress.loaded / progress.total * 100).toFixed(1);
+                    log('📥 Loading: ' + percent + '%');
+                }
+            },
+            function(error) {
+                log('❌ STL load FAILED!');
+                log('❌ Error: ' + JSON.stringify(error));
+                log('❌ Error message: ' + error.message);
+                log('❌ Error type: ' + error.type);
+                
+                // Try to create a simple test cube
+                log('🧪 Creating test cube instead...');
+                const geometry = new THREE.BoxGeometry(20, 20, 20);
+                const material = new THREE.MeshPhongMaterial({ color: 0xff0000 });
+                const cube = new THREE.Mesh(geometry, material);
+                scene.add(cube);
+                log('✅ Test cube created');
+            }
+        );
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            controls.update();
+            renderer.render(scene, camera);
+        }
+        animate();
+        log('🎬 Animation started');
+        
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>

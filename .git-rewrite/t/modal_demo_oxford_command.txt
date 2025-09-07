@@ -1,0 +1,1 @@
+modal run enhanced_shape_mvd_training.py --dataset-s3 s3://petplantr-dataset/ --include public/oxford_v37/** --output-s3 s3://petplantr-models/shape-mvd-v1/ --epochs 5 --batch 4 --lr 1e-4 --pretrained gs://shape-mvd/base-dogcat.pt

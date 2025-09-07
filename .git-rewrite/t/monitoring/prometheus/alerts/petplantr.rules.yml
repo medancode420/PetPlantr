@@ -1,0 +1,45 @@
+groups:
+  - name: petplantr-core
+    interval: 30s
+    rules:
+      - alert: HedgeWinRateLow
+        expr: |
+          (sum(rate(petplantr_hedge_win_total[10m])) /
+           clamp_min(sum(rate(petplantr_hedge_launch_total[10m])), 1e-6)) < 0.2
+        for: 10m
+        labels:
+          severity: warning
+          service: petplantr
+        annotations:
+          summary: "Hedging win-rate low (<20%)"
+          description: "Win-rate is {{ $value | humanizePercentage }} over 10m. Consider raising min_delay or reducing cap."
+
+      - alert: QueueLadderSpike
+        expr: increase(petplantr_queue_ladder_activated_total[5m]) > 20
+        for: 5m
+        labels:
+          severity: page
+          service: petplantr
+        annotations:
+          summary: "Queue ladder activations spiking"
+          description: "More than 20 ladder activations in 5m. Upstream likely throttling or degraded."
+
+      - alert: SyntheticLatencyHigh
+        expr: petplantr_synth_last_latency_ms > 1500
+        for: 5m
+        labels:
+          severity: warning
+          service: petplantr
+        annotations:
+          summary: "Synthetic monitor latency high"
+          description: "Last synthetic latency {{ $value }} ms > 1500 ms for 5m."
+
+      - alert: ProviderBusySpike
+        expr: increase(petplantr_provider_busy_total[5m]) > 20
+        for: 5m
+        labels:
+          severity: warning
+          service: petplantr
+        annotations:
+          summary: "Provider busy/timeout spike"
+          description: "Upstream busy/timeout events exceeded 20 in 5m (sum of all reasons)."

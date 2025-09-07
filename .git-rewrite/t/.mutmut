@@ -1,0 +1,60 @@
+# Mutation Testing Configuration for PetPlantr
+# Ensures tests actually fail when code changes in subtle ways
+
+[mutmut]
+# Critical paths that must have high mutation scores
+paths_to_mutate = [
+    "petplantr/pricing.py",
+    "petplantr/payments.py", 
+    "petplantr/stl_validator.py",
+    "petplantr/ai/confidence.py",
+    "petplantr/security/auth.py"
+]
+
+# Test discovery
+test_command = "python -m pytest tests/ -x"
+
+# Backup directory for mutants
+backup_dir = ".mutmut_backup"
+
+# Runner configuration
+runner = "python"
+use_coverage = true
+coverage_data = ".coverage"
+
+# Mutation operators to use
+operators = [
+    "AOR",  # Arithmetic Operator Replacement
+    "AOD",  # Arithmetic Operator Deletion  
+    "ROR",  # Relational Operator Replacement
+    "LOR",  # Logical Operator Replacement
+    "ASR",  # Assignment Operator Replacement
+    "BCR",  # Break Continue Replacement
+    "LCR",  # Logical Connector Replacement
+    "UOI",  # Unary Operator Insertion
+    "UOD",  # Unary Operator Deletion
+    "SIR",  # Slice Index Remove
+]
+
+# Quality thresholds
+min_mutation_score = 0.80  # 80% minimum across all modules
+critical_modules = {
+    "petplantr/payments.py": 0.95,      # 95% for payment processing
+    "petplantr/pricing.py": 0.85,       # 85% for pricing logic
+    "petplantr/stl_validator.py": 0.90,  # 90% for STL validation
+    "petplantr/security/auth.py": 0.90   # 90% for security
+}
+
+# Skip patterns (don't mutate these)
+skip_patterns = [
+    "*/tests/*",
+    "*/migrations/*", 
+    "*/__init__.py",
+    "*/conftest.py",
+    "*/settings.py",
+    "*/manage.py"
+]
+
+# HTML report generation
+html_dir = "mutation-testing-report"
+generate_html = true

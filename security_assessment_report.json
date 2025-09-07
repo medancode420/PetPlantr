@@ -1,0 +1,433 @@
+{
+  "assessment_date": "2025-09-05T13:21:20.690010",
+  "project": "PetPlantr",
+  "overall_security_score": 0,
+  "vulnerability_summary": {
+    "total": 58,
+    "critical": 0,
+    "high": 32,
+    "medium": 26,
+    "low": 0
+  },
+  "vulnerabilities": [
+    {
+      "type": "dependency",
+      "severity": "medium",
+      "package": "cryptography",
+      "version": "45.0.6",
+      "description": "Package cryptography may have known vulnerabilities",
+      "remediation": "Update cryptography to latest secure version"
+    },
+    {
+      "type": "dependency",
+      "severity": "medium",
+      "package": "requests",
+      "version": "2.32.4",
+      "description": "Package requests may have known vulnerabilities",
+      "remediation": "Update requests to latest secure version"
+    },
+    {
+      "type": "dependency",
+      "severity": "medium",
+      "package": "urllib3",
+      "version": "2.5.0",
+      "description": "Package urllib3 may have known vulnerabilities",
+      "remediation": "Update urllib3 to latest secure version"
+    },
+    {
+      "type": "api_security",
+      "severity": "medium",
+      "file": "/Users/medan/Downloads/PetPlantr/api_server_minimal.py",
+      "description": "CORS not configured - potential security risk",
+      "remediation": "Add proper CORS configuration"
+    },
+    {
+      "type": "api_security",
+      "severity": "high",
+      "file": "/Users/medan/Downloads/PetPlantr/api_server_minimal.py",
+      "description": "No rate limiting implemented",
+      "remediation": "Implement rate limiting middleware"
+    },
+    {
+      "type": "api_security",
+      "severity": "high",
+      "file": "/Users/medan/Downloads/PetPlantr/api_server_minimal.py",
+      "description": "Input validation not implemented",
+      "remediation": "Add input validation with Pydantic models"
+    },
+    {
+      "type": "api_security",
+      "severity": "medium",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/jwt/api_jwt.py",
+      "description": "CORS not configured - potential security risk",
+      "remediation": "Add proper CORS configuration"
+    },
+    {
+      "type": "api_security",
+      "severity": "high",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/jwt/api_jwt.py",
+      "description": "No rate limiting implemented",
+      "remediation": "Implement rate limiting middleware"
+    },
+    {
+      "type": "api_security",
+      "severity": "medium",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/jwt/api_jwk.py",
+      "description": "CORS not configured - potential security risk",
+      "remediation": "Add proper CORS configuration"
+    },
+    {
+      "type": "api_security",
+      "severity": "high",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/jwt/api_jwk.py",
+      "description": "No rate limiting implemented",
+      "remediation": "Implement rate limiting middleware"
+    },
+    {
+      "type": "api_security",
+      "severity": "high",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/jwt/api_jwk.py",
+      "description": "Input validation not implemented",
+      "remediation": "Add input validation with Pydantic models"
+    },
+    {
+      "type": "api_security",
+      "severity": "medium",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/jwt/api_jws.py",
+      "description": "CORS not configured - potential security risk",
+      "remediation": "Add proper CORS configuration"
+    },
+    {
+      "type": "api_security",
+      "severity": "high",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/jwt/api_jws.py",
+      "description": "No rate limiting implemented",
+      "remediation": "Implement rate limiting middleware"
+    },
+    {
+      "type": "api_security",
+      "severity": "medium",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/propcache/api.py",
+      "description": "CORS not configured - potential security risk",
+      "remediation": "Add proper CORS configuration"
+    },
+    {
+      "type": "api_security",
+      "severity": "high",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/propcache/api.py",
+      "description": "No rate limiting implemented",
+      "remediation": "Implement rate limiting middleware"
+    },
+    {
+      "type": "api_security",
+      "severity": "high",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/propcache/api.py",
+      "description": "Input validation not implemented",
+      "remediation": "Add input validation with Pydantic models"
+    },
+    {
+      "type": "api_security",
+      "severity": "medium",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/cffi/api.py",
+      "description": "CORS not configured - potential security risk",
+      "remediation": "Add proper CORS configuration"
+    },
+    {
+      "type": "api_security",
+      "severity": "high",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/cffi/api.py",
+      "description": "No rate limiting implemented",
+      "remediation": "Implement rate limiting middleware"
+    },
+    {
+      "type": "api_security",
+      "severity": "high",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/cffi/api.py",
+      "description": "Input validation not implemented",
+      "remediation": "Add input validation with Pydantic models"
+    },
+    {
+      "type": "api_security",
+      "severity": "medium",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/charset_normalizer/api.py",
+      "description": "CORS not configured - potential security risk",
+      "remediation": "Add proper CORS configuration"
+    },
+    {
+      "type": "api_security",
+      "severity": "high",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/charset_normalizer/api.py",
+      "description": "No rate limiting implemented",
+      "remediation": "Implement rate limiting middleware"
+    },
+    {
+      "type": "api_security",
+      "severity": "high",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/charset_normalizer/api.py",
+      "description": "Input validation not implemented",
+      "remediation": "Add input validation with Pydantic models"
+    },
+    {
+      "type": "api_security",
+      "severity": "medium",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/requests/api.py",
+      "description": "CORS not configured - potential security risk",
+      "remediation": "Add proper CORS configuration"
+    },
+    {
+      "type": "api_security",
+      "severity": "high",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/requests/api.py",
+      "description": "No rate limiting implemented",
+      "remediation": "Implement rate limiting middleware"
+    },
+    {
+      "type": "api_security",
+      "severity": "high",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/requests/api.py",
+      "description": "Input validation not implemented",
+      "remediation": "Add input validation with Pydantic models"
+    },
+    {
+      "type": "api_security",
+      "severity": "medium",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/pip/_vendor/requests/api.py",
+      "description": "CORS not configured - potential security risk",
+      "remediation": "Add proper CORS configuration"
+    },
+    {
+      "type": "api_security",
+      "severity": "high",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/pip/_vendor/requests/api.py",
+      "description": "No rate limiting implemented",
+      "remediation": "Implement rate limiting middleware"
+    },
+    {
+      "type": "api_security",
+      "severity": "high",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/pip/_vendor/requests/api.py",
+      "description": "Input validation not implemented",
+      "remediation": "Add input validation with Pydantic models"
+    },
+    {
+      "type": "api_security",
+      "severity": "medium",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/pip/_vendor/platformdirs/api.py",
+      "description": "CORS not configured - potential security risk",
+      "remediation": "Add proper CORS configuration"
+    },
+    {
+      "type": "api_security",
+      "severity": "high",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/pip/_vendor/platformdirs/api.py",
+      "description": "No rate limiting implemented",
+      "remediation": "Implement rate limiting middleware"
+    },
+    {
+      "type": "api_security",
+      "severity": "high",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/pip/_vendor/platformdirs/api.py",
+      "description": "Input validation not implemented",
+      "remediation": "Add input validation with Pydantic models"
+    },
+    {
+      "type": "api_security",
+      "severity": "medium",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/respx/api.py",
+      "description": "CORS not configured - potential security risk",
+      "remediation": "Add proper CORS configuration"
+    },
+    {
+      "type": "api_security",
+      "severity": "high",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/respx/api.py",
+      "description": "No rate limiting implemented",
+      "remediation": "Implement rate limiting middleware"
+    },
+    {
+      "type": "api_security",
+      "severity": "high",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/respx/api.py",
+      "description": "Input validation not implemented",
+      "remediation": "Add input validation with Pydantic models"
+    },
+    {
+      "type": "api_security",
+      "severity": "medium",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/fastapi/security/api_key.py",
+      "description": "CORS not configured - potential security risk",
+      "remediation": "Add proper CORS configuration"
+    },
+    {
+      "type": "api_security",
+      "severity": "high",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/fastapi/security/api_key.py",
+      "description": "No rate limiting implemented",
+      "remediation": "Implement rate limiting middleware"
+    },
+    {
+      "type": "api_security",
+      "severity": "high",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/fastapi/security/api_key.py",
+      "description": "Input validation not implemented",
+      "remediation": "Add input validation with Pydantic models"
+    },
+    {
+      "type": "api_security",
+      "severity": "medium",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/setuptools/_vendor/platformdirs/api.py",
+      "description": "CORS not configured - potential security risk",
+      "remediation": "Add proper CORS configuration"
+    },
+    {
+      "type": "api_security",
+      "severity": "high",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/setuptools/_vendor/platformdirs/api.py",
+      "description": "No rate limiting implemented",
+      "remediation": "Implement rate limiting middleware"
+    },
+    {
+      "type": "api_security",
+      "severity": "high",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/setuptools/_vendor/platformdirs/api.py",
+      "description": "Input validation not implemented",
+      "remediation": "Add input validation with Pydantic models"
+    },
+    {
+      "type": "api_security",
+      "severity": "medium",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/websockets/server.py",
+      "description": "CORS not configured - potential security risk",
+      "remediation": "Add proper CORS configuration"
+    },
+    {
+      "type": "api_security",
+      "severity": "high",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/websockets/server.py",
+      "description": "No rate limiting implemented",
+      "remediation": "Implement rate limiting middleware"
+    },
+    {
+      "type": "api_security",
+      "severity": "medium",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/websockets/legacy/server.py",
+      "description": "CORS not configured - potential security risk",
+      "remediation": "Add proper CORS configuration"
+    },
+    {
+      "type": "api_security",
+      "severity": "high",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/websockets/legacy/server.py",
+      "description": "No rate limiting implemented",
+      "remediation": "Implement rate limiting middleware"
+    },
+    {
+      "type": "api_security",
+      "severity": "medium",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/websockets/sync/server.py",
+      "description": "CORS not configured - potential security risk",
+      "remediation": "Add proper CORS configuration"
+    },
+    {
+      "type": "api_security",
+      "severity": "high",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/websockets/sync/server.py",
+      "description": "No rate limiting implemented",
+      "remediation": "Implement rate limiting middleware"
+    },
+    {
+      "type": "api_security",
+      "severity": "medium",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/websockets/asyncio/server.py",
+      "description": "CORS not configured - potential security risk",
+      "remediation": "Add proper CORS configuration"
+    },
+    {
+      "type": "api_security",
+      "severity": "high",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/websockets/asyncio/server.py",
+      "description": "No rate limiting implemented",
+      "remediation": "Implement rate limiting middleware"
+    },
+    {
+      "type": "api_security",
+      "severity": "medium",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/fakeredis/commands_mixins/server_mixin.py",
+      "description": "CORS not configured - potential security risk",
+      "remediation": "Add proper CORS configuration"
+    },
+    {
+      "type": "api_security",
+      "severity": "high",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/fakeredis/commands_mixins/server_mixin.py",
+      "description": "No rate limiting implemented",
+      "remediation": "Implement rate limiting middleware"
+    },
+    {
+      "type": "api_security",
+      "severity": "high",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/fakeredis/commands_mixins/server_mixin.py",
+      "description": "Input validation not implemented",
+      "remediation": "Add input validation with Pydantic models"
+    },
+    {
+      "type": "api_security",
+      "severity": "medium",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/uvicorn/server.py",
+      "description": "CORS not configured - potential security risk",
+      "remediation": "Add proper CORS configuration"
+    },
+    {
+      "type": "api_security",
+      "severity": "high",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/uvicorn/server.py",
+      "description": "No rate limiting implemented",
+      "remediation": "Implement rate limiting middleware"
+    },
+    {
+      "type": "api_security",
+      "severity": "high",
+      "file": "/Users/medan/Downloads/PetPlantr/.venv/lib/python3.11/site-packages/uvicorn/server.py",
+      "description": "Input validation not implemented",
+      "remediation": "Add input validation with Pydantic models"
+    },
+    {
+      "type": "permissions",
+      "severity": "medium",
+      "file": "/Users/medan/Downloads/PetPlantr/models",
+      "description": "File /Users/medan/Downloads/PetPlantr/models is world-readable (permissions: 755)",
+      "remediation": "Restrict file permissions to owner/group only"
+    },
+    {
+      "type": "permissions",
+      "severity": "medium",
+      "file": "/Users/medan/Downloads/PetPlantr/data",
+      "description": "File /Users/medan/Downloads/PetPlantr/data is world-readable (permissions: 755)",
+      "remediation": "Restrict file permissions to owner/group only"
+    },
+    {
+      "type": "permissions",
+      "severity": "medium",
+      "file": "/Users/medan/Downloads/PetPlantr/.env",
+      "description": "File /Users/medan/Downloads/PetPlantr/.env is world-readable (permissions: 644)",
+      "remediation": "Restrict file permissions to owner/group only"
+    },
+    {
+      "type": "permissions",
+      "severity": "medium",
+      "file": "/Users/medan/Downloads/PetPlantr/api_server.py",
+      "description": "File /Users/medan/Downloads/PetPlantr/api_server.py is world-readable (permissions: 644)",
+      "remediation": "Restrict file permissions to owner/group only"
+    }
+  ],
+  "recommendations": [
+    "Implement AWS Secrets Manager for all secrets",
+    "Add rate limiting to API endpoints",
+    "Implement comprehensive input validation",
+    "Set up security monitoring and alerting",
+    "Regular dependency updates and security scans",
+    "Implement proper CORS configuration",
+    "Add security headers (HSTS, CSP, etc.)",
+    "Set up automated security testing in CI/CD"
+  ]
+}

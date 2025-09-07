@@ -1,0 +1,66 @@
+## PetPlantr Local Canary Setup
+## Simple canary deployment for local Docker environment
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    # 10% traffic split to canary
+    split_clients "${remote_addr}" $backend {
+        10% canary_backend;
+        *   stable_backend;
+    }
+
+    # Cookie-based stickiness
+    map $cookie_petplantr_canary $sticky_backend {
+        default $backend;
+        canary  canary_backend;
+        stable  stable_backend;
+    }
+
+    # Upstream backends (use host.docker.internal for container networking)
+    upstream stable_backend {
+        server host.docker.internal:8000;
+    }
+
+    upstream canary_backend {
+        server host.docker.internal:8000;
+    }
+
+    server {
+        listen 8080;
+        server_name localhost;
+
+        # Health check endpoint
+        location /health {
+            proxy_pass http://$sticky_backend/api/v1/health;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Canary-Backend $sticky_backend;
+        }
+
+        # Main API proxy
+        location / {
+            proxy_pass http://$sticky_backend;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Canary-Backend $sticky_backend;
+            proxy_set_header Cookie $http_cookie;
+
+            # SSE support
+            proxy_http_version 1.1;
+            proxy_set_header Connection "keep-alive";
+            proxy_buffering off;
+            proxy_cache off;
+        }
+
+        # Status page to see which backend is being used
+        location /_status {
+            return 200 "Backend: $sticky_backend\nClient: $remote_addr\nCookie: $cookie_petplantr_canary\n";
+            add_header Content-Type text/plain;
+        }
+    }
+}

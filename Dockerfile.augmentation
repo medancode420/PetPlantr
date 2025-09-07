@@ -1,0 +1,34 @@
+# Data Augmentation Container for PetPlantr
+# Story 1.3: Data augmentation scripts containerised
+
+FROM python:3.11-slim
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    libjpeg-dev \
+    libpng-dev \
+    libtiff-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create app directory
+WORKDIR /app
+
+# Copy requirements
+COPY requirements-data-aug.txt requirements.txt
+
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy source code
+COPY src/data_augmentation.py /app/
+COPY data/manifest.csv /app/data/
+
+# Create directories
+RUN mkdir -p /app/data /app/output
+
+# Set environment variables
+ENV PYTHONPATH=/app
+ENV PYTHONUNBUFFERED=1
+
+# Default command
+CMD ["python", "data_augmentation.py", "--help"]

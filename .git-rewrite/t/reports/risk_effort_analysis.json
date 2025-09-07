@@ -1,0 +1,299 @@
+{
+  "matrix_data": [
+    {
+      "story_id": "1.1",
+      "title": "Collect remaining 110 breed exemplar images (\u226550 imgs/breed, >400\u00d7400px, CC-BY)",
+      "epic": "E-1",
+      "story_points": 3,
+      "risk_score": 7,
+      "effort_score": 2,
+      "risk_normalized": 0.7,
+      "effort_normalized": 0.2
+    },
+    {
+      "story_id": "1.2",
+      "title": "Human label QA pass (95% precision)",
+      "epic": "E-1",
+      "story_points": 5,
+      "risk_score": 6,
+      "effort_score": 5,
+      "risk_normalized": 0.6,
+      "effort_normalized": 0.5
+    },
+    {
+      "story_id": "1.3",
+      "title": "Data augmentation scripts (flip, crop, color-jitter) containerised",
+      "epic": "E-1",
+      "story_points": 2,
+      "risk_score": 7,
+      "effort_score": 2,
+      "risk_normalized": 0.7,
+      "effort_normalized": 0.2
+    },
+    {
+      "story_id": "1.4",
+      "title": "Retrain CLIP+DPT pipeline with full set",
+      "epic": "E-1",
+      "story_points": 8,
+      "risk_score": 10,
+      "effort_score": 8,
+      "risk_normalized": 1.0,
+      "effort_normalized": 0.8
+    },
+    {
+      "story_id": "1.5",
+      "title": "Update inference API to v1.3",
+      "epic": "E-1",
+      "story_points": 3,
+      "risk_score": 5,
+      "effort_score": 3,
+      "risk_normalized": 0.5,
+      "effort_normalized": 0.3
+    },
+    {
+      "story_id": "2.1",
+      "title": "Profiling run: identify top 3 bottlenecks",
+      "epic": "E-2",
+      "story_points": 2,
+      "risk_score": 5,
+      "effort_score": 1,
+      "risk_normalized": 0.5,
+      "effort_normalized": 0.1
+    },
+    {
+      "story_id": "2.2",
+      "title": "Model quantisation (INT8)",
+      "epic": "E-2",
+      "story_points": 5,
+      "risk_score": 7,
+      "effort_score": 5,
+      "risk_normalized": 0.7,
+      "effort_normalized": 0.5
+    },
+    {
+      "story_id": "2.3",
+      "title": "Batch inference path (10 imgs req)",
+      "epic": "E-2",
+      "story_points": 3,
+      "risk_score": 5,
+      "effort_score": 3,
+      "risk_normalized": 0.5,
+      "effort_normalized": 0.3
+    },
+    {
+      "story_id": "2.4",
+      "title": "Asynchronous image pre-resize lambda",
+      "epic": "E-2",
+      "story_points": 5,
+      "risk_score": 6,
+      "effort_score": 5,
+      "risk_normalized": 0.6,
+      "effort_normalized": 0.5
+    },
+    {
+      "story_id": "3.1",
+      "title": "External pen-test remediation",
+      "epic": "E-3",
+      "story_points": 5,
+      "risk_score": 8,
+      "effort_score": 5,
+      "risk_normalized": 0.8,
+      "effort_normalized": 0.5
+    },
+    {
+      "story_id": "3.2",
+      "title": "Disaster-recovery runbook (RTO < 2 h / RPO < 15 min)",
+      "epic": "E-3",
+      "story_points": 3,
+      "risk_score": 5,
+      "effort_score": 3,
+      "risk_normalized": 0.5,
+      "effort_normalized": 0.3
+    },
+    {
+      "story_id": "3.3",
+      "title": "Multi-AZ K8s cluster IaC",
+      "epic": "E-3",
+      "story_points": 8,
+      "risk_score": 7,
+      "effort_score": 8,
+      "risk_normalized": 0.7,
+      "effort_normalized": 0.8
+    },
+    {
+      "story_id": "3.4",
+      "title": "Stripe + EventBridge prod toggle",
+      "epic": "E-3",
+      "story_points": 2,
+      "risk_score": 5,
+      "effort_score": 2,
+      "risk_normalized": 0.5,
+      "effort_normalized": 0.2
+    },
+    {
+      "story_id": "3.5",
+      "title": "Launch checklist sign-off",
+      "epic": "E-3",
+      "story_points": 1,
+      "risk_score": 5,
+      "effort_score": 1,
+      "risk_normalized": 0.5,
+      "effort_normalized": 0.1
+    }
+  ],
+  "categories": {
+    "high_risk_low_effort": [
+      {
+        "story_id": "1.1",
+        "title": "Collect remaining 110 breed exemplar images (\u226550 imgs/breed, >400\u00d7400px, CC-BY)",
+        "epic": "E-1",
+        "story_points": 3,
+        "risk_score": 7,
+        "effort_score": 2,
+        "risk_normalized": 0.7,
+        "effort_normalized": 0.2
+      },
+      {
+        "story_id": "1.3",
+        "title": "Data augmentation scripts (flip, crop, color-jitter) containerised",
+        "epic": "E-1",
+        "story_points": 2,
+        "risk_score": 7,
+        "effort_score": 2,
+        "risk_normalized": 0.7,
+        "effort_normalized": 0.2
+      },
+      {
+        "story_id": "1.5",
+        "title": "Update inference API to v1.3",
+        "epic": "E-1",
+        "story_points": 3,
+        "risk_score": 5,
+        "effort_score": 3,
+        "risk_normalized": 0.5,
+        "effort_normalized": 0.3
+      },
+      {
+        "story_id": "2.1",
+        "title": "Profiling run: identify top 3 bottlenecks",
+        "epic": "E-2",
+        "story_points": 2,
+        "risk_score": 5,
+        "effort_score": 1,
+        "risk_normalized": 0.5,
+        "effort_normalized": 0.1
+      },
+      {
+        "story_id": "2.3",
+        "title": "Batch inference path (10 imgs req)",
+        "epic": "E-2",
+        "story_points": 3,
+        "risk_score": 5,
+        "effort_score": 3,
+        "risk_normalized": 0.5,
+        "effort_normalized": 0.3
+      },
+      {
+        "story_id": "3.2",
+        "title": "Disaster-recovery runbook (RTO < 2 h / RPO < 15 min)",
+        "epic": "E-3",
+        "story_points": 3,
+        "risk_score": 5,
+        "effort_score": 3,
+        "risk_normalized": 0.5,
+        "effort_normalized": 0.3
+      },
+      {
+        "story_id": "3.4",
+        "title": "Stripe + EventBridge prod toggle",
+        "epic": "E-3",
+        "story_points": 2,
+        "risk_score": 5,
+        "effort_score": 2,
+        "risk_normalized": 0.5,
+        "effort_normalized": 0.2
+      },
+      {
+        "story_id": "3.5",
+        "title": "Launch checklist sign-off",
+        "epic": "E-3",
+        "story_points": 1,
+        "risk_score": 5,
+        "effort_score": 1,
+        "risk_normalized": 0.5,
+        "effort_normalized": 0.1
+      }
+    ],
+    "high_risk_high_effort": [
+      {
+        "story_id": "1.2",
+        "title": "Human label QA pass (95% precision)",
+        "epic": "E-1",
+        "story_points": 5,
+        "risk_score": 6,
+        "effort_score": 5,
+        "risk_normalized": 0.6,
+        "effort_normalized": 0.5
+      },
+      {
+        "story_id": "1.4",
+        "title": "Retrain CLIP+DPT pipeline with full set",
+        "epic": "E-1",
+        "story_points": 8,
+        "risk_score": 10,
+        "effort_score": 8,
+        "risk_normalized": 1.0,
+        "effort_normalized": 0.8
+      },
+      {
+        "story_id": "2.2",
+        "title": "Model quantisation (INT8)",
+        "epic": "E-2",
+        "story_points": 5,
+        "risk_score": 7,
+        "effort_score": 5,
+        "risk_normalized": 0.7,
+        "effort_normalized": 0.5
+      },
+      {
+        "story_id": "2.4",
+        "title": "Asynchronous image pre-resize lambda",
+        "epic": "E-2",
+        "story_points": 5,
+        "risk_score": 6,
+        "effort_score": 5,
+        "risk_normalized": 0.6,
+        "effort_normalized": 0.5
+      },
+      {
+        "story_id": "3.1",
+        "title": "External pen-test remediation",
+        "epic": "E-3",
+        "story_points": 5,
+        "risk_score": 8,
+        "effort_score": 5,
+        "risk_normalized": 0.8,
+        "effort_normalized": 0.5
+      },
+      {
+        "story_id": "3.3",
+        "title": "Multi-AZ K8s cluster IaC",
+        "epic": "E-3",
+        "story_points": 8,
+        "risk_score": 7,
+        "effort_score": 8,
+        "risk_normalized": 0.7,
+        "effort_normalized": 0.8
+      }
+    ],
+    "low_risk_low_effort": [],
+    "low_risk_high_effort": []
+  },
+  "summary": {
+    "total_stories": 14,
+    "high_risk_count": 14,
+    "low_effort_count": 8,
+    "avg_risk": 6.285714285714286,
+    "avg_effort": 3.7857142857142856
+  }
+}

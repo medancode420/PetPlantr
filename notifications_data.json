@@ -1,0 +1,45 @@
+{
+  "7dfcb6b8-2f84-479f-a827-f72660ddc1d1": {
+    "notification_id": "7dfcb6b8-2f84-479f-a827-f72660ddc1d1",
+    "user_id": "user_123",
+    "type": "generation_complete",
+    "title": "Generation Complete!",
+    "message": "Your Golden Retriever planter is ready!",
+    "priority": "high",
+    "created_at": "2025-09-04T18:43:42.634752",
+    "read_at": "2025-09-04T18:43:42.635011",
+    "expires_at": null,
+    "metadata": {
+      "model_id": "model_123"
+    },
+    "action_url": "/download/model_123"
+  },
+  "f6bbddd2-19c3-4956-bd10-c83f6a93aa54": {
+    "notification_id": "f6bbddd2-19c3-4956-bd10-c83f6a93aa54",
+    "user_id": "user_123",
+    "type": "new_feature",
+    "title": "New Feature Available",
+    "message": "Try our new ultra quality generation!",
+    "priority": "medium",
+    "created_at": "2025-09-04T18:43:42.634896",
+    "read_at": null,
+    "expires_at": "2025-09-11T18:43:42.634891",
+    "metadata": {},
+    "action_url": null
+  },
+  "2d513cfa-03b5-4581-93cf-3789f7360280": {
+    "notification_id": "2d513cfa-03b5-4581-93cf-3789f7360280",
+    "user_id": "31db3af1-3de8-423d-8eda-5e30d4cc77d3",
+    "type": "generation_complete",
+    "title": "\ud83c\udf89 Generation Complete!",
+    "message": "Your My Golden Retriever Planter planter has been generated successfully!",
+    "priority": "high",
+    "created_at": "2025-09-04T18:43:48.749485",
+    "read_at": null,
+    "expires_at": "2025-09-11T18:43:48.749472",
+    "metadata": {
+      "model_title": "My Golden Retriever Planter"
+    },
+    "action_url": "/download/35dcfa8b-fe56-4e54-9fe2-f875a7f10e16"
+  }
+}

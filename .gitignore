@@ -1,0 +1,46 @@
+# Secrets & env
+.env
+.env.*
+*.env
+*.env.*
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.envrc
+
+# Node/Frontend
+node_modules/
+.next/
+*.log
+
+# Large ML models and binaries
+models/
+*.pth
+*.bin
+*.onnx
+*.pb
+
+# Backup archives
+backups/archives/
+*.tar.gz
+*.zip
+
+# Cache files
+.cache/
+*.pack
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Large frontend build artifacts
+dist/
+build/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+terraform.tfvars

@@ -1,0 +1,17 @@
+{
+  "800x600": {
+    "processing_time": 0.004703044891357422,
+    "compression_ratio": 5.81966053748232,
+    "size_reduction": 6815
+  },
+  "1920x1080": {
+    "processing_time": 0.014822006225585938,
+    "compression_ratio": 23.52828854314003,
+    "size_reduction": 31855
+  },
+  "4000x3000": {
+    "processing_time": 0.0792839527130127,
+    "compression_ratio": 133.4009900990099,
+    "size_reduction": 187215
+  }
+}

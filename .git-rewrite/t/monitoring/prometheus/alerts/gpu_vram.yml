@@ -1,0 +1,191 @@
+# GPU Monitoring Alerts for PetPlantr
+# Monitors GPU VRAM usage, utilization, and temperature
+
+groups:
+- name: gpu_monitoring
+  rules:
+  # Critical GPU VRAM usage - immediate action required
+  - alert: GPU_VRAM_Critical
+    expr: (dcgm_fb_used_bytes{pod=~"petplantr-api.*"} / 1024 / 1024 / 1024) > 20
+    for: 1m
+    labels:
+      severity: critical
+      service: petplantr-api
+      component: gpu
+    annotations:
+      summary: "Critical GPU VRAM usage: {{ $value }}GB"
+      description: |
+        GPU VRAM usage is {{ $value }}GB, approaching the 24GB A10G limit.
+        This may cause CUDA out-of-memory errors and inference failures.
+        
+        Immediate actions:
+        1. Reduce batch size: kubectl set env deployment/petplantr-api BATCH_SIZE=1
+        2. Scale up replicas: kubectl scale deployment petplantr-api --replicas=6
+        3. Clear GPU cache: kubectl exec deployment/petplantr-api -- python -c "import torch; torch.cuda.empty_cache()"
+      runbook_url: "https://github.com/petplantr/docs/RUNBOOK_BREED_API.md#gpu-vram-exhaustion"
+
+  # High GPU VRAM usage - warning threshold
+  - alert: GPU_VRAM_High
+    expr: (dcgm_fb_used_bytes{pod=~"petplantr-api.*"} / 1024 / 1024 / 1024) > 5
+    for: 2m
+    labels:
+      severity: warning
+      service: petplantr-api
+      component: gpu
+    annotations:
+      summary: "High GPU VRAM usage: {{ $value }}GB"
+      description: |
+        GPU VRAM usage is {{ $value }}GB, above the 5GB SLO threshold.
+        Monitor closely and consider reducing batch size if it continues to climb.
+        
+        Current usage: {{ $value }}GB / 24GB ({{ $value | humanizePercentage }}%)
+        SLO threshold: 5GB (20.8%)
+      runbook_url: "https://github.com/petplantr/docs/RUNBOOK_BREED_API.md#gpu-vram-monitoring"
+
+  # GPU utilization monitoring
+  - alert: GPU_Utilization_Low
+    expr: dcgm_gpu_utilization{pod=~"petplantr-api.*"} < 30
+    for: 10m
+    labels:
+      severity: info
+      service: petplantr-api
+      component: gpu
+    annotations:
+      summary: "Low GPU utilization: {{ $value }}%"
+      description: |
+        GPU utilization is {{ $value }}%, which may indicate:
+        1. Low inference load
+        2. CPU bottleneck in preprocessing
+        3. I/O bottleneck in data loading
+        4. Inefficient batch processing
+        
+        Consider investigating if this is expected for current load.
+
+  # GPU temperature monitoring
+  - alert: GPU_Temperature_High
+    expr: dcgm_gpu_temp{pod=~"petplantr-api.*"} > 80
+    for: 5m
+    labels:
+      severity: warning
+      service: petplantr-api
+      component: gpu
+    annotations:
+      summary: "High GPU temperature: {{ $value }}°C"
+      description: |
+        GPU temperature is {{ $value }}°C, above normal operating range.
+        This may lead to thermal throttling and reduced performance.
+        
+        Check cooling system and reduce workload if necessary.
+
+  # GPU memory leak detection
+  - alert: GPU_Memory_Leak_Suspected
+    expr: increase(dcgm_fb_used_bytes{pod=~"petplantr-api.*"}[1h]) > 1073741824
+    for: 0m
+    labels:
+      severity: warning
+      service: petplantr-api
+      component: gpu
+    annotations:
+      summary: "Suspected GPU memory leak detected"
+      description: |
+        GPU memory usage has increased by {{ $value | humanizeBytes }} in the last hour
+        without corresponding increase in inference load.
+        
+        This may indicate a memory leak in the inference pipeline.
+        Consider restarting the affected pods.
+
+  # GPU error rate monitoring
+  - alert: GPU_Errors_Detected
+    expr: increase(dcgm_gpu_errors_total{pod=~"petplantr-api.*"}[5m]) > 0
+    for: 0m
+    labels:
+      severity: critical
+      service: petplantr-api
+      component: gpu
+    annotations:
+      summary: "GPU errors detected"
+      description: |
+        {{ $value }} GPU errors detected in the last 5 minutes.
+        This may indicate hardware issues or driver problems.
+        
+        Immediate investigation required - potential hardware failure.
+
+  # Inference throughput monitoring
+  - alert: Inference_Throughput_Low
+    expr: rate(inference_requests_total{pod=~"petplantr-api.*"}[5m]) < 0.5
+    for: 10m
+    labels:
+      severity: info
+      service: petplantr-api
+      component: gpu
+    annotations:
+      summary: "Low inference throughput: {{ $value }} req/s"
+      description: |
+        Inference throughput is {{ $value }} requests per second, below expected minimum.
+        
+        This may indicate:
+        1. Low user traffic (expected)
+        2. Performance bottleneck
+        3. GPU not being utilized efficiently
+        
+        Verify if this matches expected load patterns.
+
+  # Model loading time monitoring
+  - alert: Model_Loading_Slow
+    expr: model_loading_duration_seconds > 60
+    for: 0m
+    labels:
+      severity: warning
+      service: petplantr-api
+      component: gpu
+    annotations:
+      summary: "Slow model loading: {{ $value }}s"
+      description: |
+        Model loading took {{ $value }} seconds, above the 60-second threshold.
+        This may indicate:
+        1. Large model size
+        2. Slow storage I/O
+        3. GPU initialization issues
+        
+        Expected loading time: <30 seconds for optimal user experience.
+
+  # CUDA version compatibility
+  - alert: CUDA_Driver_Mismatch
+    expr: cuda_driver_version != cuda_runtime_version
+    for: 1m
+    labels:
+      severity: critical
+      service: petplantr-api
+      component: gpu
+    annotations:
+      summary: "CUDA driver/runtime version mismatch"
+      description: |
+        CUDA driver version ({{ $labels.driver_version }}) does not match 
+        runtime version ({{ $labels.runtime_version }}).
+        
+        This may cause inference failures or reduced performance.
+        Container image may need updating.
+
+# Recording rules for GPU metrics aggregation
+- name: gpu_recording_rules
+  interval: 30s
+  rules:
+  # Average GPU VRAM usage across all pods
+  - record: petplantr:gpu_vram_usage_gb:avg
+    expr: avg(dcgm_fb_used_bytes{pod=~"petplantr-api.*"} / 1024 / 1024 / 1024)
+
+  # Peak GPU VRAM usage in last 5 minutes
+  - record: petplantr:gpu_vram_usage_gb:max_5m
+    expr: max_over_time(dcgm_fb_used_bytes{pod=~"petplantr-api.*"}[5m]) / 1024 / 1024 / 1024
+
+  # GPU utilization average
+  - record: petplantr:gpu_utilization:avg
+    expr: avg(dcgm_gpu_utilization{pod=~"petplantr-api.*"})
+
+  # Inference rate per GPU
+  - record: petplantr:inference_rate_per_gpu:rate5m
+    expr: rate(inference_requests_total{pod=~"petplantr-api.*"}[5m]) / count(dcgm_gpu_utilization{pod=~"petplantr-api.*"})
+
+  # GPU efficiency metric (requests per GB VRAM)
+  - record: petplantr:gpu_efficiency:rate5m
+    expr: rate(inference_requests_total{pod=~"petplantr-api.*"}[5m]) / (dcgm_fb_used_bytes{pod=~"petplantr-api.*"} / 1024 / 1024 / 1024)

@@ -1,0 +1,44 @@
+breed_name,group,origin,size,coat_type,akc_recognized,fci_recognized,aliases,characteristics
+Pointer,Sporting,England,Medium-Large,Short,True,True,English Pointer,Athletic|Energetic|Alert
+Golden Retriever,Sporting,Scotland,Large,Long,True,True,Golden,Friendly|Intelligent|Devoted
+Labrador Retriever,Sporting,Canada,Medium-Large,Short,True,True,Lab|Labrador,Outgoing|Active|Friendly
+German Shorthaired Pointer,Sporting,Germany,Medium-Large,Short,True,True,GSP,Versatile|Athletic|Cooperative
+Brittany,Sporting,France,Medium,Medium,True,True,Brittany Spaniel,Energetic|Eager|Athletic
+Beagle,Hound,England,Medium,Short,True,True,,Friendly|Curious|Merry
+Bloodhound,Hound,Belgium,Large,Short,True,True,,Independent|Inquisitive|Friendly
+Greyhound,Hound,Egypt,Large,Short,True,True,,Gentle|Independent|Noble
+Basset Hound,Hound,France,Medium,Short,True,True,,Charming|Patient|Low-key
+Afghan Hound,Hound,Afghanistan,Large,Long,True,True,,Independent|Sweet|Dignified
+Siberian Husky,Working,Siberia,Medium-Large,Medium,True,True,Husky,Outgoing|Alert|Gentle
+German Shepherd,Working,Germany,Large,Medium,True,True,GSD|Alsatian,Confident|Courageous|Smart
+Rottweiler,Working,Germany,Large,Short,True,True,Rottie,Loyal|Loving|Confident
+Doberman Pinscher,Working,Germany,Large,Short,True,True,Doberman|Dobie,Alert|Fearless|Loyal
+Great Dane,Working,Germany,Giant,Short,True,True,German Mastiff,Friendly|Patient|Dependable
+Jack Russell Terrier,Terrier,England,Small,Short,True,True,JRT,Alert|Lively|Fearless
+Bull Terrier,Terrier,England,Medium,Short,True,True,,Playful|Charming|Mischievous
+Scottish Terrier,Terrier,Scotland,Small,Medium,True,True,Scottie,Independent|Spunky|Alert
+West Highland White Terrier,Terrier,Scotland,Small,Medium,True,True,Westie,Loyal|Happy|Entertaining
+Airedale Terrier,Terrier,England,Large,Medium,True,True,King of Terriers,Friendly|Smart|Courageous
+Chihuahua,Toy,Mexico,Tiny,Varies,True,True,,Charming|Graceful|Sassy
+Pomeranian,Toy,Germany,Tiny,Long,True,True,Pom,Inquisitive|Bold|Lively
+Yorkshire Terrier,Toy,England,Tiny,Long,True,True,Yorkie,Affectionate|Sprightly|Tomboyish
+Maltese,Toy,Malta,Tiny,Long,True,True,,Gentle|Playful|Charming
+Pug,Toy,China,Small,Short,True,True,,Charming|Mischievous|Loving
+French Bulldog,Non-Sporting,France,Small-Medium,Short,True,True,Frenchie,Adaptable|Playful|Smart
+Bulldog,Non-Sporting,England,Medium,Short,True,True,English Bulldog,Friendly|Courageous|Calm
+Poodle,Non-Sporting,France,Varies,Curly,True,True,Standard Poodle|Miniature Poodle|Toy Poodle,Active|Alert|Intelligent
+Dalmatian,Non-Sporting,Croatia,Medium-Large,Short,True,True,,Dignified|Smart|Outgoing
+Boston Terrier,Non-Sporting,United States,Small-Medium,Short,True,True,Boston Bull,Friendly|Bright|Amusing
+Border Collie,Herding,Scotland,Medium,Medium,True,True,,Smart|Work-oriented|Energetic
+Australian Shepherd,Herding,United States,Medium-Large,Medium,True,True,Aussie,Smart|Work-oriented|Exuberant
+Belgian Malinois,Herding,Belgium,Medium-Large,Short,True,True,Malinois,Confident|Smart|Hardworking
+Australian Cattle Dog,Herding,Australia,Medium,Short,True,True,Blue Heeler|Red Heeler,Alert|Curious|Pleasant
+Shetland Sheepdog,Herding,Scotland,Small-Medium,Long,True,True,Sheltie,Playful|Energetic|Bright
+Dogo Argentino,Working,Argentina,Large,Short,False,True,,Loyal|Reserve|Cheerful
+Xoloitzcuintli,Non-Sporting,Mexico,Varies,Hairless,True,True,Mexican Hairless Dog|Xolo,Tranquil|Alert|Loyal
+Lagotto Romagnolo,Sporting,Italy,Medium,Curly,True,True,Truffle Dog,Affectionate|Undemanding|Keen
+Norwegian Lundehund,Non-Sporting,Norway,Small-Medium,Medium,True,True,Puffin Dog,Loyal|Alert|Unique
+Telomian,Primitive,Malaysia,Medium,Short,False,True,,Alert|Intelligent|Active
+Parson Russell Terrier,Terrier,England,Small-Medium,Varies,True,True,Parson Jack Russell,Bold|Friendly|Athletic
+Lancashire Heeler,Herding,England,Small,Short,True,True,,Alert|Friendly|Intelligent
+Glen of Imaal Terrier,Terrier,Ireland,Medium,Medium,True,True,Glen,Gentle|Spirited|Bold

@@ -1,0 +1,207 @@
+{
+  "summary": {
+    "total_checks": 10,
+    "passed": 4,
+    "failed": 6,
+    "required_failed": 6,
+    "success_rate": "40.0%",
+    "launch_ready": false,
+    "categories": {
+      "Infrastructure": [
+        {
+          "category": "Infrastructure",
+          "name": "Terraform Configuration",
+          "description": "Validate Terraform infrastructure files",
+          "success": true,
+          "message": "Found 6 Terraform files",
+          "required": true,
+          "timestamp": "2025-09-05T13:29:05.783690"
+        },
+        {
+          "category": "Infrastructure",
+          "name": "AWS Resources",
+          "description": "Check AWS CLI configuration and access",
+          "success": true,
+          "message": "AWS CLI configured and authenticated",
+          "required": true,
+          "timestamp": "2025-09-05T13:29:06.199540"
+        },
+        {
+          "category": "Infrastructure",
+          "name": "Kubernetes Cluster",
+          "description": "Validate Kubernetes cluster access",
+          "success": false,
+          "message": "Kubeconfig not found",
+          "required": true,
+          "timestamp": "2025-09-05T13:29:06.199667"
+        }
+      ],
+      "Application": [
+        {
+          "category": "Application",
+          "name": "API Server",
+          "description": "Check if API server is running and responsive",
+          "success": false,
+          "message": "API server not accessible",
+          "required": true,
+          "timestamp": "2025-09-05T13:29:06.256495"
+        },
+        {
+          "category": "Application",
+          "name": "Model Loading",
+          "description": "Verify ML model is loaded and ready",
+          "success": false,
+          "message": "Cannot check model status",
+          "required": true,
+          "timestamp": "2025-09-05T13:29:06.257477"
+        }
+      ],
+      "Security": [
+        {
+          "category": "Security",
+          "name": "Environment Variables",
+          "description": "Check all required environment variables",
+          "success": false,
+          "message": "Missing environment variables: ['PETPLANTR_ENV', 'STRIPE_PROD_SECRET_KEY', 'STRIPE_PROD_PUBLISHABLE_KEY', 'PROD_DATABASE_URL', 'PROD_REDIS_URL']",
+          "required": true,
+          "timestamp": "2025-09-05T13:29:06.257494"
+        },
+        {
+          "category": "Security",
+          "name": "SSL Certificates",
+          "description": "Validate SSL certificate configuration",
+          "success": false,
+          "message": "Missing SSL certificates: ['ssl/cert.pem', 'ssl/key.pem']",
+          "required": true,
+          "timestamp": "2025-09-05T13:29:06.257536"
+        }
+      ],
+      "Database": [
+        {
+          "category": "Database",
+          "name": "Database Connection",
+          "description": "Validate production database configuration",
+          "success": false,
+          "message": "Database URL not configured",
+          "required": true,
+          "timestamp": "2025-09-05T13:29:06.257546"
+        }
+      ],
+      "Monitoring": [
+        {
+          "category": "Monitoring",
+          "name": "Monitoring Setup",
+          "description": "Check monitoring and alerting configuration",
+          "success": true,
+          "message": "Monitoring stack configured",
+          "required": true,
+          "timestamp": "2025-09-05T13:29:06.257552"
+        }
+      ],
+      "Performance": [
+        {
+          "category": "Performance",
+          "name": "Performance Baselines",
+          "description": "Verify performance benchmarks are met",
+          "success": true,
+          "message": "Performance benchmarks met",
+          "required": true,
+          "timestamp": "2025-09-05T13:29:06.257609"
+        }
+      ]
+    },
+    "timestamp": "2025-09-05T13:29:06.257623"
+  },
+  "results": [
+    {
+      "category": "Infrastructure",
+      "name": "Terraform Configuration",
+      "description": "Validate Terraform infrastructure files",
+      "success": true,
+      "message": "Found 6 Terraform files",
+      "required": true,
+      "timestamp": "2025-09-05T13:29:05.783690"
+    },
+    {
+      "category": "Infrastructure",
+      "name": "AWS Resources",
+      "description": "Check AWS CLI configuration and access",
+      "success": true,
+      "message": "AWS CLI configured and authenticated",
+      "required": true,
+      "timestamp": "2025-09-05T13:29:06.199540"
+    },
+    {
+      "category": "Infrastructure",
+      "name": "Kubernetes Cluster",
+      "description": "Validate Kubernetes cluster access",
+      "success": false,
+      "message": "Kubeconfig not found",
+      "required": true,
+      "timestamp": "2025-09-05T13:29:06.199667"
+    },
+    {
+      "category": "Application",
+      "name": "API Server",
+      "description": "Check if API server is running and responsive",
+      "success": false,
+      "message": "API server not accessible",
+      "required": true,
+      "timestamp": "2025-09-05T13:29:06.256495"
+    },
+    {
+      "category": "Application",
+      "name": "Model Loading",
+      "description": "Verify ML model is loaded and ready",
+      "success": false,
+      "message": "Cannot check model status",
+      "required": true,
+      "timestamp": "2025-09-05T13:29:06.257477"
+    },
+    {
+      "category": "Security",
+      "name": "Environment Variables",
+      "description": "Check all required environment variables",
+      "success": false,
+      "message": "Missing environment variables: ['PETPLANTR_ENV', 'STRIPE_PROD_SECRET_KEY', 'STRIPE_PROD_PUBLISHABLE_KEY', 'PROD_DATABASE_URL', 'PROD_REDIS_URL']",
+      "required": true,
+      "timestamp": "2025-09-05T13:29:06.257494"
+    },
+    {
+      "category": "Security",
+      "name": "SSL Certificates",
+      "description": "Validate SSL certificate configuration",
+      "success": false,
+      "message": "Missing SSL certificates: ['ssl/cert.pem', 'ssl/key.pem']",
+      "required": true,
+      "timestamp": "2025-09-05T13:29:06.257536"
+    },
+    {
+      "category": "Database",
+      "name": "Database Connection",
+      "description": "Validate production database configuration",
+      "success": false,
+      "message": "Database URL not configured",
+      "required": true,
+      "timestamp": "2025-09-05T13:29:06.257546"
+    },
+    {
+      "category": "Monitoring",
+      "name": "Monitoring Setup",
+      "description": "Check monitoring and alerting configuration",
+      "success": true,
+      "message": "Monitoring stack configured",
+      "required": true,
+      "timestamp": "2025-09-05T13:29:06.257552"
+    },
+    {
+      "category": "Performance",
+      "name": "Performance Baselines",
+      "description": "Verify performance benchmarks are met",
+      "success": true,
+      "message": "Performance benchmarks met",
+      "required": true,
+      "timestamp": "2025-09-05T13:29:06.257609"
+    }
+  ]
+}

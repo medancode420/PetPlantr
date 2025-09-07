@@ -1,0 +1,20 @@
+{
+  "breed_name": "Brittany",
+  "breed_group": "Sporting",
+  "origin": "France",
+  "size": "Medium",
+  "coat_type": "Medium",
+  "akc_recognized": true,
+  "fci_recognized": true,
+  "characteristics": [
+    "Energetic",
+    "Eager",
+    "Athletic"
+  ],
+  "aliases": [
+    "Brittany Spaniel"
+  ],
+  "target_images": 500,
+  "collection_status": "pending",
+  "last_updated": "2025-06-29"
+}

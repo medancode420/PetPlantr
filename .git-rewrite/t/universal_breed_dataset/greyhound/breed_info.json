@@ -1,0 +1,18 @@
+{
+  "breed_name": "Greyhound",
+  "breed_group": "Hound",
+  "origin": "Egypt",
+  "size": "Large",
+  "coat_type": "Short",
+  "akc_recognized": true,
+  "fci_recognized": true,
+  "characteristics": [
+    "Gentle",
+    "Independent",
+    "Noble"
+  ],
+  "aliases": [],
+  "target_images": 500,
+  "collection_status": "pending",
+  "last_updated": "2025-06-29"
+}

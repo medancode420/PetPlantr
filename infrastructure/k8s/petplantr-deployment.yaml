@@ -1,0 +1,191 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: petplantr-api
+  namespace: default
+  labels:
+    app: petplantr-api
+    version: v1.4
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: petplantr-api
+  template:
+    metadata:
+      labels:
+        app: petplantr-api
+        version: v1.4
+    spec:
+      containers:
+      - name: api
+        image: petplantr/api:v1.4
+        ports:
+        - containerPort: 8000
+          name: http
+        env:
+        - name: ENVIRONMENT
+          value: "production"
+        - name: MODEL_VERSION
+          value: "v1.4"
+        - name: AWS_REGION
+          value: "us-east-1"
+        resources:
+          requests:
+            memory: "2Gi"
+            cpu: "1000m"
+          limits:
+            memory: "4Gi"
+            cpu: "2000m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        volumeMounts:
+        - name: model-cache
+          mountPath: /app/models
+      volumes:
+      - name: model-cache
+        emptyDir: {}
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - petplantr-api
+              topologyKey: kubernetes.io/hostname
+      tolerations:
+      - key: "nvidia.com/gpu"
+        operator: "Exists"
+        effect: "NoSchedule"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: petplantr-api
+  namespace: default
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: "alb"
+    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: "arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012"
+    service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "443"
+    external-dns.alpha.kubernetes.io/hostname: "api.petplantr.com"
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 8000
+    protocol: TCP
+    name: http
+  selector:
+    app: petplantr-api
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: petplantr-api
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: "alb"
+    alb.ingress.kubernetes.io/scheme: "internet-facing"
+    alb.ingress.kubernetes.io/target-type: "ip"
+    alb.ingress.kubernetes.io/healthcheck-path: "/health"
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/ssl-redirect: "443"
+    external-dns.alpha.kubernetes.io/hostname: "api.petplantr.com"
+spec:
+  tls:
+  - hosts:
+    - api.petplantr.com
+    secretName: petplantr-tls
+  rules:
+  - host: api.petplantr.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: petplantr-api
+            port:
+              number: 80
+
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: petplantr-api-hpa
+  namespace: default
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: petplantr-api
+  minReplicas: 3
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 80
+
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: petplantr-api-pdb
+  namespace: default
+spec:
+  minAvailable: 2
+  selector:
+    matchLabels:
+      app: petplantr-api
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: petplantr-config
+  namespace: default
+data:
+  ENVIRONMENT: "production"
+  MODEL_VERSION: "v1.4"
+  LOG_LEVEL: "INFO"
+  AWS_REGION: "us-east-1"
+  DATABASE_URL: "postgresql://petplantr:password@petplantr-db:5432/petplantr"
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: petplantr-secrets
+  namespace: default
+type: Opaque
+data:
+  # Base64 encoded secrets
+  AWS_ACCESS_KEY_ID: "QUtJQTJBR0RZT1hYWFhYWFhYWFhY"
+  AWS_SECRET_ACCESS_KEY: "U2VjcmV0S2V5SGVyZVRoYXRJc0VuY29kZWQ="
+  DATABASE_PASSWORD: "UGFzc3dvcmRIZXJlVGhhdElzRW5jb2RlZA=="
+  JWT_SECRET: "SldUU2VjcmV0S2V5Rm9yQXV0aGVudGljYXRpb24="

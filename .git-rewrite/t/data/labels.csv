@@ -1,0 +1,13 @@
+filepath,breed_id
+# Placeholder labels file for CLIP+LoRA breed detection
+# Format: breeds/<breed_name>/image.jpg,breed_id
+# breed_id range: 0-450 (450 pure breeds + mixed_breed)
+# 
+# Example entries:
+# breeds/golden_retriever/dog001.jpg,0
+# breeds/labrador_retriever/dog002.jpg,1
+# breeds/german_shepherd/dog003.jpg,2
+# breeds/mixed_breed/mixed001.jpg,450
+#
+# To generate real labels, add images to breed directories and run:
+# bash complete_pipeline.sh prepare

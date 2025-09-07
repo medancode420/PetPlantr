@@ -1,0 +1,13 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::680604703891:root"
+      },
+      "Action": "s3:PutObject",
+      "Resource": "arn:aws:s3:::petplantr-production-models-09xjs8du/alb-logs/*"
+    }
+  ]
+}

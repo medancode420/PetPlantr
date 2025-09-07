@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  petplantr-api:
+    image: ghcr.io/medancode420/petplantr:latest
+    environment:
+      - ENVIRONMENT=staging
+      - DOMAIN=staging.petplantr.com
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./logs:/app/logs
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.staging.conf:/etc/nginx/nginx.conf
+      - ./ssl:/etc/ssl/certs
+    depends_on:
+      - petplantr-api
+    restart: unless-stopped

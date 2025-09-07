@@ -1,0 +1,21 @@
+{
+  "filename": "integrated_labrador_mathematical_1750986945.stl",
+  "generation_method": "Mathematical",
+  "analysis_result": {
+    "agent": "BreedDetector",
+    "predicted_breed": "labrador",
+    "confidence": 0.7576465173920539,
+    "method": "mock",
+    "features": {
+      "ear_shape": "semi-erect",
+      "coat_type": "medium",
+      "size_category": "small"
+    },
+    "threshold_met": true,
+    "success": true
+  },
+  "triangle_count": 987,
+  "vertex_count": 509,
+  "timestamp": 1750986945,
+  "ai_available": true
+}

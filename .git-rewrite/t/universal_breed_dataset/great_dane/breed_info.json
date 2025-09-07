@@ -1,0 +1,20 @@
+{
+  "breed_name": "Great Dane",
+  "breed_group": "Working",
+  "origin": "Germany",
+  "size": "Giant",
+  "coat_type": "Short",
+  "akc_recognized": true,
+  "fci_recognized": true,
+  "characteristics": [
+    "Friendly",
+    "Patient",
+    "Dependable"
+  ],
+  "aliases": [
+    "German Mastiff"
+  ],
+  "target_images": 500,
+  "collection_status": "pending",
+  "last_updated": "2025-06-29"
+}

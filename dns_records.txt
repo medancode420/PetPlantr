@@ -1,0 +1,25 @@
+# PetPlantr DNS Records for petplantr.com
+# Add these records to your DNS provider (GoDaddy, Namecheap, etc.)
+
+# A Records
+@ A 96.245.127.40  ; Root domain
+www A 96.245.127.40  ; WWW subdomain
+api A 96.245.127.40  ; API subdomain
+
+# CNAME Records
+mail CNAME ghs.google.com  ; Gmail integration
+
+# MX Records (Optional - for email)
+@ MX 1 ASPMX.L.GOOGLE.COM
+@ MX 5 ALT1.ASPMX.L.GOOGLE.COM
+@ MX 5 ALT2.ASPMX.L.GOOGLE.COM
+@ MX 10 ALT3.ASPMX.L.GOOGLE.COM
+@ MX 10 ALT4.ASPMX.L.GOOGLE.COM
+
+# TXT Records (Optional - for verification)
+@ TXT "v=spf1 include:_spf.google.com ~all"
+@ TXT "google-site-verification=your-verification-code"
+
+# SRV Records (Optional - for services)
+_xmpp-server._tcp SRV 5 0 5269 xmpp-server.l.google.com
+_xmpp-client._tcp SRV 5 0 5222 talk.l.google.com

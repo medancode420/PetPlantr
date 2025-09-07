@@ -1,0 +1,57 @@
+name: k6 smoke (non-blocking)
+
+on:
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: 'Target BASE_URL for k6 (e.g., https://staging.api.petplantr.com)'
+        required: false
+        default: 'https://staging.api.petplantr.com'
+      duration:
+        description: 'Test duration'
+        required: false
+        default: '2m'
+      breed_rps:
+        description: 'Breed RPS'
+        required: false
+        default: '2'
+      mesh_rps:
+        description: 'Mesh RPS'
+        required: false
+        default: '0.2'
+      read_rps:
+        description: 'Read RPS'
+        required: false
+        default: '0.5'
+
+jobs:
+  k6:
+    name: k6 smoke (non-blocking)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    continue-on-error: true # non-blocking by design
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Ensure report directory
+        run: mkdir -p reports
+
+      - name: Run k6 via Docker (Option D)
+        env:
+          BASE_URL: ${{ github.event.inputs.base_url || 'https://staging.api.petplantr.com' }}
+          DURATION: ${{ github.event.inputs.duration || '2m' }}
+          BREED_RPS: ${{ github.event.inputs.breed_rps || '2' }}
+          MESH_RPS: ${{ github.event.inputs.mesh_rps || '0.2' }}
+          READ_RPS: ${{ github.event.inputs.read_rps || '0.5' }}
+        run: |
+          make load-test-docker BASE_URL="$BASE_URL" DURATION="$DURATION" \
+            BREED_RPS="$BREED_RPS" MESH_RPS="$MESH_RPS" READ_RPS="$READ_RPS"
+
+      - name: Upload k6 reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: k6-reports
+          path: reports/
+          if-no-files-found: warn

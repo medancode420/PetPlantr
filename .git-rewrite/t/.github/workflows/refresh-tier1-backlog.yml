@@ -1,0 +1,155 @@
+name: ♻️ Refresh Tier-1 Backlog
+on:
+  workflow_dispatch:
+    inputs:
+      repo_target:
+        description: 'Target repository for GitHub issues (owner/repo)'
+        required: false
+        default: 'petplantr/demo'
+      epics_filter:
+        description: 'Comma-separated epic IDs (e.g., E-1,E-2) or leave blank for all'
+        required: false
+        default: ''
+      dry_run:
+        description: 'Dry run (test mode)'
+        type: boolean
+        required: false
+        default: true
+  schedule:
+    - cron: '0 9 * * MON'  # every Monday 09:00 UTC
+  push:
+    paths:
+      - 'tier1_priority_backlog.ipynb'
+      - 'reports/github_issues_tier1.json'
+
+jobs:
+  refresh-backlog:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        cache: 'pip'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install jupyter pandas numpy matplotlib seaborn networkx plotly requests
+        
+    - name: Check for existing artifacts
+      id: check_artifacts
+      run: |
+        if [ -f "reports/github_issues_tier1.json" ]; then
+          echo "artifacts_exist=true" >> $GITHUB_OUTPUT
+          echo "✅ Found existing artifacts"
+        else
+          echo "artifacts_exist=false" >> $GITHUB_OUTPUT
+          echo "⚠️  No artifacts found - would need to run notebook"
+        fi
+        
+    - name: Execute Tier-1 Backlog Notebook (if needed)
+      if: steps.check_artifacts.outputs.artifacts_exist == 'false'
+      run: |
+        echo "🔧 Notebook execution would be needed"
+        echo "💡 For now, we'll use existing artifacts or manual execution"
+        
+    - name: Verify artifacts are ready
+      run: |
+        if [ ! -f "reports/github_issues_tier1.json" ]; then
+          echo "❌ Missing artifacts. Please run the notebook manually first."
+          exit 1
+        fi
+        echo "✅ Artifacts verified"
+        
+    - name: Preview issues (dry run)
+      run: |
+        echo "🔍 Previewing issues that would be created..."
+        python scripts/seed_gh_issues_v2.py \
+          --repo ${{ github.event.inputs.repo_target || 'petplantr/demo' }} \
+          --dry-run \
+          ${{ github.event.inputs.epics_filter && format('--epics {0}', github.event.inputs.epics_filter) || '' }}
+        
+    - name: Create/Update GitHub Issues
+      if: github.event.inputs.dry_run != 'true' && github.event_name != 'schedule'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        echo "🚀 Creating/updating GitHub issues..."
+        python scripts/seed_gh_issues_v2.py \
+          --repo ${{ github.event.inputs.repo_target || github.repository }} \
+          ${{ github.event.inputs.epics_filter && format('--epics {0}', github.event.inputs.epics_filter) || '' }}
+        
+    - name: Generate summary report
+      run: |
+        echo "📊 Generating summary..."
+        if [ -f "reports/tier1_backlog_report.json" ]; then
+          echo "## 📋 Tier-1 Backlog Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          python3 -c "
+        import json
+        with open('reports/tier1_backlog_report.json', 'r') as f:
+            report = json.load(f)
+        
+        print(f\"- **Total Stories**: {report['metadata']['total_items']}\")
+        print(f\"- **Total Story Points**: {report['metadata']['total_story_points']}\")
+        print(f\"- **Estimated Sprints**: {report['metadata']['estimated_sprints']}\")
+        print(f\"- **Fibonacci Compliance**: {report['metadata']['fibonacci_compliance']}\")
+        print(\"\")
+        print(\"### Epic Breakdown:\")
+        for epic_id, epic in report['epic_breakdown'].items():
+            print(f\"- **{epic_id}**: {epic['story_count']} stories, {epic['total_story_points']} SP\")
+        print(\"\")
+        print(\"### Generated Artifacts:\")
+        for name, path in report['artifacts_generated'].items():
+            filename = path.split('/')[-1]
+            print(f\"- {name}: \`{filename}\`\")
+          " >> $GITHUB_STEP_SUMMARY
+        fi
+        
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: tier1-backlog-artifacts-${{ github.run_number }}
+        path: |
+          reports/
+          
+    - name: Create PR comment (for PR triggers)
+      if: github.event_name == 'pull_request'
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const fs = require('fs');
+          
+          let summary = "📊 **Tier-1 Priority Backlog Refreshed**\n\n";
+          
+          try {
+            const reportPath = 'reports/tier1_backlog_report.json';
+            if (fs.existsSync(reportPath)) {
+              const report = JSON.parse(fs.readFileSync(reportPath, 'utf8'));
+              summary += `- **Total Stories**: ${report.metadata.total_items}\n`;
+              summary += `- **Total Story Points**: ${report.metadata.total_story_points}\n`;
+              summary += `- **Estimated Sprints**: ${report.metadata.estimated_sprints}\n`;
+              summary += `- **Run Mode**: ${{ github.event.inputs.dry_run == 'true' && 'DRY RUN' || 'LIVE CREATION' }}\n\n`;
+              
+              summary += "### Epic Breakdown:\n";
+              for (const [epicId, epic] of Object.entries(report.epic_breakdown)) {
+                summary += `- **${epicId}**: ${epic.story_count} stories, ${epic.total_story_points} SP\n`;
+              }
+            }
+          } catch (error) {
+            summary += "_Unable to read detailed report_\n";
+          }
+          
+          summary += `\n🔗 **Artifacts**: Download from [workflow run](${context.payload.pull_request.html_url}/checks)`;
+          
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: summary
+          })

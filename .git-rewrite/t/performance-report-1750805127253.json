@@ -1,0 +1,348 @@
+{
+  "timestamp": "2025-06-24T22:43:29.005Z",
+  "system": {
+    "platform": "darwin",
+    "arch": "arm64",
+    "cpus": 16,
+    "totalMemory": "128GB",
+    "freeMemory": "74GB"
+  },
+  "tests": [
+    {
+      "name": "Root TypeScript Compilation",
+      "success": false,
+      "duration": 925
+    },
+    {
+      "name": "Frontend TypeScript Compilation",
+      "success": false,
+      "duration": 1440
+    },
+    {
+      "name": "Backend Build",
+      "success": true,
+      "duration": 61004,
+      "performance": {
+        "name": "backend-build",
+        "pid": 58347,
+        "duration": 60,
+        "samples": 1,
+        "cpu": {
+          "max": "1.20",
+          "average": "1.20"
+        },
+        "memory": {
+          "max": "53.81MB",
+          "average": "53.81MB"
+        },
+        "rawStats": [
+          {
+            "timestamp": 1750805012387,
+            "pid": 58347,
+            "cpu": 1.2,
+            "memory": 0,
+            "vsz": 411433040,
+            "rss": 55104,
+            "time": "0:00.09"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Backend Unit Tests",
+      "success": false,
+      "duration": 12994
+    },
+    {
+      "name": "Frontend Build",
+      "success": false,
+      "duration": 6438
+    },
+    {
+      "name": "Frontend Development Server",
+      "success": true,
+      "performance": {
+        "name": "frontend-dev",
+        "pid": 59165,
+        "duration": 30,
+        "samples": 29,
+        "cpu": {
+          "max": "0.30",
+          "average": "0.01"
+        },
+        "memory": {
+          "max": "54.06MB",
+          "average": "52.54MB"
+        },
+        "rawStats": [
+          {
+            "timestamp": 1750805094570,
+            "pid": 59165,
+            "cpu": 0,
+            "memory": 0,
+            "vsz": 411704400,
+            "rss": 55360,
+            "time": "0:00.10"
+          },
+          {
+            "timestamp": 1750805095573,
+            "pid": 59165,
+            "cpu": 0,
+            "memory": 0,
+            "vsz": 411704400,
+            "rss": 55360,
+            "time": "0:00.10"
+          },
+          {
+            "timestamp": 1750805096572,
+            "pid": 59165,
+            "cpu": 0,
+            "memory": 0,
+            "vsz": 411704400,
+            "rss": 55360,
+            "time": "0:00.10"
+          },
+          {
+            "timestamp": 1750805097579,
+            "pid": 59165,
+            "cpu": 0,
+            "memory": 0,
+            "vsz": 411703840,
+            "rss": 55344,
+            "time": "0:00.10"
+          },
+          {
+            "timestamp": 1750805098576,
+            "pid": 59165,
+            "cpu": 0,
+            "memory": 0,
+            "vsz": 411703840,
+            "rss": 55344,
+            "time": "0:00.10"
+          },
+          {
+            "timestamp": 1750805099580,
+            "pid": 59165,
+            "cpu": 0,
+            "memory": 0,
+            "vsz": 411703840,
+            "rss": 55344,
+            "time": "0:00.10"
+          },
+          {
+            "timestamp": 1750805100576,
+            "pid": 59165,
+            "cpu": 0.3,
+            "memory": 0,
+            "vsz": 411737376,
+            "rss": 54224,
+            "time": "0:00.11"
+          },
+          {
+            "timestamp": 1750805101577,
+            "pid": 59165,
+            "cpu": 0,
+            "memory": 0,
+            "vsz": 411737376,
+            "rss": 53360,
+            "time": "0:00.12"
+          },
+          {
+            "timestamp": 1750805102579,
+            "pid": 59165,
+            "cpu": 0,
+            "memory": 0,
+            "vsz": 411737376,
+            "rss": 53360,
+            "time": "0:00.12"
+          },
+          {
+            "timestamp": 1750805103584,
+            "pid": 59165,
+            "cpu": 0,
+            "memory": 0,
+            "vsz": 411737376,
+            "rss": 53360,
+            "time": "0:00.12"
+          },
+          {
+            "timestamp": 1750805104581,
+            "pid": 59165,
+            "cpu": 0,
+            "memory": 0,
+            "vsz": 411737376,
+            "rss": 53360,
+            "time": "0:00.12"
+          },
+          {
+            "timestamp": 1750805105585,
+            "pid": 59165,
+            "cpu": 0,
+            "memory": 0,
+            "vsz": 411737376,
+            "rss": 53360,
+            "time": "0:00.12"
+          },
+          {
+            "timestamp": 1750805106582,
+            "pid": 59165,
+            "cpu": 0,
+            "memory": 0,
+            "vsz": 411737376,
+            "rss": 53360,
+            "time": "0:00.12"
+          },
+          {
+            "timestamp": 1750805107583,
+            "pid": 59165,
+            "cpu": 0,
+            "memory": 0,
+            "vsz": 411737376,
+            "rss": 53360,
+            "time": "0:00.12"
+          },
+          {
+            "timestamp": 1750805108592,
+            "pid": 59165,
+            "cpu": 0,
+            "memory": 0,
+            "vsz": 411737376,
+            "rss": 53360,
+            "time": "0:00.12"
+          },
+          {
+            "timestamp": 1750805109586,
+            "pid": 59165,
+            "cpu": 0,
+            "memory": 0,
+            "vsz": 411737376,
+            "rss": 53360,
+            "time": "0:00.12"
+          },
+          {
+            "timestamp": 1750805110592,
+            "pid": 59165,
+            "cpu": 0,
+            "memory": 0,
+            "vsz": 411737376,
+            "rss": 53360,
+            "time": "0:00.12"
+          },
+          {
+            "timestamp": 1750805111588,
+            "pid": 59165,
+            "cpu": 0,
+            "memory": 0,
+            "vsz": 411737376,
+            "rss": 53360,
+            "time": "0:00.12"
+          },
+          {
+            "timestamp": 1750805112595,
+            "pid": 59165,
+            "cpu": 0,
+            "memory": 0,
+            "vsz": 411737376,
+            "rss": 53360,
+            "time": "0:00.12"
+          },
+          {
+            "timestamp": 1750805113597,
+            "pid": 59165,
+            "cpu": 0,
+            "memory": 0,
+            "vsz": 411737376,
+            "rss": 53360,
+            "time": "0:00.12"
+          },
+          {
+            "timestamp": 1750805114596,
+            "pid": 59165,
+            "cpu": 0,
+            "memory": 0,
+            "vsz": 411737376,
+            "rss": 53360,
+            "time": "0:00.12"
+          },
+          {
+            "timestamp": 1750805115592,
+            "pid": 59165,
+            "cpu": 0,
+            "memory": 0,
+            "vsz": 411737376,
+            "rss": 53360,
+            "time": "0:00.12"
+          },
+          {
+            "timestamp": 1750805116599,
+            "pid": 59165,
+            "cpu": 0,
+            "memory": 0,
+            "vsz": 411737376,
+            "rss": 53360,
+            "time": "0:00.12"
+          },
+          {
+            "timestamp": 1750805117596,
+            "pid": 59165,
+            "cpu": 0,
+            "memory": 0,
+            "vsz": 411737376,
+            "rss": 53360,
+            "time": "0:00.12"
+          },
+          {
+            "timestamp": 1750805118601,
+            "pid": 59165,
+            "cpu": 0,
+            "memory": 0,
+            "vsz": 411737376,
+            "rss": 53360,
+            "time": "0:00.12"
+          },
+          {
+            "timestamp": 1750805119595,
+            "pid": 59165,
+            "cpu": 0,
+            "memory": 0,
+            "vsz": 411737376,
+            "rss": 53360,
+            "time": "0:00.12"
+          },
+          {
+            "timestamp": 1750805120603,
+            "pid": 59165,
+            "cpu": 0,
+            "memory": 0,
+            "vsz": 411737376,
+            "rss": 53360,
+            "time": "0:00.12"
+          },
+          {
+            "timestamp": 1750805121601,
+            "pid": 59165,
+            "cpu": 0,
+            "memory": 0,
+            "vsz": 411737376,
+            "rss": 53360,
+            "time": "0:00.12"
+          },
+          {
+            "timestamp": 1750805122605,
+            "pid": 59165,
+            "cpu": 0,
+            "memory": 0,
+            "vsz": 411737376,
+            "rss": 53360,
+            "time": "0:00.12"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AI Model Inference",
+      "success": false,
+      "duration": 2687
+    }
+  ]
+}

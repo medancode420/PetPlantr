@@ -1,0 +1,33 @@
+=== System Information ===
+Date: Tue Jun 24 18:54:27 EDT 2025
+OS: Darwin Daniels-MBP 24.6.0 Darwin Kernel Version 24.6.0: Wed Jun 11 21:22:41 PDT 2025; root:xnu-11417.140.62.501.1~2/RELEASE_ARM64_T6031 arm64
+
+CPU Information:
+Apple M3 Max
+16
+
+Memory Information:
+Total Memory: 128 GB
+Mach Virtual Memory Statistics: (page size of 16384 bytes)
+Pages free:                             4393232.
+Pages active:                           1755651.
+Pages inactive:                         1474925.
+Pages speculative:                       321795.
+Pages throttled:                              0.
+Pages wired down:                        320233.
+Pages purgeable:                         260924.
+"Translation faults":                 394659244.
+Pages copy-on-write:                   23322471.
+Pages zero filled:                    211394397.
+Pages reactivated:                       133199.
+Pages purged:                            707654.
+File-backed pages:                      1299001.
+Anonymous pages:                        2253370.
+Pages stored in compressor:                   0.
+Pages occupied by compressor:                 0.
+Decompressions:                               0.
+Compressions:                                 0.
+Pageins:                                8257682.
+Pageouts:                                     0.
+Swapins:                                      0.
+Swapouts:                                     0.

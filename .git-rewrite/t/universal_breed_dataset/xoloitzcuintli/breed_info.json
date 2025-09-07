@@ -1,0 +1,21 @@
+{
+  "breed_name": "Xoloitzcuintli",
+  "breed_group": "Non-Sporting",
+  "origin": "Mexico",
+  "size": "Varies",
+  "coat_type": "Hairless",
+  "akc_recognized": true,
+  "fci_recognized": true,
+  "characteristics": [
+    "Tranquil",
+    "Alert",
+    "Loyal"
+  ],
+  "aliases": [
+    "Mexican Hairless Dog",
+    "Xolo"
+  ],
+  "target_images": 500,
+  "collection_status": "pending",
+  "last_updated": "2025-06-29"
+}

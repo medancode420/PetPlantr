@@ -1,0 +1,22 @@
+{
+  "filename": "integrated_newfoundland_mathematical_1750985678.stl",
+  "generation_method": "Mathematical",
+  "analysis_result": {
+    "predicted_breed": "newfoundland",
+    "confidence": 0.2539348641653958,
+    "method": "fixed_37_class_mapping",
+    "features": {
+      "snout_length": 0.5,
+      "ear_style": "floppy",
+      "face_width": 1.0,
+      "distinctive_features": [
+        "generic"
+      ]
+    },
+    "ai_success": true
+  },
+  "triangle_count": 987,
+  "vertex_count": 509,
+  "timestamp": 1750985678,
+  "ai_available": true
+}

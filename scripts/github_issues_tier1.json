@@ -1,0 +1,146 @@
+{
+  "metadata": {
+    "generated_at": "2024-01-15T10:30:00.000000",
+    "source": "tier1_priority_backlog.ipynb",
+    "total_issues": 13,
+    "total_story_points": 49,
+    "epics": ["E-1", "E-2", "E-3"]
+  },
+  "issues": [
+    {
+      "title": "[2.1] Profiling run: identify top 3 bottlenecks (SP: 2)",
+      "body": "## 📋 Epic: E-2: Performance Optimisation (sub-5 s end-to-end)\n**Story ID:** 2.1\n**Story Points:** 2\n\n## 📝 Story Description\nProfiling run: identify top 3 bottlenecks\n\n## ✅ Definition of Done\n- Flamegraphs & report in /perf/\n\n## 🧪 Acceptance Tests\n- Bottleneck list reviewed in Arch sync\n\n## 📊 Integration with Test Infrastructure\nThis story integrates with our comprehensive test suite:\n\n### Performance Benchmarks\n- AI inference latency: < 500ms (from conftest.py performance_thresholds)\n- API response time: < 200ms\n- Memory usage regression: < 10%\n\n### Quality Gates\n- Test coverage: ≥ 95%\n- Mutation score: ≥ 80%\n- Security scan: 0 critical vulnerabilities\n\n**Created:** 2024-01-15 10:30:00\n**Notebook:** tier1_priority_backlog.ipynb",
+      "labels": ["epic-e-2", "sp-2", "tier-1-priority", "performance", "optimization", "infrastructure"],
+      "milestone": "Tier-1 Sprint: Performance Optimisation (sub-5 s end-to-end)...",
+      "assignees": [],
+      "projects": ["PetPlantr Tier-1 Backlog"],
+      "metadata": {
+        "item_id": "2.1",
+        "epic": "E-2",
+        "story_points": 2,
+        "dependencies": [],
+        "created_date": "2024-01-15T10:30:00.000000"
+      }
+    },
+    {
+      "title": "[2.2] Model quantisation (INT8) (SP: 5)",
+      "body": "## 📋 Epic: E-2: Performance Optimisation (sub-5 s end-to-end)\n**Story ID:** 2.2\n**Story Points:** 5\n\n## 📝 Story Description\nModel quantisation (INT8)\n\n## ✅ Definition of Done\n- Quantised model v1.4-int8 stored\n- Accuracy drop < 1 pp\n\n## 🧪 Acceptance Tests\n- pytest tests/model/test_accuracy.py drop ≤ 1 pp\n\n## 🔗 Dependencies\n- Depends on: #2.1\n\n## 📊 Integration with Test Infrastructure\nThis story integrates with our comprehensive test suite:\n\n### Performance Benchmarks\n- AI inference latency: < 500ms (from conftest.py performance_thresholds)\n- API response time: < 200ms\n- Memory usage regression: < 10%\n\n### Quality Gates\n- Test coverage: ≥ 95%\n- Mutation score: ≥ 80%\n- Security scan: 0 critical vulnerabilities\n\n**Created:** 2024-01-15 10:30:00\n**Notebook:** tier1_priority_backlog.ipynb",
+      "labels": ["epic-e-2", "sp-5", "tier-1-priority", "performance", "optimization", "infrastructure"],
+      "milestone": "Tier-1 Sprint: Performance Optimisation (sub-5 s end-to-end)...",
+      "assignees": [],
+      "projects": ["PetPlantr Tier-1 Backlog"],
+      "metadata": {
+        "item_id": "2.2",
+        "epic": "E-2",
+        "story_points": 5,
+        "dependencies": ["2.1"],
+        "created_date": "2024-01-15T10:30:00.000000"
+      }
+    },
+    {
+      "title": "[2.3] Batch inference path (10 imgs req) (SP: 3)",
+      "body": "## 📋 Epic: E-2: Performance Optimisation (sub-5 s end-to-end)\n**Story ID:** 2.3\n**Story Points:** 3\n\n## 📝 Story Description\nBatch inference path (10 imgs req)\n\n## ✅ Definition of Done\n- /infer/batch returns array\n- Worker util ≥ 70% GPU\n\n## 🧪 Acceptance Tests\n- Load test TPS ≥ 150 on A10G\n\n## 🔗 Dependencies\n- Depends on: #2.1\n\n## 📊 Integration with Test Infrastructure\nThis story integrates with our comprehensive test suite:\n\n### Performance Benchmarks\n- AI inference latency: < 500ms (from conftest.py performance_thresholds)\n- API response time: < 200ms\n- Memory usage regression: < 10%\n\n### Quality Gates\n- Test coverage: ≥ 95%\n- Mutation score: ≥ 80%\n- Security scan: 0 critical vulnerabilities\n\n**Created:** 2024-01-15 10:30:00\n**Notebook:** tier1_priority_backlog.ipynb",
+      "labels": ["epic-e-2", "sp-3", "tier-1-priority", "performance", "optimization", "infrastructure"],
+      "milestone": "Tier-1 Sprint: Performance Optimisation (sub-5 s end-to-end)...",
+      "assignees": [],
+      "projects": ["PetPlantr Tier-1 Backlog"],
+      "metadata": {
+        "item_id": "2.3",
+        "epic": "E-2",
+        "story_points": 3,
+        "dependencies": ["2.1"],
+        "created_date": "2024-01-15T10:30:00.000000"
+      }
+    },
+    {
+      "title": "[2.4] Asynchronous image pre-resize lambda (SP: 5)",
+      "body": "## 📋 Epic: E-2: Performance Optimisation (sub-5 s end-to-end)\n**Story ID:** 2.4\n**Story Points:** 5\n\n## 📝 Story Description\nAsynchronous image pre-resize lambda\n\n## ✅ Definition of Done\n- Lambda img-thumb-512 live\n- Avg resize latency < 150 ms\n\n## 🧪 Acceptance Tests\n- make e2e-perf p95 end-to-end < 5 s\n\n## 🔗 Dependencies\n- Depends on: #2.3\n\n## 📊 Integration with Test Infrastructure\nThis story integrates with our comprehensive test suite:\n\n### Performance Benchmarks\n- AI inference latency: < 500ms (from conftest.py performance_thresholds)\n- API response time: < 200ms\n- Memory usage regression: < 10%\n\n### Quality Gates\n- Test coverage: ≥ 95%\n- Mutation score: ≥ 80%\n- Security scan: 0 critical vulnerabilities\n\n**Created:** 2024-01-15 10:30:00\n**Notebook:** tier1_priority_backlog.ipynb",
+      "labels": ["epic-e-2", "sp-5", "tier-1-priority", "performance", "optimization", "infrastructure"],
+      "milestone": "Tier-1 Sprint: Performance Optimisation (sub-5 s end-to-end)...",
+      "assignees": [],
+      "projects": ["PetPlantr Tier-1 Backlog"],
+      "metadata": {
+        "item_id": "2.4",
+        "epic": "E-2",
+        "story_points": 5,
+        "dependencies": ["2.3"],
+        "created_date": "2024-01-15T10:30:00.000000"
+      }
+    },
+    {
+      "title": "[3.1] External pen-test remediation (SP: 5)",
+      "body": "## 📋 Epic: E-3: Production Launch Hardening\n**Story ID:** 3.1\n**Story Points:** 5\n\n## 📝 Story Description\nExternal pen-test remediation\n\n## ✅ Definition of Done\n- All High/Critical findings fixed\n- Report uploaded to security/\n\n## 🧪 Acceptance Tests\n- Retest shows 0 High/Critical\n\n## 📊 Integration with Test Infrastructure\nThis story integrates with our comprehensive test suite:\n\n### Performance Benchmarks\n- AI inference latency: < 500ms (from conftest.py performance_thresholds)\n- API response time: < 200ms\n- Memory usage regression: < 10%\n\n### Quality Gates\n- Test coverage: ≥ 95%\n- Mutation score: ≥ 80%\n- Security scan: 0 critical vulnerabilities\n\n**Created:** 2024-01-15 10:30:00\n**Notebook:** tier1_priority_backlog.ipynb",
+      "labels": ["epic-e-3", "sp-5", "tier-1-priority", "production", "security", "devops"],
+      "milestone": "Tier-1 Sprint: Production Launch Hardening",
+      "assignees": [],
+      "projects": ["PetPlantr Tier-1 Backlog"],
+      "metadata": {
+        "item_id": "3.1",
+        "epic": "E-3",
+        "story_points": 5,
+        "dependencies": [],
+        "created_date": "2024-01-15T10:30:00.000000"
+      }
+    },
+    {
+      "title": "[3.2] Disaster-recovery runbook (RTO < 2 h / RPO < 15 min) (SP: 3)",
+      "body": "## 📋 Epic: E-3: Production Launch Hardening\n**Story ID:** 3.2\n**Story Points:** 3\n\n## 📝 Story Description\nDisaster-recovery runbook (RTO < 2 h / RPO < 15 min)\n\n## ✅ Definition of Done\n- Runbook doc in Confluence\n- terraform apply -var test_dr=true succeeds\n\n## 🧪 Acceptance Tests\n- Table-top exercise signed off by DevOps lead\n\n## 🔗 Dependencies\n- Depends on: #3.1\n\n## 📊 Integration with Test Infrastructure\nThis story integrates with our comprehensive test suite:\n\n### Performance Benchmarks\n- AI inference latency: < 500ms (from conftest.py performance_thresholds)\n- API response time: < 200ms\n- Memory usage regression: < 10%\n\n### Quality Gates\n- Test coverage: ≥ 95%\n- Mutation score: ≥ 80%\n- Security scan: 0 critical vulnerabilities\n\n**Created:** 2024-01-15 10:30:00\n**Notebook:** tier1_priority_backlog.ipynb",
+      "labels": ["epic-e-3", "sp-3", "tier-1-priority", "production", "security", "devops"],
+      "milestone": "Tier-1 Sprint: Production Launch Hardening",
+      "assignees": [],
+      "projects": ["PetPlantr Tier-1 Backlog"],
+      "metadata": {
+        "item_id": "3.2",
+        "epic": "E-3",
+        "story_points": 3,
+        "dependencies": ["3.1"],
+        "created_date": "2024-01-15T10:30:00.000000"
+      }
+    },
+    {
+      "title": "[3.3] Multi-AZ K8s cluster IaC (SP: 8)",
+      "body": "## 📋 Epic: E-3: Production Launch Hardening\n**Story ID:** 3.3\n**Story Points:** 8\n\n## 📝 Story Description\nMulti-AZ K8s cluster IaC\n\n## ✅ Definition of Done\n- EKS 3-AZ cluster via Terraform\n- Argo CD bootstraps app\n- 99.9% uptime SLO dashboards\n\n## 🧪 Acceptance Tests\n- Chaos-Monkey node kill ⇒ no 5xx > 1 min\n\n## 🔗 Dependencies\n- Depends on: #3.2\n\n## 📊 Integration with Test Infrastructure\nThis story integrates with our comprehensive test suite:\n\n### Performance Benchmarks\n- AI inference latency: < 500ms (from conftest.py performance_thresholds)\n- API response time: < 200ms\n- Memory usage regression: < 10%\n\n### Quality Gates\n- Test coverage: ≥ 95%\n- Mutation score: ≥ 80%\n- Security scan: 0 critical vulnerabilities\n\n**Created:** 2024-01-15 10:30:00\n**Notebook:** tier1_priority_backlog.ipynb",
+      "labels": ["epic-e-3", "sp-8", "tier-1-priority", "production", "security", "devops"],
+      "milestone": "Tier-1 Sprint: Production Launch Hardening",
+      "assignees": [],
+      "projects": ["PetPlantr Tier-1 Backlog"],
+      "metadata": {
+        "item_id": "3.3",
+        "epic": "E-3",
+        "story_points": 8,
+        "dependencies": ["3.2"],
+        "created_date": "2024-01-15T10:30:00.000000"
+      }
+    },
+    {
+      "title": "[3.4] Stripe + EventBridge prod toggle (SP: 2)",
+      "body": "## 📋 Epic: E-3: Production Launch Hardening\n**Story ID:** 3.4\n**Story Points:** 2\n\n## 📝 Story Description\nStripe + EventBridge prod toggle\n\n## ✅ Definition of Done\n- Prod keys in AWS Secrets Mgr\n- All webhook events verified in prod log\n\n## 🧪 Acceptance Tests\n- $ make payments-smoke passes; funds captured\n\n## 🔗 Dependencies\n- Depends on: #3.3\n\n## 📊 Integration with Test Infrastructure\nThis story integrates with our comprehensive test suite:\n\n### Performance Benchmarks\n- AI inference latency: < 500ms (from conftest.py performance_thresholds)\n- API response time: < 200ms\n- Memory usage regression: < 10%\n\n### Quality Gates\n- Test coverage: ≥ 95%\n- Mutation score: ≥ 80%\n- Security scan: 0 critical vulnerabilities\n\n**Created:** 2024-01-15 10:30:00\n**Notebook:** tier1_priority_backlog.ipynb",
+      "labels": ["epic-e-3", "sp-2", "tier-1-priority", "production", "security", "devops"],
+      "milestone": "Tier-1 Sprint: Production Launch Hardening",
+      "assignees": [],
+      "projects": ["PetPlantr Tier-1 Backlog"],
+      "metadata": {
+        "item_id": "3.4",
+        "epic": "E-3",
+        "story_points": 2,
+        "dependencies": ["3.3"],
+        "created_date": "2024-01-15T10:30:00.000000"
+      }
+    },
+    {
+      "title": "[3.5] Launch checklist sign-off (SP: 1)",
+      "body": "## 📋 Epic: E-3: Production Launch Hardening\n**Story ID:** 3.5\n**Story Points:** 1\n\n## 📝 Story Description\nLaunch checklist sign-off\n\n## ✅ Definition of Done\n- All P0s closed\n- Stakeholder sign-off sheet posted\n\n## 🧪 Acceptance Tests\n- Ship-party 🎉\n\n## 🔗 Dependencies\n- Depends on: #3.4\n\n## 📊 Integration with Test Infrastructure\nThis story integrates with our comprehensive test suite:\n\n### Performance Benchmarks\n- AI inference latency: < 500ms (from conftest.py performance_thresholds)\n- API response time: < 200ms\n- Memory usage regression: < 10%\n\n### Quality Gates\n- Test coverage: ≥ 95%\n- Mutation score: ≥ 80%\n- Security scan: 0 critical vulnerabilities\n\n**Created:** 2024-01-15 10:30:00\n**Notebook:** tier1_priority_backlog.ipynb",
+      "labels": ["epic-e-3", "sp-1", "tier-1-priority", "production", "security", "devops"],
+      "milestone": "Tier-1 Sprint: Production Launch Hardening",
+      "assignees": [],
+      "projects": ["PetPlantr Tier-1 Backlog"],
+      "metadata": {
+        "item_id": "3.5",
+        "epic": "E-3",
+        "story_points": 1,
+        "dependencies": ["3.4"],
+        "created_date": "2024-01-15T10:30:00.000000"
+      }
+    }
+  ]
+}

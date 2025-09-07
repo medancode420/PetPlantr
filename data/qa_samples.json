@@ -1,0 +1,1002 @@
+{
+  "affenpinscher_0a383566.jpg": {
+    "filename": "affenpinscher_0a383566.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "correct",
+    "human_label": "affenpinscher",
+    "reviewed_at": "2025-09-05T00:17:32.978287"
+  },
+  "affenpinscher_b98cbc09.jpg": {
+    "filename": "affenpinscher_b98cbc09.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "correct",
+    "human_label": "affenpinscher",
+    "reviewed_at": "2025-09-05T00:17:32.978940"
+  },
+  "affenpinscher_7654f323.jpg": {
+    "filename": "affenpinscher_7654f323.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "correct",
+    "human_label": "affenpinscher",
+    "reviewed_at": "2025-09-05T00:17:32.980076"
+  },
+  "affenpinscher_565c2697.jpg": {
+    "filename": "affenpinscher_565c2697.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "correct",
+    "human_label": "affenpinscher",
+    "reviewed_at": "2025-09-05T00:17:32.980662"
+  },
+  "affenpinscher_4eeadd81.jpg": {
+    "filename": "affenpinscher_4eeadd81.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "correct",
+    "human_label": "affenpinscher",
+    "reviewed_at": "2025-09-05T00:17:32.981157"
+  },
+  "affenpinscher_15add1ef.jpg": {
+    "filename": "affenpinscher_15add1ef.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "correct",
+    "human_label": "affenpinscher",
+    "reviewed_at": "2025-09-05T00:17:32.981690"
+  },
+  "affenpinscher_13746e84.jpg": {
+    "filename": "affenpinscher_13746e84.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "lhasa_apso",
+    "confidence": 0.7147749885636081,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "correct",
+    "human_label": "affenpinscher",
+    "reviewed_at": "2025-09-05T00:17:32.982221"
+  },
+  "affenpinscher_3d265a50.jpg": {
+    "filename": "affenpinscher_3d265a50.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "correct",
+    "human_label": "affenpinscher",
+    "reviewed_at": "2025-09-05T00:17:32.982705"
+  },
+  "affenpinscher_b663813e.jpg": {
+    "filename": "affenpinscher_b663813e.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "correct",
+    "human_label": "affenpinscher",
+    "reviewed_at": "2025-09-05T00:17:32.983235"
+  },
+  "affenpinscher_9d007265.jpg": {
+    "filename": "affenpinscher_9d007265.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "correct",
+    "human_label": "affenpinscher",
+    "reviewed_at": "2025-09-05T00:17:32.983761"
+  },
+  "affenpinscher_bb273f6d.jpg": {
+    "filename": "affenpinscher_bb273f6d.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "correct",
+    "human_label": "affenpinscher",
+    "reviewed_at": "2025-09-05T00:17:32.984285"
+  },
+  "affenpinscher_f711f512.jpg": {
+    "filename": "affenpinscher_f711f512.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "correct",
+    "human_label": "affenpinscher",
+    "reviewed_at": "2025-09-05T00:17:32.984839"
+  },
+  "affenpinscher_9e0ae4cd.jpg": {
+    "filename": "affenpinscher_9e0ae4cd.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "correct",
+    "human_label": "affenpinscher",
+    "reviewed_at": "2025-09-05T00:17:32.985371"
+  },
+  "affenpinscher_fe19d186.jpg": {
+    "filename": "affenpinscher_fe19d186.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "correct",
+    "human_label": "affenpinscher",
+    "reviewed_at": "2025-09-05T00:17:32.986025"
+  },
+  "affenpinscher_029ce489.jpg": {
+    "filename": "affenpinscher_029ce489.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "correct",
+    "human_label": "affenpinscher",
+    "reviewed_at": "2025-09-05T00:17:32.986532"
+  },
+  "affenpinscher_6895310e.jpg": {
+    "filename": "affenpinscher_6895310e.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "correct",
+    "human_label": "affenpinscher",
+    "reviewed_at": "2025-09-05T00:17:32.986975"
+  },
+  "affenpinscher_d2c55d04.jpg": {
+    "filename": "affenpinscher_d2c55d04.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "correct",
+    "human_label": "affenpinscher",
+    "reviewed_at": "2025-09-05T00:17:32.987432"
+  },
+  "affenpinscher_82fb1982.jpg": {
+    "filename": "affenpinscher_82fb1982.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "siberian_husky",
+    "confidence": 0.6449755499705506,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "correct",
+    "human_label": "affenpinscher",
+    "reviewed_at": "2025-09-05T00:17:32.987876"
+  },
+  "affenpinscher_f29e6c4c.jpg": {
+    "filename": "affenpinscher_f29e6c4c.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "correct",
+    "human_label": "affenpinscher",
+    "reviewed_at": "2025-09-05T00:17:32.988308"
+  },
+  "affenpinscher_bd523b72.jpg": {
+    "filename": "affenpinscher_bd523b72.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "incorrect",
+    "human_label": "affenpinscher",
+    "reviewed_at": "2025-09-05T00:17:32.988738"
+  },
+  "affenpinscher_c9218a88.jpg": {
+    "filename": "affenpinscher_c9218a88.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "affenpinscher_aa9532ba.jpg": {
+    "filename": "affenpinscher_aa9532ba.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "affenpinscher_be7a4971.jpg": {
+    "filename": "affenpinscher_be7a4971.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "affenpinscher_81dc7021.jpg": {
+    "filename": "affenpinscher_81dc7021.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "affenpinscher_da836408.jpg": {
+    "filename": "affenpinscher_da836408.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "affenpinscher_12d0a084.jpg": {
+    "filename": "affenpinscher_12d0a084.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "affenpinscher_2dc27e99.jpg": {
+    "filename": "affenpinscher_2dc27e99.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "affenpinscher_4325ec73.jpg": {
+    "filename": "affenpinscher_4325ec73.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "affenpinscher_1923cd57.jpg": {
+    "filename": "affenpinscher_1923cd57.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "affenpinscher_180c5f43.jpg": {
+    "filename": "affenpinscher_180c5f43.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "affenpinscher_391612b5.jpg": {
+    "filename": "affenpinscher_391612b5.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "affenpinscher_cae39587.jpg": {
+    "filename": "affenpinscher_cae39587.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "affenpinscher_75ac3814.jpg": {
+    "filename": "affenpinscher_75ac3814.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "affenpinscher_0a33ab91.jpg": {
+    "filename": "affenpinscher_0a33ab91.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "affenpinscher_cb174300.jpg": {
+    "filename": "affenpinscher_cb174300.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "affenpinscher_a6ce2bd8.jpg": {
+    "filename": "affenpinscher_a6ce2bd8.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "affenpinscher_26a4f499.jpg": {
+    "filename": "affenpinscher_26a4f499.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "affenpinscher_7e6a846d.jpg": {
+    "filename": "affenpinscher_7e6a846d.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "affenpinscher_cac70d02.jpg": {
+    "filename": "affenpinscher_cac70d02.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "affenpinscher_321b7fab.jpg": {
+    "filename": "affenpinscher_321b7fab.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "affenpinscher_afc11531.jpg": {
+    "filename": "affenpinscher_afc11531.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "affenpinscher_4e7a5d79.jpg": {
+    "filename": "affenpinscher_4e7a5d79.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "affenpinscher_f188d29e.jpg": {
+    "filename": "affenpinscher_f188d29e.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "affenpinscher_ac0c231a.jpg": {
+    "filename": "affenpinscher_ac0c231a.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "affenpinscher_0a20ac08.jpg": {
+    "filename": "affenpinscher_0a20ac08.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "curly_coated_retriever",
+    "confidence": 0.7407473767210639,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "affenpinscher_16b7a408.jpg": {
+    "filename": "affenpinscher_16b7a408.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "affenpinscher_8af0597d.jpg": {
+    "filename": "affenpinscher_8af0597d.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "affenpinscher_b1cf2aab.jpg": {
+    "filename": "affenpinscher_b1cf2aab.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "affenpinscher_efd47977.jpg": {
+    "filename": "affenpinscher_efd47977.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "affenpinscher_f50e09a1.jpg": {
+    "filename": "affenpinscher_f50e09a1.jpg",
+    "breed": "affenpinscher",
+    "predicted_breed": "affenpinscher",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_6d6ace33.jpg": {
+    "filename": "afghan_hound_6d6ace33.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_74647006.jpg": {
+    "filename": "afghan_hound_74647006.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_3020108a.jpg": {
+    "filename": "afghan_hound_3020108a.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_311dbdda.jpg": {
+    "filename": "afghan_hound_311dbdda.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_f8385a91.jpg": {
+    "filename": "afghan_hound_f8385a91.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_e20fff4f.jpg": {
+    "filename": "afghan_hound_e20fff4f.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_6887f653.jpg": {
+    "filename": "afghan_hound_6887f653.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_fd3f4ff1.jpg": {
+    "filename": "afghan_hound_fd3f4ff1.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_444cd0ca.jpg": {
+    "filename": "afghan_hound_444cd0ca.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_c9cee769.jpg": {
+    "filename": "afghan_hound_c9cee769.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_70e50756.jpg": {
+    "filename": "afghan_hound_70e50756.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_f211aba3.jpg": {
+    "filename": "afghan_hound_f211aba3.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_cabc664a.jpg": {
+    "filename": "afghan_hound_cabc664a.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_af0bb6bc.jpg": {
+    "filename": "afghan_hound_af0bb6bc.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_0e67a285.jpg": {
+    "filename": "afghan_hound_0e67a285.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_19f945c4.jpg": {
+    "filename": "afghan_hound_19f945c4.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_e2f5ca34.jpg": {
+    "filename": "afghan_hound_e2f5ca34.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_e60af1c4.jpg": {
+    "filename": "afghan_hound_e60af1c4.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_72a7f0d8.jpg": {
+    "filename": "afghan_hound_72a7f0d8.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_542c06bd.jpg": {
+    "filename": "afghan_hound_542c06bd.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_498334fe.jpg": {
+    "filename": "afghan_hound_498334fe.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_9f9f5a99.jpg": {
+    "filename": "afghan_hound_9f9f5a99.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_97eeef6d.jpg": {
+    "filename": "afghan_hound_97eeef6d.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_8575af49.jpg": {
+    "filename": "afghan_hound_8575af49.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_53ab8dc6.jpg": {
+    "filename": "afghan_hound_53ab8dc6.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_85dc409c.jpg": {
+    "filename": "afghan_hound_85dc409c.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_765bea06.jpg": {
+    "filename": "afghan_hound_765bea06.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_e399cc4e.jpg": {
+    "filename": "afghan_hound_e399cc4e.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_655d0469.jpg": {
+    "filename": "afghan_hound_655d0469.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_e075d051.jpg": {
+    "filename": "afghan_hound_e075d051.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_e37a9729.jpg": {
+    "filename": "afghan_hound_e37a9729.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_378f4ac3.jpg": {
+    "filename": "afghan_hound_378f4ac3.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_65bccba4.jpg": {
+    "filename": "afghan_hound_65bccba4.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_5d192d20.jpg": {
+    "filename": "afghan_hound_5d192d20.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_35654ed1.jpg": {
+    "filename": "afghan_hound_35654ed1.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_b06a0940.jpg": {
+    "filename": "afghan_hound_b06a0940.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_ba1f8447.jpg": {
+    "filename": "afghan_hound_ba1f8447.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_1f243768.jpg": {
+    "filename": "afghan_hound_1f243768.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_0f177661.jpg": {
+    "filename": "afghan_hound_0f177661.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "papillon",
+    "confidence": 0.8206196736052914,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_8339c381.jpg": {
+    "filename": "afghan_hound_8339c381.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_07633735.jpg": {
+    "filename": "afghan_hound_07633735.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_2ae2f3f5.jpg": {
+    "filename": "afghan_hound_2ae2f3f5.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "norfolk_terrier",
+    "confidence": 0.7856049365250519,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_fbb64e32.jpg": {
+    "filename": "afghan_hound_fbb64e32.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_131398a1.jpg": {
+    "filename": "afghan_hound_131398a1.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_7c175ec4.jpg": {
+    "filename": "afghan_hound_7c175ec4.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_53534087.jpg": {
+    "filename": "afghan_hound_53534087.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_ab657c33.jpg": {
+    "filename": "afghan_hound_ab657c33.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_723cc330.jpg": {
+    "filename": "afghan_hound_723cc330.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_d8c5dedc.jpg": {
+    "filename": "afghan_hound_d8c5dedc.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  },
+  "afghan_hound_77d84d9c.jpg": {
+    "filename": "afghan_hound_77d84d9c.jpg",
+    "breed": "afghan_hound",
+    "predicted_breed": "afghan_hound",
+    "confidence": 0.95,
+    "image_data": "data:image/jpeg;base64,bW9ja19pbWFnZV9kYXRh",
+    "qa_status": "pending",
+    "human_label": null,
+    "reviewed_at": null
+  }
+}

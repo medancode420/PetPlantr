@@ -1,0 +1,11 @@
+{
+  "success": true,
+  "pet_photo": "test_pet_dalle.jpg",
+  "design_image": "generated_designs/custom_planter_design_1751000613.png",
+  "pet_analysis": {
+    "description": "Generic pet",
+    "timestamp": 1751000593.365351
+  },
+  "timestamp": 1751000613,
+  "ready_for_3d_conversion": true
+}

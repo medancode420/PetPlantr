@@ -1,0 +1,56 @@
+# PetPlantr Code Owners
+# Define required reviewers for critical paths
+
+# Global owners for all files
+* @petplantr/engineering
+
+# Operations and Infrastructure
+docs/ @petplantr/sre @petplantr/engineering-leads
+monitoring/ @petplantr/sre @petplantr/platform
+utils/ @petplantr/sre
+*.sh @petplantr/sre @petplantr/devops
+
+# Deployment and CI/CD
+.github/workflows/ @petplantr/sre @petplantr/devops
+Dockerfile* @petplantr/platform @petplantr/sre
+docker-compose.yml @petplantr/platform @petplantr/sre
+*deployment*.yaml @petplantr/sre @petplantr/platform
+*deploy*.sh @petplantr/sre @petplantr/devops
+
+# Security-sensitive files
+security_hardening.sh @petplantr/security @petplantr/sre
+*secret* @petplantr/security
+*auth* @petplantr/security
+*oidc* @petplantr/security @petplantr/sre
+
+# Model and AI components
+src/ai/ @petplantr/ml-engineering @petplantr/data-science
+src/core/inference.py @petplantr/ml-engineering
+*model* @petplantr/ml-engineering
+*training* @petplantr/ml-engineering @petplantr/data-science
+
+# API and Backend
+src/api/ @petplantr/backend @petplantr/engineering
+requirements.txt @petplantr/backend @petplantr/ml-engineering
+
+# Frontend and Testing
+frontend/ @petplantr/frontend
+*test* @petplantr/engineering @petplantr/qa
+
+# Documentation requiring special review
+README.md @petplantr/engineering-leads @petplantr/product
+docs/RUNBOOK* @petplantr/sre @petplantr/engineering-leads
+docs/DEPLOYMENT* @petplantr/sre @petplantr/devops
+docs/SECURITY* @petplantr/security @petplantr/sre
+docs/OPERATIONS* @petplantr/sre @petplantr/engineering-leads
+
+# Configuration files
+*config* @petplantr/sre @petplantr/platform
+*.yml @petplantr/sre @petplantr/platform
+*.yaml @petplantr/sre @petplantr/platform
+*.json @petplantr/platform
+
+# Database migrations and schemas
+*migration* @petplantr/backend @petplantr/data-engineering
+*schema* @petplantr/backend @petplantr/data-engineering
+*seed* @petplantr/backend @petplantr/data-engineering

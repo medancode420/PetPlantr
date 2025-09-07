@@ -1,0 +1,46 @@
+
+MEMORANDUM OF UNDERSTANDING
+PetPlantr Universal Breed Coverage Partnership
+
+Between: PetPlantr, Inc. ("PetPlantr")
+And: {partner_name} ("Partner")
+
+Date: [Date]
+Duration: 24 months (renewable)
+
+1. PURPOSE AND OBJECTIVES
+This MoU establishes a strategic partnership to advance universal dog breed recognition technology while supporting animal welfare and breed preservation efforts.
+
+2. PETPLANTR COMMITMENTS
+• Develop and maintain AI technology supporting ALL 450+ recognized dog breeds
+• Provide free premium service access to Partner members/staff
+• Include Partner in co-marketing and PR announcements
+• Share aggregate analytics on breed recognition trends
+• Maintain highest data security and privacy standards
+
+3. PARTNER COMMITMENTS  
+• Grant access to high-quality breed photography archives
+• Provide expert breed validation and characteristic verification
+• Allow use of organization name in marketing materials
+• Participate in case studies and testimonials
+• Promote PetPlantr service to members/network (when appropriate)
+
+4. DATA LICENSING TERMS
+• Partner retains full ownership of provided content
+• PetPlantr receives non-exclusive license for AI training purposes
+• All Partner-sourced content properly attributed
+• Partner approval required for any public use of specific images
+• Data used solely for universal breed coverage development
+
+5. REVENUE SHARING (if applicable)
+• Commercial applications: 15% revenue share to Partner
+• Premium partnerships: Negotiated case-by-case
+• Shelter/rescue applications: Free access maintained
+• Payment terms: Quarterly, net 30 days
+
+Signatures:
+
+PetPlantr, Inc.                    {partner_name}
+_____________________             _____________________
+[Name], [Title]                   [Name], [Title]
+Date: ___________                 Date: ___________

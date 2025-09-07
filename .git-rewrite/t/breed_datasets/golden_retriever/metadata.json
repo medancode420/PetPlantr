@@ -1,0 +1,27 @@
+{
+  "breed": "Golden Retriever",
+  "characteristics": [
+    "long coat",
+    "friendly expression",
+    "medium-large size"
+  ],
+  "keywords": [
+    "golden retriever",
+    "golden dog",
+    "retriever dog"
+  ],
+  "collection_date": "2025-06-29",
+  "total_images": 0,
+  "poses": {
+    "front_view": [],
+    "side_view": [],
+    "three_quarter": [],
+    "action": [],
+    "portrait": []
+  },
+  "quality_stats": {
+    "avg_resolution": null,
+    "avg_file_size": null,
+    "high_quality_count": 0
+  }
+}

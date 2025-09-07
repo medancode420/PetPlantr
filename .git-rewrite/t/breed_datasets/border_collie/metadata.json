@@ -1,0 +1,27 @@
+{
+  "breed": "Border Collie",
+  "characteristics": [
+    "intelligent eyes",
+    "medium coat",
+    "athletic"
+  ],
+  "keywords": [
+    "border collie",
+    "collie dog",
+    "herding dog"
+  ],
+  "collection_date": "2025-06-29",
+  "total_images": 0,
+  "poses": {
+    "front_view": [],
+    "side_view": [],
+    "three_quarter": [],
+    "action": [],
+    "portrait": []
+  },
+  "quality_stats": {
+    "avg_resolution": null,
+    "avg_file_size": null,
+    "high_quality_count": 0
+  }
+}

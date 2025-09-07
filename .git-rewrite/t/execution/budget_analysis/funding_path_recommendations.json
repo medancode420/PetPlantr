@@ -1,0 +1,42 @@
+{
+  "bootstrap": {
+    "budget": "25K-50K",
+    "recommended_gpu": "T4",
+    "timeline": "4-6 months",
+    "total_cost": 25741.09228888889,
+    "pros": [
+      "Low cost",
+      "Self-fundable"
+    ],
+    "cons": [
+      "Longer timeline",
+      "Limited experimentation"
+    ]
+  },
+  "professional": {
+    "budget": "75K-145K",
+    "recommended_gpu": "A10G",
+    "timeline": "2-3 months",
+    "total_cost": 25727.506834444444,
+    "pros": [
+      "Good cost/speed balance",
+      "Competitive timing"
+    ],
+    "cons": [
+      "Requires external funding"
+    ]
+  },
+  "enterprise": {
+    "budget": "200K+",
+    "recommended_gpu": "A100",
+    "timeline": "1-2 months",
+    "total_cost": 25722.41788888889,
+    "pros": [
+      "Fastest to market",
+      "Maximum experimentation"
+    ],
+    "cons": [
+      "Requires VC funding"
+    ]
+  }
+}

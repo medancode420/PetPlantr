@@ -1,0 +1,18 @@
+{
+  "breed_name": "Pug",
+  "breed_group": "Toy",
+  "origin": "China",
+  "size": "Small",
+  "coat_type": "Short",
+  "akc_recognized": true,
+  "fci_recognized": true,
+  "characteristics": [
+    "Charming",
+    "Mischievous",
+    "Loving"
+  ],
+  "aliases": [],
+  "target_images": 500,
+  "collection_status": "pending",
+  "last_updated": "2025-06-29"
+}

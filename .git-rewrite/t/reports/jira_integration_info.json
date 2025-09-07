@@ -1,0 +1,40 @@
+{
+  "status": "ready",
+  "csv_file": "reports/jira_import_tier1.csv",
+  "instructions_file": "reports/jira_import_instructions.md",
+  "story_count": 252,
+  "import_steps": [
+    "Log into your Jira instance",
+    "Navigate to Project Settings > Import",
+    "Select 'CSV' as import format",
+    "Upload reports/jira_import_tier1.csv",
+    "Map CSV columns to Jira fields",
+    "Review and confirm import",
+    "Verify stories are correctly imported"
+  ],
+  "field_mapping": {
+    "Issue Type": "Story",
+    "Summary": "Story title",
+    "Description": "Acceptance criteria + DoD",
+    "Epic Link": "Epic ID (E-1, E-2, E-3)",
+    "Story Points": "Effort estimate",
+    "Priority": "Based on epic priority",
+    "Labels": "tier1, backlog, automated"
+  },
+  "post_import_actions": [
+    "Create Jira epics for E-1, E-2, E-3",
+    "Link stories to appropriate epics",
+    "Set up Jira sprint boards",
+    "Configure story point tracking",
+    "Enable burndown charts",
+    "Set up automated sync with GitHub"
+  ],
+  "benefits": [
+    "Stakeholder visibility into development progress",
+    "Executive dashboard with business metrics",
+    "Automated reporting and status updates",
+    "Integration with existing workflow tools",
+    "Historical tracking and analytics",
+    "Multi-project portfolio management"
+  ]
+}

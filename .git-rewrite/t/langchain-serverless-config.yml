@@ -1,0 +1,129 @@
+# LangChain Validation Agent Integration for PetPlantr
+# Add to backend/serverless.yml
+
+functions:
+  validateOutputs:
+    handler: src/lambdas/validation_agent.handler
+    runtime: python3.9
+    memorySize: 1024
+    timeout: 30
+    environment:
+      MODEL_BUCKET: ${self:custom.modelBucket}
+      OPENAI_API_KEY: ${ssm:/petplantr/openai/api_key}
+    layers:
+      - arn:aws:lambda:us-east-1:123456789012:layer:langchain-trimesh:1
+    events:
+      - http:
+          path: /validate
+          method: post
+          cors: true
+
+stepFunctions:
+  stateMachines:
+    petPlantrPipeline:
+      definition:
+        Comment: "Enhanced PetPlantr Pipeline with LangChain Validation"
+        StartAt: FeatureExtraction
+        States:
+          FeatureExtraction:
+            Type: Task
+            Resource: arn:aws:states:::lambda:invoke
+            Parameters:
+              FunctionName: ${self:service}-${self:provider.stage}-featureExtraction
+              Payload.$: $
+            ResultPath: $.features
+            Next: DepthEstimation
+            
+          DepthEstimation:
+            Type: Task
+            Resource: arn:aws:states:::lambda:invoke
+            Parameters:
+              FunctionName: ${self:service}-${self:provider.stage}-depthEstimation
+              Payload.$: $
+            ResultPath: $.depth
+            Next: MeshGeneration
+            
+          MeshGeneration:
+            Type: Task
+            Resource: arn:aws:states:::lambda:invoke
+            Parameters:
+              FunctionName: ${self:service}-${self:provider.stage}-meshGeneration
+              Payload.$: $
+            ResultPath: $.mesh
+            Next: PlanterIntegration
+            
+          PlanterIntegration:
+            Type: Task
+            Resource: arn:aws:states:::lambda:invoke
+            Parameters:
+              FunctionName: ${self:service}-${self:provider.stage}-planterGeometry
+              Payload.$: $
+            ResultPath: $.planter
+            Next: ValidateOutputs
+            
+          ValidateOutputs:
+            Type: Task
+            Resource: arn:aws:states:::lambda:invoke
+            Parameters:
+              FunctionName: ${self:service}-${self:provider.stage}-validateOutputs
+              Payload:
+                image_key.$: $.features.processed_image_key
+                reference_key.$: $.original_image_key
+                stl_key.$: $.planter.stl_key
+            ResultPath: $.validation
+            Next: CheckValidation
+            Catch:
+              - ErrorEquals: ["States.TaskFailed"]
+                Next: FailJob
+                
+          CheckValidation:
+            Type: Choice
+            Choices:
+              - Variable: $.validation.photo_pass
+                BooleanEquals: true
+                Next: CheckMeshValidation
+            Default: FailJob
+            
+          CheckMeshValidation:
+            Type: Choice
+            Choices:
+              - Variable: $.validation.mesh_pass
+                BooleanEquals: true
+                Next: PrepareForPrint
+            Default: FailJob
+            
+          PrepareForPrint:
+            Type: Task
+            Resource: arn:aws:states:::lambda:invoke
+            Parameters:
+              FunctionName: ${self:service}-${self:provider.stage}-prepareForPrint
+              Payload.$: $
+            ResultPath: $.print_ready
+            Next: SuccessJob
+            
+          SuccessJob:
+            Type: Succeed
+            
+          FailJob:
+            Type: Fail
+            Cause: "Validation failed or pipeline error"
+
+custom:
+  modelBucket: petplantr-outputs-${self:provider.stage}
+  
+resources:
+  Resources:
+    ModelBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:custom.modelBucket}
+        
+plugins:
+  - serverless-step-functions
+  - serverless-python-requirements
+
+package:
+  exclude:
+    - node_modules/**
+    - venv/**
+    - .git/**

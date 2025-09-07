@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLB Model Viewer Test - Fixed GLB Files</title>
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f0f0f0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .model-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .model-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        model-viewer {
+            width: 100%;
+            height: 300px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            border: 2px solid #e0e0e0;
+        }
+        .model-info {
+            margin-top: 10px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+        .status {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .loading { background: #fff3cd; color: #856404; }
+        .loaded { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .test-info {
+            background: #e7f3ff;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🐕 GLB Model Viewer Test - Fixed GLB Files</h1>
+        
+        <div class="test-info">
+            <h3>Test Status: Fixed GLB Files</h3>
+            <p>✅ Replaced corrupted GLB files with valid models</p>
+            <p>✅ Generated simple dog planter GLB models programmatically</p>
+            <p>🧪 Testing all model viewer locations...</p>
+        </div>
+
+        <div class="model-grid">
+            <!-- Test 1: Dog Planter -->
+            <div class="model-card">
+                <h3>🐕 Dog Planter (New)</h3>
+                <model-viewer 
+                    id="model1"
+                    src="http://localhost:3000/demo/dog-planter.glb"
+                    alt="Dog Planter 3D Model"
+                    auto-rotate 
+                    camera-controls
+                    loading="eager"
+                    environment-image="neutral"
+                    shadow-intensity="1">
+                </model-viewer>
+                <div class="model-info">
+                    <strong>URL:</strong> /demo/dog-planter.glb<br>
+                    <strong>Type:</strong> Generated simple planter model
+                </div>
+                <div id="status1" class="status loading">⏳ Loading...</div>
+            </div>
+
+            <!-- Test 2: Sample Planter -->
+            <div class="model-card">
+                <h3>🌱 Sample Planter (New)</h3>
+                <model-viewer 
+                    id="model2"
+                    src="http://localhost:3000/demo/sample-planter.glb"
+                    alt="Sample Planter 3D Model"
+                    auto-rotate 
+                    camera-controls
+                    loading="eager">
+                </model-viewer>
+                <div class="model-info">
+                    <strong>URL:</strong> /demo/sample-planter.glb<br>
+                    <strong>Type:</strong> Generated simple planter model
+                </div>
+                <div id="status2" class="status loading">⏳ Loading...</div>
+            </div>
+
+            <!-- Test 3: Default Planter -->
+            <div class="model-card">
+                <h3>🏠 Default Planter (New)</h3>
+                <model-viewer 
+                    id="model3"
+                    src="http://localhost:3000/demo-models/default-planter.glb"
+                    alt="Default Planter 3D Model"
+                    auto-rotate 
+                    camera-controls
+                    loading="eager">
+                </model-viewer>
+                <div class="model-info">
+                    <strong>URL:</strong> /demo-models/default-planter.glb<br>
+                    <strong>Type:</strong> Generated simple planter model
+                </div>
+                <div id="status3" class="status loading">⏳ Loading...</div>
+            </div>
+
+            <!-- Test 4: Demo Dog Planter -->
+            <div class="model-card">
+                <h3>🎭 Demo Dog Planter (New)</h3>
+                <model-viewer 
+                    id="model4"
+                    src="http://localhost:3000/models/demo-dog-planter.glb"
+                    alt="Demo Dog Planter 3D Model"
+                    auto-rotate 
+                    camera-controls
+                    loading="eager">
+                </model-viewer>
+                <div class="model-info">
+                    <strong>URL:</strong> /models/demo-dog-planter.glb<br>
+                    <strong>Type:</strong> Generated simple planter model
+                </div>
+                <div id="status4" class="status loading">⏳ Loading...</div>
+            </div>
+
+            <!-- Test 5: Large Sample (Valid Original) -->
+            <div class="model-card">
+                <h3>🚀 Large Sample (Original Valid)</h3>
+                <model-viewer 
+                    id="model5"
+                    src="http://localhost:3000/demo/sample-planter-large.glb"
+                    alt="Large Sample Planter 3D Model"
+                    auto-rotate 
+                    camera-controls
+                    loading="eager">
+                </model-viewer>
+                <div class="model-info">
+                    <strong>URL:</strong> /demo/sample-planter-large.glb<br>
+                    <strong>Type:</strong> Original large model (3.7MB)
+                </div>
+                <div id="status5" class="status loading">⏳ Loading...</div>
+            </div>
+
+            <!-- Test 6: Astronaut (Reference Valid) -->
+            <div class="model-card">
+                <h3>👨‍🚀 Astronaut (Reference Valid)</h3>
+                <model-viewer 
+                    id="model6"
+                    src="http://localhost:3000/demo/astronaut.glb"
+                    alt="Astronaut 3D Model"
+                    auto-rotate 
+                    camera-controls
+                    loading="eager">
+                </model-viewer>
+                <div class="model-info">
+                    <strong>URL:</strong> /demo/astronaut.glb<br>
+                    <strong>Type:</strong> Reference valid model (2.8MB)
+                </div>
+                <div id="status6" class="status loading">⏳ Loading...</div>
+            </div>
+        </div>
+
+        <div style="margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <h3>📊 Test Results Summary</h3>
+            <div id="summary">
+                <p>🔄 Running tests...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Track loading status for each model
+        const models = ['model1', 'model2', 'model3', 'model4', 'model5', 'model6'];
+        const results = {};
+
+        models.forEach(modelId => {
+            const modelViewer = document.getElementById(modelId);
+            const statusDiv = document.getElementById(`status${modelId.slice(-1)}`);
+
+            modelViewer.addEventListener('load', () => {
+                statusDiv.className = 'status loaded';
+                statusDiv.innerHTML = '✅ Loaded successfully!';
+                results[modelId] = 'success';
+                updateSummary();
+            });
+
+            modelViewer.addEventListener('error', (event) => {
+                statusDiv.className = 'status error';
+                statusDiv.innerHTML = `❌ Error: ${event.detail || 'Failed to load'}`;
+                results[modelId] = 'error';
+                updateSummary();
+            });
+
+            // Timeout check
+            setTimeout(() => {
+                if (!results[modelId]) {
+                    statusDiv.className = 'status error';
+                    statusDiv.innerHTML = '⏰ Timeout - Still loading after 10s';
+                    results[modelId] = 'timeout';
+                    updateSummary();
+                }
+            }, 10000);
+        });
+
+        function updateSummary() {
+            const totalModels = models.length;
+            const completed = Object.keys(results).length;
+            const successful = Object.values(results).filter(r => r === 'success').length;
+            const failed = Object.values(results).filter(r => r !== 'success').length;
+
+            document.getElementById('summary').innerHTML = `
+                <p><strong>Progress:</strong> ${completed}/${totalModels} models tested</p>
+                <p><strong>✅ Successful:</strong> ${successful}</p>
+                <p><strong>❌ Failed:</strong> ${failed}</p>
+                ${completed === totalModels ? '<p><strong>🎉 All tests completed!</strong></p>' : ''}
+            `;
+        }
+
+        // Initial summary
+        updateSummary();
+    </script>
+</body>
+</html>

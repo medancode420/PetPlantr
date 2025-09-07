@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  petplantr-api:
+    environment:
+      - JWT_SECRET=${JWT_SECRET}
+      - API_KEY=${API_KEY}
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - redis
+    volumes:
+      - ./security/ssl:/app/security/ssl:ro
+
+  nginx:
+    volumes:
+      - ./security/ssl/certs:/etc/ssl/certs:ro
+      - ./security/ssl/private:/etc/ssl/private:ro
+    ports:
+      - "443:443"  # HTTPS
+      - "80:80"    # HTTP (redirect to HTTPS)
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+
+volumes:
+  redis_data:

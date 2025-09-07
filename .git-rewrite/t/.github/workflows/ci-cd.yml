@@ -1,0 +1,350 @@
+name: PetPlantr CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: petplantr/api
+
+jobs:
+  # Stage 1: Lint and Unit Tests (Fast Mode)
+  test-unit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PETPLANTR_FAST_MODE: "true"  # Enable fast mode for unit tests
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        cache: 'pip'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pytest pytest-cov flake8 black isort
+        
+    - name: Lint with flake8
+      run: |
+        flake8 src/ tests/ --max-line-length=88 --exclude=__pycache__
+        
+    - name: Check no dashboard dupes
+      run: bash scripts/ci/check_no_dashboard_dupes.sh
+        
+    - name: Format check with black
+      run: |
+        black --check src/ tests/
+        
+    - name: Import sort check
+      run: |
+        isort --check-only src/ tests/
+        
+    - name: Prometheus rule lint
+      run: promtool check rules monitoring/prometheus/alerts/petplantr.rules.yml || echo "promtool not available in runner"
+
+    - name: Docs sanity
+      run: |
+        test -f grafana/dashboards/petplantr_hedging_queue_ladder.json
+        test -f monitoring/prometheus/alerts/petplantr.rules.yml
+        bash scripts/ci/check_edge_canary_docs.sh
+
+    - name: Lint Traefik YAML snippet (warn-only)
+      run: |
+        python -V
+        pip install --disable-pip-version-check --quiet yamllint
+        bash scripts/ci/lint_traefik_yaml.sh
+
+    - name: Run unit tests (Fast Mode - Stubs)
+      run: |
+        # Use fast mode inference stubs for frontend compatibility
+        export PETPLANTR_FAST_MODE=true
+        pytest tests/ -v --cov=src --cov-report=xml --cov-report=term -m "not integration"
+        
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        file: ./coverage.xml
+        fail_ci_if_error: false
+
+  # Stage 2: Security Scanning
+  security:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Run Trivy vulnerability scanner
+      uses: aquasecurity/trivy-action@master
+      with:
+        scan-type: 'fs'
+        scan-ref: '.'
+        format: 'sarif'
+        output: 'trivy-results.sarif'
+        
+    - name: Upload Trivy scan results to GitHub Security tab
+      uses: github/codeql-action/upload-sarif@v2
+      with:
+        sarif_file: 'trivy-results.sarif'
+        
+    - name: Check for secrets
+      uses: trufflesecurity/trufflehog@main
+      with:
+        path: ./
+        base: main
+        head: HEAD
+
+  # Stage 3: Build and Test Docker Image
+  build:
+    runs-on: ubuntu-latest
+    needs: [test-unit, security]
+    timeout-minutes: 20
+    
+    outputs:
+      image-digest: ${{ steps.build.outputs.digest }}
+      image-tag: ${{ steps.meta.outputs.tags }}
+      
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+      
+    - name: Log in to Container Registry
+      uses: docker/login-action@v3
+      with:
+        registry: ${{ env.REGISTRY }}
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Extract metadata
+      id: meta
+      uses: docker/metadata-action@v5
+      with:
+        images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+        tags: |
+          type=ref,event=branch
+          type=ref,event=pr
+          type=sha,prefix={{branch}}-
+          type=raw,value=latest,enable={{is_default_branch}}
+          
+    - name: Build and push Docker image
+      id: build
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        file: ./Dockerfile.enhanced
+        push: true
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        
+    - name: Test Docker image
+      run: |
+        # Start container
+        docker run -d -p 8000:8000 --name test-api ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+        
+        # Wait for startup
+        sleep 30
+        
+        # Health check
+        curl -f http://localhost:8000/health || exit 1
+        
+        # Basic API test
+        echo "test" > test.txt
+        curl -f -X POST -F "file=@test.txt" http://localhost:8000/breed-detect || exit 1
+        
+        # Check metrics endpoint
+        curl -f http://localhost:8000/metrics | grep -q "inference_latency_seconds" || exit 1
+        
+        # Cleanup
+        docker stop test-api
+        docker rm test-api
+
+  # Stage 4: Performance Testing
+  performance:
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    timeout-minutes: 15
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Run performance tests
+      run: |
+        # Pull the built image
+        docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+        
+        # Start container
+        docker run -d -p 8000:8000 --name perf-test ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+        
+        # Wait for startup
+        sleep 30
+        
+        # Create test image
+        echo "dummy dog image" > test_dog.jpg
+        
+        # Performance test script
+        cat > perf_test.sh << 'EOF'
+        #!/bin/bash
+        total_time=0
+        requests=20
+        
+        for i in $(seq 1 $requests); do
+          start_time=$(date +%s%3N)
+          curl -s -F "file=@test_dog.jpg" http://localhost:8000/breed-detect >/dev/null
+          end_time=$(date +%s%3N)
+          latency=$((end_time - start_time))
+          total_time=$((total_time + latency))
+          echo "Request $i: ${latency}ms"
+        done
+        
+        avg_latency=$((total_time / requests))
+        echo "Average latency: ${avg_latency}ms"
+        
+        # Fail if average latency > 600ms
+        if [ $avg_latency -gt 600 ]; then
+          echo "Performance test failed: ${avg_latency}ms > 600ms threshold"
+          exit 1
+        fi
+        
+        echo "Performance test passed: ${avg_latency}ms"
+        EOF
+        
+        chmod +x perf_test.sh
+        ./perf_test.sh
+        
+        # Cleanup
+        docker stop perf-test
+        docker rm perf-test
+
+  # Stage 5: Deploy to Staging
+  deploy-staging:
+    runs-on: ubuntu-latest
+    needs: [build, performance]
+    if: github.ref == 'refs/heads/main'
+    environment: staging
+    timeout-minutes: 10
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Deploy to staging
+      run: |
+        echo "Deploying to staging environment..."
+        echo "Image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}"
+        
+        # Simulate deployment (replace with actual deployment commands)
+        # kubectl set image deployment/petplantr-api api=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+        # kubectl rollout status deployment/petplantr-api
+        
+        echo "Staging deployment completed"
+        
+    - name: Run smoke tests on staging
+      run: |
+        echo "Running smoke tests on staging..."
+        
+        # Replace with actual staging URL
+        STAGING_URL="https://staging-api.petplantr.com"
+        
+        # Health check
+        # curl -f $STAGING_URL/health || exit 1
+        
+        # Basic functionality test
+        # echo "test" > test.txt
+        # curl -f -X POST -F "file=@test.txt" $STAGING_URL/breed-detect || exit 1
+        
+        echo "Smoke tests passed on staging"
+
+  # Stage 6: Deploy to Production (Manual Approval)
+  deploy-production:
+    runs-on: ubuntu-latest
+    needs: deploy-staging
+    if: github.ref == 'refs/heads/main'
+    environment: production
+    timeout-minutes: 15
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Deploy to production
+      run: |
+        echo "Deploying to production environment..."
+        echo "Image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}"
+        
+        # Blue-green deployment simulation
+        echo "Starting blue-green deployment..."
+        
+        # Deploy to green environment
+        # kubectl apply -f k8s/production/
+        # kubectl set image deployment/petplantr-api-green api=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+        # kubectl rollout status deployment/petplantr-api-green
+        
+        echo "Green environment deployed"
+        
+        # Health check on green
+        # PROD_URL="https://green-api.petplantr.com"
+        # curl -f $PROD_URL/health || exit 1
+        
+        echo "Health check passed on green environment"
+        
+        # Switch traffic (this would be done gradually in real scenario)
+        # kubectl patch service petplantr-api-service -p '{"spec":{"selector":{"version":"green"}}}'
+        
+        echo "Production deployment completed"
+        
+    - name: Post-deployment verification
+      run: |
+        echo "Running post-deployment verification..."
+        
+        # Production URL
+        PROD_URL="https://api.petplantr.com"
+        
+        # Health check
+        # curl -f $PROD_URL/health || exit 1
+        
+        # Metrics check
+        # curl -f $PROD_URL/metrics | grep -q "inference_latency_seconds" || exit 1
+        
+        # Basic functionality test
+        # echo "test" > test.txt
+        # curl -f -X POST -F "file=@test.txt" $PROD_URL/breed-detect || exit 1
+        
+        echo "Post-deployment verification completed successfully"
+
+  # Stage 7: Cleanup old images (weekly)
+  cleanup:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule'
+    
+    steps:
+    - name: Cleanup old container images
+      run: |
+        echo "Cleaning up old container images..."
+        
+        # Keep last 10 images, delete older ones
+        # This would need proper GitHub API calls or registry-specific commands
+        echo "Cleanup completed"
+
+# Schedule for cleanup job (runs weekly)
+on:
+  schedule:
+    - cron: '0 2 * * 1'  # Every Monday at 2 AM

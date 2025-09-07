@@ -1,0 +1,23 @@
+{
+  "source_image": "val_002_pug_pug_74.jpg",
+  "breed": "pug",
+  "features": {
+    "breed": "pug",
+    "head_shape": "round",
+    "snout_type": "short",
+    "ear_type": "floppy",
+    "body_size": "compact",
+    "proportions": {
+      "head_width": 0.8,
+      "snout_length": 0.3,
+      "ear_height": 0.4,
+      "body_depth": 0.9
+    }
+  },
+  "stl_stats": {
+    "vertices": 92,
+    "faces": 150,
+    "file_size_kb": 29.953125
+  },
+  "generated_timestamp": "2025-06-26 08:30:00"
+}

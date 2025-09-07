@@ -1,0 +1,27 @@
+{
+  "filename": "integrated_golden_retriever_ai_1750984768.stl",
+  "generation_method": "AI",
+  "analysis_result": {
+    "predicted_breed": "golden_retriever",
+    "confidence": 0.5398993444442749,
+    "feature_vector": [],
+    "ensemble_size": 6,
+    "original_confidence": 0.10497483611106873,
+    "breed_probabilities": {
+      "pug": 0.1001906469464302,
+      "bulldog": 0.09619279205799103,
+      "golden_retriever": 0.10497483611106873,
+      "labrador": 0.10462978482246399,
+      "german_shepherd": 0.09641139209270477,
+      "beagle": 0.10345739126205444,
+      "chihuahua": 0.09439071267843246,
+      "rottweiler": 0.09782355278730392,
+      "siberian_husky": 0.09747137874364853,
+      "default": 0.1044575423002243
+    }
+  },
+  "triangle_count": 987,
+  "vertex_count": 509,
+  "timestamp": 1750984768,
+  "ai_available": true
+}

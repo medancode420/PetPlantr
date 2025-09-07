@@ -1,0 +1,66 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "PetPlantr Monitoring Dashboard",
+    "tags": ["petplantr", "ai", "monitoring"],
+    "timezone": "browser",
+    "panels": [
+      {
+        "id": 1,
+        "title": "API Response Time",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(http_request_duration_seconds_sum[5m]) / rate(http_request_duration_seconds_count[5m])",
+            "legendFormat": "Average Response Time"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Prediction Accuracy",
+        "type": "gauge",
+        "targets": [
+          {
+            "expr": "petplantr_prediction_accuracy",
+            "legendFormat": "Accuracy"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "System Resources",
+        "type": "row",
+        "panels": [
+          {
+            "id": 4,
+            "title": "CPU Usage",
+            "type": "graph",
+            "targets": [
+              {
+                "expr": "100 - (avg by (instance) (irate(node_cpu_seconds_total{mode=\"idle\"}[5m])) * 100)",
+                "legendFormat": "CPU Usage %"
+              }
+            ]
+          },
+          {
+            "id": 5,
+            "title": "Memory Usage",
+            "type": "graph",
+            "targets": [
+              {
+                "expr": "(1 - node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes) * 100",
+                "legendFormat": "Memory Usage %"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "time": {
+      "from": "now-1h",
+      "to": "now"
+    },
+    "refresh": "30s"
+  }
+}

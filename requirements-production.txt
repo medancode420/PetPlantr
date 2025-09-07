@@ -1,0 +1,38 @@
+# requirements-production.txt - Production-specific dependencies
+# These are additional packages needed for production deployment
+
+# Production WSGI/ASGI servers
+gunicorn==21.2.0
+uvicorn[standard]==0.24.0
+
+# Performance and optimization
+uvloop==0.17.0
+httptools==0.6.0
+
+# Monitoring and observability
+prometheus-client==0.17.1
+structlog==23.2.0
+
+# Security enhancements
+cryptography==41.0.7
+bcrypt==4.0.1
+
+# Database and caching (if needed)
+redis==5.0.1
+
+# Health checks and monitoring
+psutil==5.9.6
+
+# Logging and structured output
+python-json-logger==2.0.7
+
+# Production AI/ML dependencies (if using GPU)
+# torch==2.1.0+cpu  # CPU version for production
+# torchvision==0.16.0+cpu
+
+# Container health checks
+docker==6.1.3
+
+# Additional utilities
+python-multipart==0.0.6
+aiofiles==23.2.1

@@ -1,0 +1,11 @@
+{
+  "success": true,
+  "pet_photo": "test_golden_dog.jpg",
+  "design_image": "DebugTest_1751059870/custom_planter_design_1751059896.png",
+  "pet_analysis": {
+    "description": "It seems there might be a misunderstanding. The image you've provided is a simple, pixelated graphic of a face, not a pet photo. To create a custom 3D-printable planter based on a pet, I would need an actual photo of the pet.\n\nFor a distinctive and recognizable design, ensure the photo shows clear details of the pet's unique features. You can then use these features to translate into the planter design, capturing traits such as the pet\u2019s specific ear type, snout shape, or distinctive coat markings. If you have a specific pet photo you'd like analyzed for a planter design, please upload it, and I can assist further!",
+    "timestamp": 1751059874.3904588
+  },
+  "timestamp": 1751059896,
+  "ready_for_3d_conversion": true
+}
